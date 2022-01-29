@@ -1,100 +1,70 @@
-\documentclass[]{book}
 
-%These tell TeX which packages to use.
-\usepackage{array,epsfig}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amsxtra}
-\usepackage{amsthm}
-\usepackage{mathrsfs}
-\usepackage{color}
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{caption} %For captioning objects
+\usepackage{subcaption} %sub-captioning pictures
+\usepackage{graphicx} %to include graphics
+\usepackage{hyperref} %for clickable references
+\usepackage{listings} %to write code listings
+\lstset{language=R, breaklines=true}  
+\usepackage[mathcal]{euscript} %for curly S
+\usepackage{mathtools}
+\usepackage{float} %so figures can be placed "here"
 
-%Here I define some theorem styles and shortcut commands for symbols I use often
-\theoremstyle{definition}
-\newtheorem{defn}{Definition}
-\newtheorem{thm}{Theorem}
-\newtheorem{cor}{Corollary}
-\newtheorem*{rmk}{Remark}
-\newtheorem{lem}{Lemma}
-\newtheorem*{joke}{Joke}
-\newtheorem{ex}{Example}
-\newtheorem*{soln}{Solution}
-\newtheorem{prop}{Proposition}
+%Defining commands for math symbols
+\usepackage{amsmath} %to enable split equations
+\usepackage{statmath} %for plim. Be careful, it has already \E and \V.
+\usepackage{amssymb} %to enable mathbb
+\newcommand{\R}{\mathtt{R}} %Software R
+\renewcommand{\E}{\mathbb{E}} %expectation
+\usepackage{bbm}
+\newcommand{\1}{\mathbbm{1}}
+\renewcommand{\V}{\mathbb{V}} %variance
+\newcommand{\N}{\mathcal{N}} %normal distribution
+\newcommand{\U}{\mathcal{U}} %normal distribution
+\renewcommand{\P}{\mathbb{P}} %proba, renewcom since \P already exists
+%Regression variables in vector form
+\newcommand{\y}{\boldsymbol{y}} 
+\newcommand{\x}{\boldsymbol{x}} 
+\newcommand{\z}{\boldsymbol{z}} 
+\newcommand{\yhat}{\boldsymbol{\hat{y}}} 
+\renewcommand{\u}{\boldsymbol{u}} 
+\newcommand{\uhat}{\boldsymbol{\hat{u}}}  
+\newcommand{\Px}{\boldsymbol{P}}  
+\newcommand{\Mx}{\boldsymbol{M}}  
+\newcommand{\A}{\boldsymbol{A}}  
+\newcommand{\X}{\boldsymbol{X}}  
+\newcommand{\Z}{\boldsymbol{Z}}  
+\newcommand{\e}{\boldsymbol{e}}  
+\renewcommand{\r}{\tilde{r}}  
+%\renewcommand{\r}{\boldsymbol{r}} 
+\renewcommand{\i}{\boldsymbol{\imath}} 
+\newcommand{\alphab}{\boldsymbol{\alpha}}  
+\newcommand{\betab}{\boldsymbol{\beta}}  
+%opening
 
-\newcommand{\lra}{\longrightarrow}
-\newcommand{\ra}{\rightarrow}
-\newcommand{\surj}{\twoheadrightarrow}
-\newcommand{\graph}{\mathrm{graph}}
-\newcommand{\bb}[1]{\mathbb{#1}}
-\newcommand{\Z}{\bb{Z}}
-\newcommand{\Q}{\bb{Q}}
-\newcommand{\R}{\bb{R}}
-\newcommand{\C}{\bb{C}}
-\newcommand{\N}{\bb{N}}
-\newcommand{\M}{\mathbf{M}}
-\newcommand{\m}{\mathbf{m}}
-\newcommand{\MM}{\mathscr{M}}
-\newcommand{\HH}{\mathscr{H}}
-\newcommand{\Om}{\Omega}
-\newcommand{\Ho}{\in\HH(\Om)}
-\newcommand{\bd}{\partial}
-\newcommand{\del}{\partial}
-\newcommand{\bardel}{\overline\partial}
-\newcommand{\textdf}[1]{\textbf{\textsf{#1}}\index{#1}}
-\newcommand{\img}{\mathrm{img}}
-\newcommand{\ip}[2]{\left\langle{#1},{#2}\right\rangle}
-\newcommand{\inter}[1]{\mathrm{int}{#1}}
-\newcommand{\exter}[1]{\mathrm{ext}{#1}}
-\newcommand{\cl}[1]{\mathrm{cl}{#1}}
-\newcommand{\ds}{\displaystyle}
-\newcommand{\vol}{\mathrm{vol}}
-\newcommand{\cnt}{\mathrm{ct}}
-\newcommand{\osc}{\mathrm{osc}}
-\newcommand{\LL}{\mathbf{L}}
-\newcommand{\UU}{\mathbf{U}}
-\newcommand{\support}{\mathrm{support}}
-\newcommand{\AND}{\;\wedge\;}
-\newcommand{\OR}{\;\vee\;}
-\newcommand{\Oset}{\varnothing}
-\newcommand{\st}{\ni}
-\newcommand{\wh}{\widehat}
-
-%Pagination stuff.
-\setlength{\topmargin}{-.3 in}
-\setlength{\oddsidemargin}{0in}
-\setlength{\evensidemargin}{0in}
-\setlength{\textheight}{9.in}
-\setlength{\textwidth}{6.5in}
-\pagestyle{empty}
-
+\title{Problem Set 1 - ECON 880\\
+	\small Spring 2022 - University of Kansas}
+\author{Minh Cao, Gunawan}
 
 
 \begin{document}
-
-
-\begin{center}
-{\Large Econ 880 \hspace{0.5cm} HW 1}\\
-\textbf{Minh Cao, Gunawan}\\ %You should put your name here
-Due:  %You should write the date here.
-\end{center}
-
-\vspace{0.2 cm}
-
-
-\subsection*{Exercises for chapter 1 and 2}
-
-\begin{enumerate}
-\item Question 1 
-\item We can evaluate the polynomial as follow:\\
-
- $$ f(x,y) = 83521y^8+578x^{2}y^{4} -2x^{4}+2x^{6}-x^{8} = y^{4}(83521y^{4}+578x^{2})+x^{4}(-2+2x^{2}-x^{4})$$
- 
- The 
-
-
-
-
-\end{enumerate}
-
+\maketitle	
+\section*{Problem 1}
+\subsection*{Problem 1a}
+We can evaluate the polynomial as follow:\\
+\begin{eqnarray*}
+f(x,y) 	&=& 83521y^8+578x^{2}y^{4} -2x^{4}+2x^{6}-x^{8}\\
+ 		&=& y^{4}(83521y^{4}+578x^{2})+x^{4}(-2+2x^{2}-x^{4})
+\end{eqnarray*}
+\subsection*{Problem 1b}
+	
+\subsection*{Problem 1c}
+	
+\section*{Problem 2}
+	
+\section*{Problem 3}
+	
+\section*{Problem 4}
+	
 \end{document}
