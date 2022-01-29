@@ -1,3 +1,4 @@
 # E880
-Matlab Code
-Gunawan and Minh
+Matlab Code,
+Tex file,
+For Econ808 class assignment
