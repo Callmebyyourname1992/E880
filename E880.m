@@ -42,6 +42,15 @@ idx2
 epsilon3
 idx3
 
+%Verify if the answers are correct
+epsilon1 == eps(1)
+-idx1 == log2(eps(1))
+epsilon2 == eps(0.001)
+-idx2 == log2(eps(0.001))
+epsilon3 == eps(1000)
+-idx3 == log2(eps(1000))
+
+
 %Question 4
 
 %Question 4a

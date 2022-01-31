@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.24)  29 JAN 2022 11:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.24)  30 JAN 2022 18:05
 entering extended mode
 **./main.tex
 (main.tex
@@ -510,29 +510,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--57
 
 [1
 
-{C:/Users/gesch/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (main.aux)
+{C:/Users/gesch/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
+Overfull \hbox (11.22676pt too wide) in paragraph at lines 98--110
+ [][] 
+ []
+
+[2] (main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 10232 strings out of 479618
- 159414 string characters out of 2865026
- 617572 words of memory out of 3000000
- 27222 multiletter control sequences out of 15000+200000
- 414217 words of font info for 66 fonts, out of 3000000 for 9000
+ 10248 strings out of 479618
+ 159628 string characters out of 2865026
+ 625572 words of memory out of 3000000
+ 27233 multiletter control sequences out of 15000+200000
+ 414385 words of font info for 67 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,6n,88p,290b,323s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 81i,9n,88p,830b,386s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx12.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmr10.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/gesch/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/gesch/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/gesch/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (1 page, 76203 bytes).
+fonts/cm/cmex10.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmmi10.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/gesch/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/gesch/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/gesch/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/gesch/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/
+gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:
+/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (2 pages, 129392 bytes).
 PDF statistics:
- 48 PDF objects out of 1000 (max. 8388607)
- 9 named destinations out of 1000 (max. 500000)
+ 81 PDF objects out of 1000 (max. 8388607)
+ 13 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -65,8 +65,71 @@ f(x,y) 	&=& 83521y^8+578x^{2}y^{4} -2x^{4}+2x^{6}-x^{8}\\
 \section*{Problem 2}
 	
 \section*{Problem 3}
+	In order to find our machine $\varepsilon$, we write a while loop to subtract progressively smaller numbers from 1 until the result is not distinguishable from 1. Repeat the exercise using 0.001 and 1000 instead of 1. We verify our results by comparing them with the epsilons delivered by the built-in Matlab function \texttt{eps(x)}, and the exponents with \texttt{log2(eps(x))}. The results are shown on Table \ref{tab:1}.
 	
-\section*{Problem 4} Minh update.....
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{ | c | c | c |}
+			\hline
+			\hline
+			$x$ & $\varepsilon(x)$ - decimal & $\varepsilon(x)$ - exponential \\	
+			\hline
+			0.001 & 2.16840434497101e-19 & $2^{-62}$ \\ \hline
+			1 & 2.22044604925031e-16 & $2^{-52}$ \\ \hline
+			1000 & 1.13686837721616e-13 & $2^{-43}$ \\
+			\hline
+			\hline
+		\end{tabular} 
+		\caption{Machine $\varepsilon$ for diverse values of $x$}
+		\label{tab:1}
+	\end{table}
+Comment: As $x$ increases, the machine $\varepsilon(x)$ decreases. 
 	
+\section*{Problem 4} 
+We wrote a loop to evaluate the convergence of the following sequences: 
+\begin{enumerate}
+	\item[(4a)] $x_k=\sum_{k=1}^{n}\frac{1}{2^n}$, where $\lim_{k\rightarrow\infty}x_k=1$
+	\item[(4b)] $y_k=\sum_{k=1}^{n}\frac{1}{n}$, where $\lim_{k\rightarrow\infty}y_k=\infty$
+\end{enumerate}
+We use absolute and relative convergence criteria, and tolerance distance $\delta\in\{10^{-2},10^{-4},10^{-6}\}$ as stopping rule. We limit the maximum number of iterations to 100,000. The number of iterations before convergence, as well the final guess are reported on Table \ref{tab:2} and \ref{tab:3} for $x_k$ and $y_k$, respectively.
+
+	\begin{table}[h]
+	\centering
+	\begin{tabular}{|c | c | c | c |}
+		\hline
+		\hline
+		$\delta	$							&$10^{-2}$ 			&$10^{-4}$ 			&$10^{-6}$          \\
+		\hline
+		no. of iteration - absolute criteria&7					&14					&20               \\
+		final guess - absolute criteria		&0.992187500000000	&0.999938964843750	&0.999999046325684\\
+		no. of iteration - relative criteria&7					&14					&20               \\
+		final guess - relative criteria		&0.992187500000000	&0.999938964843750	&0.999999046325684\\
+		\hline
+		\hline
+	\end{tabular} 
+	\caption{Convergence for $x_k$}
+	\label{tab:2}
+\end{table}
+
+	\begin{table}[h]
+	\centering
+	\begin{tabular}{|c | c | c | c |}
+		\hline
+		\hline
+		$\delta	$							&$10^{-2}$ 			&$10^{-4}$ 			&$10^{-6}$          \\
+		\hline
+		no. of iteration - absolute criteria&100					&10,000				&100,000 \\
+		final guess - absolute criteria		&5.18737751763962	&9.78760603604435	&12.0901461298633\\
+		no. of iteration - relative criteria&100					&10,000				&100,000 \\
+		final guess - relative criteria		&5.18737751763962	&9.78760603604435	&12.0901461298633\\
+		\hline
+		\hline
+	\end{tabular} 
+	\caption{Convergence for $y_k$}
+	\label{tab:3}
+\end{table}
+
+Comment: Table \ref{tab:2} shows that both absolute and relative convergence criteria lead to the same number of iterations for the sequence $x_k$. As tolerance distance $\delta$ lowers, the final guess for $x_k$ approaches its true limit 1. Table \ref{tab:3} also shows that both absolute and relative criteria lead to the same number of iterations for the sequence $y_k$. Since $y_k$ is a divergent sequence, the final guess will be higher (with no upper bound), the more we iterate. By lowering tolerance distance $\delta$, the algorithm needs to iterate longer in order to satisfy the stopping rule, which in turn results in higher final guess. Since there is no upper bound for $y_k$, we can always make the tolerance distance $\delta$ even lower, and obtain even higher final guess for $y_k$.
+
 \end{document}
 
