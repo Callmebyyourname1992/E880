@@ -10,9 +10,41 @@ y = 2298912;
 result = myfunction(x,y)
 result1 = myfunction1(x,y)
 
+%Question 2
+
+%Computer information:
+%Intel(R) Core(TM) i5-1035G4 CPU @ 1.10GHz   1.50 GHz
+%64-bit operating system
+
+%initiate matrices
+rng('default')
+tic
+A = rand(10^(4),10^(4));
+B = rand(10^(4),10^(4));
+fprintf('Elapsed time for variable initiation is %.5f\n',toc) ; 
+
+%Addition
+tic
+A+B;
+fprintf('Elapsed time for addition is %.5f\n',toc) ; 
+%Multiplication
+tic
+A.*B;
+fprintf('Elapsed time for multiplication is %.5f\n',toc) ; 
+%Division
+tic
+A./B;
+fprintf('Elapsed time for division is %.5f\n',toc) ; 
+%Exponentiation
+tic
+A.^B;
+fprintf('Elapsed time for exponentiation is %.5f\n',toc) ; 
+%logarithmic
+tic
+log(A);
+fprintf('Elapsed time for log function is %.5f\n',toc) ; 
 
 %Question 3
-
 epsilon1 = 1;
 epsilon2 = 1;
 epsilon3 = 1;
@@ -144,4 +176,6 @@ end
 resy(4,i)= idx; 
 resy(5,i)= y2;
 end
+
+%Result for y
 resy
