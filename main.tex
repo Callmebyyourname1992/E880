@@ -43,6 +43,16 @@
 \newcommand{\betab}{\boldsymbol{\beta}}  
 %opening
 
+\newcounter{daggerfootnote}
+\newcommand*{\daggerfootnote}[1]{%
+	\setcounter{daggerfootnote}{\value{footnote}}%
+	\renewcommand*{\thefootnote}{\fnsymbol{footnote}}%
+	\footnote[2]{#1}%
+	\setcounter{footnote}{\value{daggerfootnote}}%
+	\renewcommand*{\thefootnote}{\arabic{footnote}}%
+}
+
+
 \title{Problem Set 1 - ECON 880\\
 	\small Spring 2022 - University of Kansas}
 \author{Minh Cao, Gunawan}
@@ -63,9 +73,17 @@ f(x,y) 	&=& 83521y^8+578x^{2}y^{4} -2x^{4}+2x^{6}-x^{8}\\
 \subsection*{Problem 1c}
 	test 2
 \section*{Problem 2}
-	
+In this exercise, we write an algorithm to determine the relative speeds of addition, multiplication, division, exponentiation, and the logarithmic function of our computer. The computer uses Intel(R) Core(TM) i5-1035G4 CPU @ 1.10GHz, 1.50 GHz with 64-bit operating system and 8.00 GB installed RAM. We proceed by generating two matrices $A$ and $B$ of size $10^4\times10^4$ using the rand() function in Matlab. Then, we use them in element-wise operations of addition ($A+B$), multiplication ($A.*B$), division ($A./B$), exponentiation ($A.^B$), as well as the logarithmic function ($\log(A)$). The statements \texttt{tic} and \texttt{toc} are used around them to measure the computation time. This procedure is iterated 100 times, and the average computation time for each operation is computed. The results are as follows:
+	\begin{itemize}
+	\item Average computation time for variable initiation is 1.54030 seconds
+	\item Average computation time for addition is 0.12073 seconds
+	\item Average computation time for multiplication is 0.12083 seconds
+	\item Average computation time for division is 0.11823 seconds
+	\item Average computation time for exponentiation is 3.70586 seconds
+	\item Average computation time for log function is 0.91528 seconds
+	\end{itemize}
 \section*{Problem 3}
-	In order to find our machine $\varepsilon$, we write a while loop to subtract progressively smaller numbers from 1 until the result is not distinguishable from 1. Repeat the exercise using 0.001 and 1000 instead of 1. We verify our results by comparing them with the epsilons delivered by the built-in Matlab function \texttt{eps(x)}, and the exponents with \texttt{log2(eps(x))}. The results are shown on Table \ref{tab:1}.
+	In order to find our machine $\varepsilon$, we follow Ken Judd's definition\daggerfootnote{Kenneth L. Judd, 1998. "Numerical Methods in Economics," MIT Press Books, The MIT Press, p.30} by writing a while loop to subtract (resp. add) progressively smaller numbers $\epsilon$ from (resp. to) 1 until the condition $1+\epsilon > 1 > 1-\epsilon$ is no longer satisfied. Repeat the exercise using 0.001 and 1000 instead of 1. We verify our results by comparing them with the epsilons delivered by the built-in Matlab function \texttt{eps(x)}, and the exponents with \texttt{log2(eps(x))}. The results are shown on Table \ref{tab:1}.
 	
 	\begin{table}[h]
 		\centering
@@ -83,7 +101,7 @@ f(x,y) 	&=& 83521y^8+578x^{2}y^{4} -2x^{4}+2x^{6}-x^{8}\\
 		\caption{Machine $\varepsilon$ for diverse values of $x$}
 		\label{tab:1}
 	\end{table}
-Comment: As $x$ increases, the machine $\varepsilon(x)$ decreases. 
+Comment: As $x$ increases, the machine $\varepsilon(x)$ also does increase. This is to be expected, since $\varepsilon(x)\approx x\varepsilon(1)$. Thus, $\varepsilon(1000)>\varepsilon(1)>\varepsilon(0.001)$.
 	
 \section*{Problem 4} 
 We wrote a loop to evaluate the convergence of the following sequences: 

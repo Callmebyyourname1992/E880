@@ -17,32 +17,50 @@ result1 = myfunction1(x,y)
 %64-bit operating system
 
 %initiate matrices
-rng('default')
+inittime =[];
+addtime  =[];
+multtime =[];
+divtime  =[];
+exptime  =[];
+lntime  =[];
+
+for i=1:10
 tic
 A = rand(10^(4),10^(4));
 B = rand(10^(4),10^(4));
-fprintf('Elapsed time for variable initiation is %.5f\n',toc) ; 
-
+inittime = [inittime, toc];
 %Addition
 tic
 A+B;
-fprintf('Elapsed time for addition is %.5f\n',toc) ; 
+addtime  =[addtime, toc];
+
 %Multiplication
 tic
 A.*B;
-fprintf('Elapsed time for multiplication is %.5f\n',toc) ; 
+multtime =[multtime, toc];
+
 %Division
 tic
 A./B;
-fprintf('Elapsed time for division is %.5f\n',toc) ; 
+divtime  =[divtime, toc];
+
 %Exponentiation
 tic
 A.^B;
-fprintf('Elapsed time for exponentiation is %.5f\n',toc) ; 
+exptime  =[exptime, toc];
+
 %logarithmic
 tic
 log(A);
-fprintf('Elapsed time for log function is %.5f\n',toc) ; 
+lntime  =[lntime, toc];
+end
+
+fprintf('Average computation time for variable initiation is %.5f seconds\n',mean(inittime)) ; 
+fprintf('Average computation time for addition is %.5f seconds\n',mean(addtime)) ;
+fprintf('Average computation time for multiplication is %.5f seconds\n',mean(multtime)) ; 
+fprintf('Average computation time for division is %.5f seconds\n',mean(divtime)) ; 
+fprintf('Average computation time for exponentiation is %.5f seconds\n',mean(exptime)) ; 
+fprintf('Average computation time for log function is %.5f seconds\n',mean(lntime)) ; 
 
 %Question 3
 epsilon1 = 1;
@@ -52,17 +70,17 @@ idx1=0;
 idx2=0;
 idx3=0;
 
-while (1+(epsilon1/2)~=1)
+while (1-(epsilon1/2)<1) && (1+(epsilon1/2)>1)
     epsilon1 = epsilon1/2;
     idx1 = idx1+1;
 end
 
-while (0.001-(epsilon2/2)~=0.001)
+while (0.001-(epsilon2/2)<0.001) && (0.001+(epsilon2/2)>0.001)
     epsilon2 = epsilon2/2;
     idx2 = idx2+1;
 end
 
-while (1000-(epsilon3/2)~=1000)
+while (1000-(epsilon3/2)<1000) && (1000+(epsilon3/2)>1000)
     epsilon3 = epsilon3/2;
     idx3 = idx3+1;
 end
@@ -87,8 +105,7 @@ epsilon3 == eps(1000)
 
 %Question 4a
 tol = [0.01,10^-4,10^-6];
-resx = zeros(5,3);
-resx(1,:)=tol;
+resx = zeros(4,3);
 
 for i=1:size(tol,2)
 
@@ -105,8 +122,8 @@ while (norm(x2-x1)>=tol(i))
     x2 = x2 + 2^(-idx);
 end
 
-resx(2,i)= idx; 
-resx(3,i)= x2;
+resx(1,i)= idx; 
+resx(2,i)= x2;
 
 idx = 2;
 x1  = 1/2;
@@ -121,26 +138,19 @@ while (norm(x2-x1)/(norm(x2-x1)+1)>=tol(i))
     x2 = x2 + 2^(-idx);
 end
 
-resx(4,i)= idx; 
-resx(5,i)= x2;
+resx(3,i)= idx; 
+resx(4,i)= x2;
 end
 
 %Result for x
-resx
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Testing if the results are correct for tol = 0.01
-x = [0.5];
-for i = 2:20
-x(i) = x(i-1) +2^(-i);
-end    
 
-absnorm = norm(x(14)-x(13))
-absnorm < tol(2)
-absnorm/(absnorm+1) < tol(2)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+rowNames={'no. of iteration - absolute criteria','final guess - absolute criteria','no. of iteration - relative criteria','final guess - relative criteria'};
+colNames = string(tol);
+resultx = array2table(resx,'RowNames',rowNames,'VariableNames',colNames);
+resultx
 
-resy = zeros(5,3);
-resy(1,:)=tol;
+%Question 4b
+resy = zeros(4,3);
 
 for i=1:size(tol,2)
 
@@ -157,8 +167,8 @@ while (norm(y2-y1)>=tol(i))
     y2 = y2 + (1/idx);
 end
 
-resy(2,i)= idx; 
-resy(3,i)= y2;
+resy(1,i)= idx; 
+resy(2,i)= y2;
 
 idx = 2;
 y1  = 1;
@@ -173,9 +183,51 @@ while (norm(y2-y1)/(norm(y2-y1)+1)>=tol(i))
     y2 = y2 + (1/idx);
 end
 
-resy(4,i)= idx; 
-resy(5,i)= y2;
+resy(3,i)= idx; 
+resy(4,i)= y2;
 end
 
 %Result for y
-resy
+resulty = array2table(resy,'RowNames',rowNames,'VariableNames',colNames);
+resulty
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ADDENDUM
+% Testing if the results are correct
+x = [0.5];
+for i = 2:20
+x(i) = x(i-1) +2^(-i);
+end    
+
+absnorm = norm(x(7)-x(6))
+absnorm < tol(1)
+absnorm/(absnorm+1) < tol(1)
+
+absnorm = norm(x(14)-x(13))
+absnorm < tol(2)
+absnorm/(absnorm+1) < tol(2)
+
+absnorm = norm(x(20)-x(19))
+absnorm < tol(3)
+absnorm/(absnorm+1) < tol(3)
+
+
+y = [1];
+for i = 2:10^5
+y(i) = y(i-1)+(1/i);
+end    
+
+absnorm = norm(y(100)-y(99))
+absnorm < tol(1)
+absnorm/(absnorm+1) < tol(1)
+
+absnorm = norm(y(10000)-y(9999))
+absnorm < tol(2)
+absnorm/(absnorm+1) < tol(2)
+
+absnorm = norm(y(10^5)-y(99999)) %tol not respected since we limited the iteration number up to 100,000
+absnorm < tol(3)
+absnorm/(absnorm+1) < tol(3)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
