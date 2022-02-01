@@ -4,11 +4,18 @@
 clear all
 
 %Question 1
+%Question 1a
 x = 9478657;
 y = 2298912;
 
+%direct method
 result = myfunction(x,y)
+%Horner method
 result1 = myfunction1(x,y)
+
+%Question 1b
+83251*(y^8)
+fprintf('%.0f\n',83251*y^8);
 
 %Question 2
 
