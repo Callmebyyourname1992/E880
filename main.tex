@@ -108,7 +108,7 @@ Then, the digits can be estimated by using the following formula
 			&=&  1+\lfloor \log_{10} 8.3521+\log_{10}10^4 + \log_{10}2.298912^8 +\log_{10} (10^6)^8\rfloor\\
 			&=& 56
 	\end{eqnarray*} 
-Now, we compute the last digits of that term, first by plugging in only the last digit of $y$ into expression \eqref{eq:1b}: our calculation gives 21312256 as a result. However, printing out the complete term using the command $\text{fprintf}('\%.0f\backslash n',83251*y^8)$, we obtain 
+Now, we compute the last digits of that term, first by plugging in only the last digit of $y$ into expression \eqref{eq:1b}: our calculation gives 21,312,256 as a result. However, printing out the complete term using the command $\text{fprintf}('\%.0f\backslash n',83251*y^8)$, we obtain the following 56-digit number:
 \[64,948,367,112,155,225,808,364,994,454,077,172,753,899,719,772,317,155,328.\] 
 We see that both results have different last digit $(6\neq8)$.
 
