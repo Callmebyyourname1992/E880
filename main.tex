@@ -63,11 +63,34 @@
 \maketitle	
 \section*{Problem 1}
 \subsection*{(1a)}
-We can evaluate the polynomial as follow:\\
-\begin{eqnarray*}
-f(x,y) 	&=& 83521y^8+578x^{2}y^{4} -2x^{4}+2x^{6}-x^{8}\\
- 		&=& y^{4}(83521y^{4}+578x^{2})+x^{4}(-2+2x^{2}-x^{4})
-\end{eqnarray*}
+In this question, we will use the Greedy Algorithm:\\
+\begin{itemize}
+\item Step 1: Let call our original multivariable polynomial $f(x,y) = M_{1} +M_{2}+M_{3}+M_{4}+M_{5}$ for $M_{i}$ is the monomial.\\
+\item Step 2: For each monomial $M_{i}$, we count, for each variable $x_{i}$ , the number of monomials $M_{i}$
+that contain this variable. We then select a variable with the largest value of $M_{i}$,  and represent the original
+polynomial as $f(x,y) = A_{0}+A_{1}x_{i}$. Where $A_{0}$ is the monomial that not contain $x_{i}$, and $A_{i}$ is the sum of all the terms ${M_{k}}' = \frac{M_{k}}{x_{i}} $ corresponding to all the monomials$M_{k}$ that do contain $x_{i}$.\\
+\item Step 3: Repeat the scheme.
+\end{itemize}
+
+Using the scheme above.
+
+Let $M_{1} = 8351y^{8}, M_{2} = 572x^{2}y^{4}, M_{3}= -2x^{4}, M_{4}=2x^{6}, M_{5} = -x^{8}$
+
+It is clear that, in the first step, x appears 4 times, and y appears  2 times. So per the scheme, we pick x for our factor.
+
+$$f(x,y) = 83521y^8 + (572y^{4} - 2x^{2}+2x^{4}-x^{6})x^{2} $$
+
+Now: $A_{0} = 83521y^8$ and $A_{1} = 572y^{4} - 2x^{2}+2x^{4}-x^{6}$. Repeat the step until we get:
+$$f(x,y) = 83521y^8 +x^{2} (572y^{4} +x^{2}(-2-x^{2}))$$
+
+Result: For naive approach $f(x,y) = -2.1778 * 10^{40}$
+
+Greedy Honer approach: $f(x,y) = -2.1778  * 10^{40}$
+
+So we get the same result for both method.
+
+
+
 \subsection*{(1b)}
 We estimate the order of magnitude (number of digits) of 
 \begin{equation}\label{eq:1b}
