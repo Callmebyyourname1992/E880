@@ -62,34 +62,24 @@
 
 \maketitle	
 \section*{Problem 1}
+We want to compute
+\begin{equation}\label{eq:1}
+	83521y^8 +578x^2 y^4 -2x^4 +2x^6 -x^8
+\end{equation}
+for $x = 9478657$ and $y = 2298912$.
 \subsection*{(1a)}
-In this question, we will use the Multivariable Honer's Algorithm:\\
+We evaluate the expression \eqref{eq:1} as it is written, and then by grouping terms using Horner's method. The multivariate Honer's Algorithm can be described as follows:\\
 \begin{itemize}
-\item Step 1: Let call our original multivariable polynomial $f(x,y) = M_{1} +M_{2}+M_{3}+M_{4}+M_{5}$ for $M_{i}$ is the monomial.\\
-\item Step 2: For each monomial $M_{i}$, we count, for each variable $x_{i}$ , the number of monomials $M_{i}$
-that contain this variable. We then select a variable with the largest value of $M_{i}$,  and represent the original
-polynomial as $f(x,y) = A_{0}+A_{1}x_{i}$. Where $A_{0}$ is the monomial that not contain $x_{i}$, and $A_{i}$ is the sum of all the terms ${M_{k}}' = \frac{M_{k}}{x_{i}} $ corresponding to all the monomials$M_{k}$ that do contain $x_{i}$.\\
-\item Step 3: Repeat the scheme.
+\item Step 1: Let our original multivariable polynomial be $f(x,y) = M_{1} +M_{2}+M_{3}+M_{4}+M_{5}$, where $M_{i}$ is a monomial, for all $i=1,\ldots,5$. In this case, 
+\[M_{1} = 83521y^{8}, M_{2} = 578x^{2}y^{4}, M_{3}= -2x^{4}, M_{4}=2x^{6}, M_{5} = -x^{8}.\]
+\item Step 2: For each monomial $M_{i}$, we count, for each variable $x$ and $y$, the number of monomials $M_{i}$ that contain this variable. We then select the variable with the largest value of $M_{i}$: we choose $x^2$, as it appears 4 times, while $y$ only twice. Rewrite the original polynomial as $f(x,y) = A_{0}+A_{1}x^2$. Where $A_{0}$ is the monomial that do not contain $x^2$, and $A_{1}$ is the sum of all the terms ${M_{k}}' = \frac{M_{k}}{x^2} $ corresponding to all the monomials $M_{k}$ that do contain $x^2$. In this case, $A_{0} = 83521y^8$ and $A_{1} = 578y^{4} - 2x^2+2x^{4}-x^{6}$, or
+\[f(x,y) = 83521y^8 +x^2(578y^{4} - 2x^{2}+2x^{4}-x^{6}) \]
+
+\item Step 3: Repeat step 1 and 2 until we get:
+\[f(x,y) = 83521y^8 +x^{2} (578y^{4} +x^{2}(-2+x^{2}(2-x^2)))\]
 \end{itemize}
 
-Using the scheme above.
-
-Let $M_{1} = 8351y^{8}, M_{2} = 572x^{2}y^{4}, M_{3}= -2x^{4}, M_{4}=2x^{6}, M_{5} = -x^{8}$
-
-It is clear that, in the first step, x appears 4 times, and y appears  2 times. So per the scheme, we pick x for our factor.
-
-$$f(x,y) = 83521y^8 + (572y^{4} - 2x^{2}+2x^{4}-x^{6})x^{2} $$
-
-Now: $A_{0} = 83521y^8$ and $A_{1} = 572y^{4} - 2x^{2}+2x^{4}-x^{6}$. Repeat the step until we get:
-$$f(x,y) = 83521y^8 +x^{2} (572y^{4} +x^{2}(-2-x^{2}))$$
-
-Result: For naive approach $f(x,y) = -2.1778 * 10^{40}$
-
-Multivariable Honer approach: $f(x,y) = -2.1778  * 10^{40}$
-
-So we get the same result for both method.
-
-
+Result: Direct calculation gives $f(x,y) = -1.088903574147003\cdot 10^{40}$, while multivariate Horner approach gives $f(x,y) = 6.515900793473132\cdot 10^{55}$. The tremendous discrepancy is due to [please explain] 
 
 \subsection*{(1b)}
 We estimate the order of magnitude (number of digits) of 

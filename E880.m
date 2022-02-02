@@ -9,9 +9,9 @@ x = 9478657;
 y = 2298912;
 
 %direct method
-result = myfunction(x,y)
+res_direct = direct(x,y)
 %Horner method
-result1 = myfunction1(x,y)
+res_horner = horner(x,y)
 
 %Question 1b
 %estimate number of digits
@@ -159,6 +159,8 @@ end
 rowNames={'no. of iteration - absolute criteria','final guess - absolute criteria','no. of iteration - relative criteria','final guess - relative criteria'};
 colNames = string(tol);
 resultx = array2table(resx,'RowNames',rowNames,'VariableNames',colNames);
+
+format long
 resultx
 
 %Question 4b
@@ -200,7 +202,10 @@ resy(4,i)= y2;
 end
 
 %Result for y
+
 resulty = array2table(resy,'RowNames',rowNames,'VariableNames',colNames);
+
+format long
 resulty
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
