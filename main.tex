@@ -62,15 +62,34 @@
 
 \maketitle	
 \section*{Problem 1}
-\subsection*{Problem 1a}
+\subsection*{(1a)}
 We can evaluate the polynomial as follow:\\
 \begin{eqnarray*}
 f(x,y) 	&=& 83521y^8+578x^{2}y^{4} -2x^{4}+2x^{6}-x^{8}\\
  		&=& y^{4}(83521y^{4}+578x^{2})+x^{4}(-2+2x^{2}-x^{4})
 \end{eqnarray*}
-\subsection*{Problem 1b}
-	Test
-\subsection*{Problem 1c}
+\subsection*{(1b)}
+We estimate the order of magnitude (number of digits) of 
+\begin{equation}\label{eq:1b}
+83521y^8,
+\end{equation}
+where $y=2298912$. We can rewrite the expression as follows:
+	\begin{eqnarray*}
+		83521y^8 &=& 83521\cdot 2298912^8\\
+				 &=& 8.3521\cdot10^4 \cdot (2.298912\cdot10^6)^8
+	\end{eqnarray*}
+Then, the digits can be estimated by using the following formula 
+	\begin{eqnarray*}
+		1+\lfloor \log_{10} (83521\cdot 2298912^8)\rfloor &=& 1+\lfloor \log_{10} (83521\cdot 2298912^8)\rfloor\\
+		&=&  1+\lfloor \log_{10} (8.3521\cdot10^4 \cdot (2.298912\cdot10^6)^8)\rfloor\\
+			&=&  1+\lfloor \log_{10} 8.3521+\log_{10}10^4 + \log_{10}2.298912^8 +\log_{10} (10^6)^8\rfloor\\
+			&=& 56
+	\end{eqnarray*} 
+Now, we compute the last digits of that term, by plugging in only the last digit of $y$ into expression \eqref{eq:1b}.
+
+
+
+\subsection*{(1c)}
 	test 2
 \section*{Problem 2}
 In this exercise, we write an algorithm to determine the relative speeds of addition, multiplication, division, exponentiation, and the logarithmic function of our computer. The computer uses Intel(R) Core(TM) i5-1035G4 CPU @ 1.10GHz, 1.50 GHz with 64-bit operating system and 8.00 GB installed RAM. We proceed by generating two matrices $A$ and $B$ of size $10^4\times10^4$ using the rand() function in Matlab. Then, we use them in element-wise operations of addition ($A+B$), multiplication ($A.*B$), division ($A./B$), exponentiation ($A.^B$), as well as the logarithmic function ($\log(A)$). The statements \texttt{tic} and \texttt{toc} are used around them to measure the computation time. This procedure is iterated 100 times, and the average computation time for each operation is computed. The results are as follows:

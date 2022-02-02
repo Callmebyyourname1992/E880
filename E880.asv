@@ -22,6 +22,8 @@ result1 = myfunction1(x,y)
 %insert all digits of y into the expression
 fprintf('%.0f\n',83251*y^8);
 
+
+
 %Question 2
 
 %Computer information:
