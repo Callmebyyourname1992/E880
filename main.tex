@@ -110,13 +110,13 @@ Then, the digits can be estimated by using the following formula
 	\end{eqnarray*} 
 Now, we compute the last digits of that term, first by plugging in only the last digit of $y$ into expression \eqref{eq:1b}: our calculation gives 21,312,256 as a result. However, printing out the complete term using the command $\text{fprintf}('\%.0f\backslash n',83251*y^8)$, we obtain the following 56-digit number:
 \[64,948,367,112,155,225,808,364,994,454,077,172,753,899,719,772,317,155,328.\] 
-We see that both results have different last digit $(6\neq8)$.
-
-
-
-
+We see that both results have different last digit $(6\neq8)$.\\
+Comment: We can conclude that the ''guess'' method maybe wrong because the number of digit of the term is 56 less than the maximum that a 64 bit system can represent. Theoretically, the solution of the computer must be true.
 \subsection*{(1c)}
-	test 2
+Yes, the 64 bit can find the correct value since the number of digit is less than the maximum number of digit the system can represent.\\
+The orders of magnitude of other terms are at most 56. 
+
+	
 \section*{Problem 2}
 In this exercise, we write an algorithm to determine the relative speeds of addition, multiplication, division, exponentiation, and the logarithmic function of our computer. The computer uses Intel(R) Core(TM) i5-1035G4 CPU @ 1.10GHz, 1.50 GHz with 64-bit operating system and 8.00 GB installed RAM. We proceed by generating two matrices $A$ and $B$ of size $10^4\times10^4$ using the rand() function in Matlab. Then, we use them in element-wise operations of addition ($A+B$), multiplication ($A.*B$), division ($A./B$), exponentiation ($A.^B$), as well as the logarithmic function ($\log(A)$). The statements \texttt{tic} and \texttt{toc} are used around them to measure the computation time. This procedure is iterated 100 times, and the average computation time for each operation is computed. The results are as follows:
 	\begin{itemize}
