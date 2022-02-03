@@ -121,8 +121,8 @@ resx = zeros(4,3);
 
 for i=1:size(tol,2)
 
-counter = 1;    
-idx = 2;
+counter = 1; %this is the number of iteration   
+idx = 2; %this is the index of the variable generated in the iteration
 x1  = 1/2;
 x2 = x1 + 2^(-2);
  
@@ -139,8 +139,8 @@ end
 resx(1,i)= counter; 
 resx(2,i)= x2;
 
-counter = 1;   
-idx = 2;
+counter = 1; %this is the number of iteration   
+idx = 2; %this is the index of the variable generated in the iteration
 x1  = 1/2;
 x2 = x1 + 2^(-2);
  
@@ -172,8 +172,8 @@ resy = zeros(4,3);
 
 for i=1:size(tol,2)
 
-counter = 1;   
-idx = 2;
+counter = 1; %this is the number of iteration   
+idx = 2; %this is the index of the variable generated in the iteration
 y1  = 1;
 y2 = y1 + (1/2);
  
@@ -190,8 +190,8 @@ end
 resy(1,i)= counter; 
 resy(2,i)= y2;
 
-counter = 1;   
-idx = 2;
+counter = 1; %this is the number of iteration   
+idx = 2; %this is the index of the variable generated in the iteration
 y1  = 1;
 y2 = y1 +(1/2);
  
@@ -225,34 +225,18 @@ resulty
 %x(i) = x(i-1) +2^(-i);
 %end    
 
-%absnorm = norm(x(6)-x(5))
-%absnorm < tol(1)
-%absnorm/(norm(x(5))+1) < tol(1)
-
-%absnorm = norm(x(14)-x(13))
-%absnorm < tol(2)
-%absnorm/(absnorm+1) < tol(2)
-
 %absnorm = norm(x(20)-x(19))
 %absnorm < tol(3)
 %absnorm/(absnorm+1) < tol(3)
 
 
 %y = [1];
-%for i = 2:10^5
+%for i = 2:10^6
 %y(i) = y(i-1)+(1/i);
 %end    
 
-%absnorm = norm(y(100)-y(99))
+%absnorm = norm(y(77881)-y(77880)) %tol not respected since we limited the iteration number up to 100,000
 %absnorm < tol(1)
-%absnorm/(absnorm+1) < tol(1)
-
-%absnorm = norm(y(10000)-y(9999))
-%absnorm < tol(2)
-%absnorm/(absnorm+1) < tol(2)
-
-absnorm = norm(y(10^5)-y(99999)) %tol not respected since we limited the iteration number up to 100,000
-absnorm < tol(3)
-absnorm/(absnorm+1) < tol(3)
+%absnorm/(norm(y(77880))+1) < tol(3)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

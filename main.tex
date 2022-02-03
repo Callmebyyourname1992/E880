@@ -68,7 +68,7 @@ We want to compute
 \end{equation}
 for $x = 9478657$ and $y = 2298912$.
 \subsection*{(1a)}
-We evaluate the expression \eqref{eq:1} as it is written, and then by grouping terms using Horner's method. The multivariate Honer's Algorithm can be described as follows:\\
+We evaluate the expression \eqref{eq:1} as it is written, and then by grouping terms using Horner's method\daggerfootnote{Horner's algorithm is coded in Matlab according to Kenneth L. Judd, 1998. "Numerical Methods in Economics," MIT Press Books, The MIT Press, p.35}. The multivariate Honer's algorithm can be described as follows:\\
 \begin{itemize}
 \item Step 1: Let our original multivariable polynomial be $f(x,y) = M_{1} +M_{2}+M_{3}+M_{4}+M_{5}$, where $M_{i}$ is a monomial, for all $i=1,\ldots,5$. In this case, 
 \[M_{1} = 83521y^{8}, M_{2} = 578x^{2}y^{4}, M_{3}= -2x^{4}, M_{4}=2x^{6}, M_{5} = -x^{8}.\]
@@ -100,11 +100,11 @@ Then, the digits can be estimated by using the following formula
 	\end{eqnarray*} 
 Now, we compute the last digits of that term, first by plugging in only the last digit of $y$ into expression \eqref{eq:1b}: our calculation gives 21,312,256 as a result. However, printing out the complete term using the command $\text{fprintf}('\%.0f\backslash n',83251*y^8)$, we obtain the following 56-digit number:
 \[64,948,367,112,155,225,808,364,994,454,077,172,753,899,719,772,317,155,328.\] 
-We see that both results have different last digit $(6\neq8)$.\\
-Comment: We can conclude that the ''guess'' method maybe wrong because the number of digit of the term is 56 less than the maximum that a 64 bit system can represent. Theoretically, the solution of the computer must be true.
+
+Comment: The value calculated using direct method should be true, since our computer uses 64-bit CPU that is able to show all the digits of the calculated number. There is no precision loss in this case.
+
 \subsection*{(1c)}
-Yes, the 64 bit can find the correct value since the number of digit is less than the maximum number of digit the system can represent.\\
-The orders of magnitude of other terms are at most 56. 
+Yes, the 64-bit can show the correct value since the number of digit is less than the maximum number of digit the system can represent. The orders of magnitude of other terms are at most 56. 
 
 	
 \section*{Problem 2}
@@ -144,7 +144,7 @@ We wrote a loop to evaluate the convergence of the following sequences:
 	\item[(4a)] $x_k=\sum_{k=1}^{n}\frac{1}{2^n}$, where $\lim_{k\rightarrow\infty}x_k=1$
 	\item[(4b)] $y_k=\sum_{k=1}^{n}\frac{1}{n}$, where $\lim_{k\rightarrow\infty}y_k=\infty$
 \end{enumerate}
-We use absolute and relative convergence criteria, and tolerance distance $\delta\in\{10^{-2},10^{-4},10^{-6}\}$ as stopping rule. We limit the maximum number of iterations to 100,000. The number of iterations before convergence, as well the final guess are reported on Table \ref{tab:2} and \ref{tab:3} for $x_k$ and $y_k$, respectively.
+We use absolute ($||(x_{k+1}-x_k)||$) and relative ($||(x_{k+1}-x_k)||/(1+||x_k||)$) convergence criteria, and tolerance distance $\delta\in\{10^{-2},10^{-4},10^{-6}\}$ for the stopping rule. We limit the maximum number of iterations to 100,000. The number of iterations before convergence, as well the final guess are reported on Table \ref{tab:2} and \ref{tab:3} for $x_k$ and $y_k$, respectively.
 
 	\begin{table}[h]
 	\centering
@@ -153,10 +153,10 @@ We use absolute and relative convergence criteria, and tolerance distance $\delt
 		\hline
 		$\delta	$							&$10^{-2}$ 			&$10^{-4}$ 			&$10^{-6}$          \\
 		\hline
-		no. of iteration - absolute criteria&7					&14					&20               \\
-		final guess - absolute criteria		&0.992187500000000	&0.999938964843750	&0.999999046325684\\
-		no. of iteration - relative criteria&7					&14					&20               \\
-		final guess - relative criteria		&0.992187500000000	&0.999938964843750	&0.999999046325684\\
+		no. of iteration - absolute criteria&6					&13					&19               \\
+		final guess - absolute criteria		&0.9921875	&0.99993896484375	&0.999999046325684\\
+		no. of iteration - relative criteria&5					&12					&18               \\
+		final guess - relative criteria		&0.984375	&0.9998779296875	&0.999998092651367\\
 		\hline
 		\hline
 	\end{tabular} 
@@ -171,18 +171,18 @@ We use absolute and relative convergence criteria, and tolerance distance $\delt
 		\hline
 		$\delta	$							&$10^{-2}$ 			&$10^{-4}$ 			&$10^{-6}$          \\
 		\hline
-		no. of iteration - absolute criteria&100					&10,000				&100,000 \\
-		final guess - absolute criteria		&5.18737751763962	&9.78760603604435	&12.0901461298633\\
-		no. of iteration - relative criteria&100					&10,000				&100,000 \\
-		final guess - relative criteria		&5.18737751763962	&9.78760603604435	&12.0901461298633\\
+		no. of iteration - absolute criteria&99					&9,999				&100,000 \\
+		final guess - absolute criteria		&5.18737751763962	&9.78760603604435	&12.0901561297633\\
+		no. of iteration - relative criteria&21					&1,158				&77,880 \\
+		final guess - relative criteria		&3.69081325021728	&7.63295985258894	&11.8401593846097\\
 		\hline
 		\hline
-	\end{tabular} 
+		\end{tabular} 
 	\caption{Convergence for $y_k$}
 	\label{tab:3}
 \end{table}
 
-Comment: Table \ref{tab:2} shows that both absolute and relative convergence criteria lead to the same number of iterations for the sequence $x_k$. As tolerance distance $\delta$ lowers, the final guess for $x_k$ approaches its true limit 1. Table \ref{tab:3} also shows that both absolute and relative criteria lead to the same number of iterations for the sequence $y_k$. Since $y_k$ is a divergent sequence, the final guess will be higher (with no upper bound), the more we iterate. By lowering tolerance distance $\delta$, the algorithm needs to iterate longer in order to satisfy the stopping rule, which in turn results in higher final guess. Since there is no upper bound for $y_k$, we can always make the tolerance distance $\delta$ even lower, and obtain even higher final guess for $y_k$.
+Comment: Table \ref{tab:2} shows that both absolute and relative convergence criteria lead to a number of iterations differing by one unit for the sequence $x_k$. Already at the tolerance level of $\delta=10^{-2}$, we see that the final guesses for $x_k$ using both convergence criteria are very close to the true limit 1. As tolerance distance $\delta$ lowers, these numbers get even closer to 1. Table \ref{tab:3} shows that both absolute and relative criteria lead to the significantly different number of iterations for the sequence $y_k$. Since $y_k$ is a divergent sequence, the final guess will be higher (with no upper bound), the more we iterate. By lowering tolerance distance $\delta$, the algorithm needs to iterate longer in order to satisfy the stopping rule, which in turn results in higher final guess. Since there is no upper bound for $y_k$, we can always make the tolerance distance $\delta$ even lower, and obtain even higher final guess for $y_k$. Based on these numbers, we see that $y_k$ goes to infinity very slowly. 
 
 \end{document}
 
