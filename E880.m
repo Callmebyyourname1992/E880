@@ -121,36 +121,40 @@ resx = zeros(4,3);
 
 for i=1:size(tol,2)
 
+counter = 1;    
 idx = 2;
 x1  = 1/2;
 x2 = x1 + 2^(-2);
  
 while (norm(x2-x1)>=tol(i)) 
-    if idx == 100000
+    if counter == 100000
         break
     end
+    counter = counter + 1;
     idx = idx+1;
     x1 = x2;
     x2 = x2 + 2^(-idx);
 end
 
-resx(1,i)= idx; 
+resx(1,i)= counter; 
 resx(2,i)= x2;
 
+counter = 1;   
 idx = 2;
 x1  = 1/2;
 x2 = x1 + 2^(-2);
  
 while (norm(x2-x1)/(norm(x1)+1)>=tol(i)) 
-    if idx == 100000
+    if counter == 100000
         break
     end
+    counter = counter + 1;
     idx = idx+1;
     x1 = x2;
     x2 = x2 + 2^(-idx);
 end
 
-resx(3,i)= idx; 
+resx(3,i)= counter; 
 resx(4,i)= x2;
 end
 
@@ -168,36 +172,40 @@ resy = zeros(4,3);
 
 for i=1:size(tol,2)
 
+counter = 1;   
 idx = 2;
 y1  = 1;
 y2 = y1 + (1/2);
  
 while (norm(y2-y1)>=tol(i)) 
-    if idx == 100000
+    if counter == 100000
         break
     end
+    counter = counter + 1;
     idx = idx+1;
     y1 = y2;
     y2 = y2 + (1/idx);
 end
 
-resy(1,i)= idx; 
+resy(1,i)= counter; 
 resy(2,i)= y2;
 
+counter = 1;   
 idx = 2;
 y1  = 1;
 y2 = y1 +(1/2);
  
 while (norm(y2-y1)/(norm(y1)+1)>=tol(i)) 
-    if idx == 100000
+    if counter == 100000
         break
     end
+    counter = counter + 1;
     idx = idx+1;
     y1 = y2;
     y2 = y2 + (1/idx);
 end
 
-resy(3,i)= idx; 
+resy(3,i)= counter; 
 resy(4,i)= y2;
 end
 
@@ -212,36 +220,36 @@ resulty
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ADDENDUM
 % Testing if the results are correct
-x = [0.5];
-for i = 2:20
-x(i) = x(i-1) +2^(-i);
-end    
+%x = [0.5];
+%for i = 2:20
+%x(i) = x(i-1) +2^(-i);
+%end    
 
-absnorm = norm(x(6)-x(5))
-absnorm < tol(1)
-absnorm/(norm(x(5))+1) < tol(1)
+%absnorm = norm(x(6)-x(5))
+%absnorm < tol(1)
+%absnorm/(norm(x(5))+1) < tol(1)
 
-absnorm = norm(x(14)-x(13))
-absnorm < tol(2)
-absnorm/(absnorm+1) < tol(2)
+%absnorm = norm(x(14)-x(13))
+%absnorm < tol(2)
+%absnorm/(absnorm+1) < tol(2)
 
-absnorm = norm(x(20)-x(19))
-absnorm < tol(3)
-absnorm/(absnorm+1) < tol(3)
+%absnorm = norm(x(20)-x(19))
+%absnorm < tol(3)
+%absnorm/(absnorm+1) < tol(3)
 
 
-y = [1];
-for i = 2:10^5
-y(i) = y(i-1)+(1/i);
-end    
+%y = [1];
+%for i = 2:10^5
+%y(i) = y(i-1)+(1/i);
+%end    
 
-absnorm = norm(y(100)-y(99))
-absnorm < tol(1)
-absnorm/(absnorm+1) < tol(1)
+%absnorm = norm(y(100)-y(99))
+%absnorm < tol(1)
+%absnorm/(absnorm+1) < tol(1)
 
-absnorm = norm(y(10000)-y(9999))
-absnorm < tol(2)
-absnorm/(absnorm+1) < tol(2)
+%absnorm = norm(y(10000)-y(9999))
+%absnorm < tol(2)
+%absnorm/(absnorm+1) < tol(2)
 
 absnorm = norm(y(10^5)-y(99999)) %tol not respected since we limited the iteration number up to 100,000
 absnorm < tol(3)
