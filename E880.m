@@ -1,5 +1,5 @@
 %Problem Set 1 - Econ 880
-%By: Minh Cao and Gunawan
+%By: Gunawan and Minh Cao
 
 clear all
 
@@ -141,7 +141,7 @@ idx = 2;
 x1  = 1/2;
 x2 = x1 + 2^(-2);
  
-while (norm(x2-x1)/(norm(x2-x1)+1)>=tol(i)) 
+while (norm(x2-x1)/(norm(x1)+1)>=tol(i)) 
     if idx == 100000
         break
     end
@@ -188,7 +188,7 @@ idx = 2;
 y1  = 1;
 y2 = y1 +(1/2);
  
-while (norm(y2-y1)/(norm(y2-y1)+1)>=tol(i)) 
+while (norm(y2-y1)/(norm(y1)+1)>=tol(i)) 
     if idx == 100000
         break
     end
@@ -217,9 +217,9 @@ for i = 2:20
 x(i) = x(i-1) +2^(-i);
 end    
 
-absnorm = norm(x(7)-x(6))
+absnorm = norm(x(6)-x(5))
 absnorm < tol(1)
-absnorm/(absnorm+1) < tol(1)
+absnorm/(norm(x(5))+1) < tol(1)
 
 absnorm = norm(x(14)-x(13))
 absnorm < tol(2)
