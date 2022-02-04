@@ -9,10 +9,13 @@ x = 9478657;
 y = 2298912;
 
 %direct method
+tic
 res_direct = direct(x,y)
+toc
 %Horner method
+tic
 res_horner = horner(x,y)
-
+toc
 %Question 1b
 %estimate number of digits
 1+floor(log10(83521)+log10(2298912^8))
