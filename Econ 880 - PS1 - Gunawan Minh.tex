@@ -71,7 +71,7 @@ for $x = 9478657$ and $y = 2298912$.
 We evaluate the expression \eqref{eq:1} as it is written, and then by grouping terms using Horner's method. The Horner's factorization gives:
 
 \begin{equation*}
-	83521y^8+x(0+x(578y^4+x(0+x(0+x(-2+x(0+x(2+x(0+x(-1)))))))))
+	83521y^8+x(0+x(578y^4+x(0+x(-2+x(0+x(2+x(0+x(-1))))))))
 \end{equation*}
 Horner's algorithm for this exercise is coded in Matlab according to Kenneth L. Judd, 1998. "Numerical Methods in Economics," MIT Press Books, The MIT Press, p.35. Our results indicate that both direct calculation and Horner's method lead to the same quantity $f(x,y) = -1.088903574147003\cdot 10^{40}$. However, the calculation time for Horner's method is much less than direct method ($0.016712 < 0.099468$ seconds), as we have less exponentiation to do in the former method. Below is the summary for the operations performed using both method.
 
