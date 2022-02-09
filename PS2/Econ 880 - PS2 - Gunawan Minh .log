@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.24)  8 FEB 2022 22:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.24)  9 FEB 2022 17:20
 entering extended mode
 **"./Econ 880 - PS2 - Gunawan Minh .tex"
 ("Econ 880 - PS2 - Gunawan Minh .tex"
@@ -516,13 +516,13 @@ t changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 10243 strings out of 479618
- 159987 string characters out of 2865026
- 624628 words of memory out of 3000000
- 27231 multiletter control sequences out of 15000+200000
+ 10242 strings out of 479618
+ 159969 string characters out of 2865026
+ 623628 words of memory out of 3000000
+ 27230 multiletter control sequences out of 15000+200000
  414116 words of font info for 67 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,7n,88p,429b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 81i,7n,88p,429b,331s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx12.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmex10.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/p
@@ -535,7 +535,7 @@ Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/
 gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C
 :/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt
 10.pfb>
-Output written on "Econ 880 - PS2 - Gunawan Minh .pdf" (2 pages, 117131 bytes).
+Output written on "Econ 880 - PS2 - Gunawan Minh .pdf" (2 pages, 117404 bytes).
 
 PDF statistics:
  63 PDF objects out of 1000 (max. 8388607)

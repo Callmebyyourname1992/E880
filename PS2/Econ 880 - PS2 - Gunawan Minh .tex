@@ -71,14 +71,14 @@ In this exercise, we are interested in solving $Ax=b$, where
 \end{pmatrix} \]
 using LU decomposition and Cholesky decomposition. 
 \subsection*{(1) LU Decomposition}
-We proceed by decomposing $A$ such that $A=LU$, where $L$ and $U$ are a lower and upper triangular matrix. This is easily done in Matlab using the command $[L \; U \; P] = \texttt{lu(A)}$. Once we obtain both matrices, we solve the system by performing backward substitutions. The linear equation system itself can be written as 
+We proceed by decomposing $A$ such that $A=LU$, where $L$ and $U$ are a lower and upper triangular matrix, respectively. This is easily done in Matlab using the command $[L \; U \; P] = \texttt{lu(A)}$. Once we obtain both matrices, we solve the system by performing backward substitutions. The linear equation system itself can be written as 
 \[Ax=b \Leftrightarrow LUx =b.\]
 Thus we perform the following steps
 \begin{enumerate}
-	\item Denoting $(Ux) =z$, we find $z = b\backslash L$
-	\item Since $Ux = z$, we find $x=z\backslash U$
+	\item Let $(Ux) =z$, then $Lz=b$. We find $z = b\backslash L$ using forward substitution, since $L$ is a lower triangular matrix.
+	\item Since $Ux = z$, we find $x=z\backslash U$. We solve this using backward substitution, because $U$ is an upper triangular matrix.
 \end{enumerate} 
-For this exercise, we coded backsubstitution algorithm for an upper and lower triangular matrix separately (\texttt{backsub\_upper.m} and \texttt{backsub\_lower.m}, respectively). The intermediate result $z$ is given by
+For this exercise, we coded forward and backward substitution algorithm separately (\texttt{forwardsub.m} and \texttt{backwardsub.m}, respectively). The intermediate result $z$ is given by
 \[
 z = \begin{pmatrix}
 	1.0000\\
@@ -96,7 +96,7 @@ For verification purpose, we calculate the residual $\epsilon = Ax-b$ and obtain
 0
 \end{pmatrix}.
 \]
-We can see that the residual $\epsilon\approx0$. The solution is given by
+We can see that the residual $\epsilon\approx\vec{0}$. The solution of the linear equation system using LU decomposition is given by
 \[x = \begin{pmatrix}
 	    0.0189\\
 	0.0168\\
@@ -110,10 +110,10 @@ We proceed by decomposing $A$ such that $A=LL'$, where $L$ is a lower triangular
 \[Ax=b \Leftrightarrow LL'x =b.\]
 Thus we perform the following steps
 \begin{enumerate}
-	\item Denoting $(L'x) =z$, we find $z = b\backslash L$
-	\item Since $L'x = z$, we find $x=z\backslash L'$
+	\item Let $(L'x) =z$, then $Lz=b$. We find $z = b\backslash L$ using forward substitution, since $L$ is a lower triangular matrix.
+	\item Since $L'x = z$, we find $x=z\backslash L'$. We solve this using backward substitution, because $L'$ is an upper triangular matrix.
 \end{enumerate} 
-For this exercise, we coded backsubstitution algorithm for an upper and lower triangular matrix separately (\texttt{backsub\_upper.m} and \texttt{backsub\_lower.m}, respectively). The intermediate result $z$ is given by
+For this exercise, we coded forward and backward substitution algorithm separately (\texttt{forwardsub.m} and \texttt{backwardsub.m}, respectively). The intermediate result $z$ is given by
 \[
 z = \begin{pmatrix}
  0.1361\\
@@ -131,7 +131,7 @@ For verification purpose, we calculate the residual $\epsilon = Ax-b$ and obtain
 0
 \end{pmatrix}.
 \]
-We can see that the residual $\epsilon\approx0$. The solution is given by
+We can see that the residual $\epsilon\approx\vec{0}$. The solution of the linear equation system using Cholesky decomposition is given by
 \[x = \begin{pmatrix}
 	0.0189\\
 	0.0168\\
