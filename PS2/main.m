@@ -3,36 +3,37 @@ b = [1 1 1 1]'
 
 %true solution; for verification
 x = inv(A)*b
-y= backwardsub(A,b')
+%y= backwardsub(A,b')
 
 %Question 1a - LU decomposition
-[L U P] = lu(A)
-
-%For verification
-z1 = L\b
-x1 = U\z1
 
 %self-coded back substitution
+tic
+[L U P] = lu(A)
 z1star = backsub_lower(L,b)
-x1star = backsub2_upper(U,z1)
-
+x1star = backsub_upper(U,z1star)
+toc
 %Check residual
-A*x1-b
 A*x1star - b
 
+%For verification
+%z1 = L\b
+%x1 = U\z1
+%A*x1-b
 
 %Question 1b - Cholesky Decomposition
-Z = chol(A)
-
-%for verification
-z2 = Z'\b
-x2 = Z\z2
-
 %self-coded back substitution
+tic
+Z = chol(A)
 z2star = backsub_lower(Z',b)
-x2star = backsub2_upper(Z,z2)
+x2star = backsub_upper(Z,z2star)
+toc
 
 %residual
-A*x2 - b
 A*x2star - b
+
+%for verification
+%z2 = Z'\b
+%x2 = Z\z2
+%A*x2 - b
 

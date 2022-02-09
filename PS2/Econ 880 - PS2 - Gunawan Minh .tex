@@ -61,10 +61,86 @@
 \begin{document}
 
 \maketitle	
-\section*{Problem 1}
 
+In this exercise, we are interested in solving $Ax=b$, where
 
+\[A = \begin{pmatrix}
+		54 &14& -11& 2 \\ 14 &50& -4& 29 \\ -11 &-4 &55& 22 \\ 2& 29& 22& 95
+\end{pmatrix}, \quad b = \begin{pmatrix}
+1\\1\\1\\1
+\end{pmatrix} \]
+using LU decomposition and Cholesky decomposition. 
+\subsection*{(1) LU Decomposition}
+We proceed by decomposing $A$ such that $A=LU$, where $L$ and $U$ are a lower and upper triangular matrix. This is easily done in Matlab using the command $[L \; U \; P] = \texttt{lu(A)}$. Once we obtain both matrices, we solve the system by performing backward substitutions. The linear equation system itself can be written as 
+\[Ax=b \Leftrightarrow LUx =b.\]
+Thus we perform the following steps
+\begin{enumerate}
+	\item Denoting $(Ux) =z$, we find $z = b\backslash L$
+	\item Since $Ux = z$, we find $x=z\backslash U$
+\end{enumerate} 
+For this exercise, we coded backsubstitution algorithm for an upper and lower triangular matrix separately (\texttt{backsub\_upper.m} and \texttt{backsub\_lower.m}, respectively). The intermediate result $z$ is given by
+\[
+z = \begin{pmatrix}
+	1.0000\\
+	0.7407\\
+	1.2220\\
+	-0.0277\\
+\end{pmatrix}
+\]
+For verification purpose, we calculate the residual $\epsilon = Ax-b$ and obtain
+\[
+\epsilon =   10^{-15} \times \begin{pmatrix}
+   -0.1110\\
+0\\
+0.2220\\
+0
+\end{pmatrix}.
+\]
+We can see that the residual $\epsilon\approx0$. The solution is given by
+\[x = \begin{pmatrix}
+	    0.0189\\
+	0.0168\\
+	0.0234\\
+	-0.0004\\
+\end{pmatrix}\]
+Total time needed to solve this linear equation system using LU decomposition amounts to 0.001227 seconds.
 
+\subsection*{(2) Cholesky Decomposition}
+We proceed by decomposing $A$ such that $A=LL'$, where $L$ is a lower triangular matrix. This is easily done in Matlab using the command $Z= \texttt{chol(A)}$. Note that Matlab will return $Z$ an upper triangular matrix. Once we obtain both matrices, we solve the system by performing backward substitutions. The linear equation system itself can be written as 
+\[Ax=b \Leftrightarrow LL'x =b.\]
+Thus we perform the following steps
+\begin{enumerate}
+	\item Denoting $(L'x) =z$, we find $z = b\backslash L$
+	\item Since $L'x = z$, we find $x=z\backslash L'$
+\end{enumerate} 
+For this exercise, we coded backsubstitution algorithm for an upper and lower triangular matrix separately (\texttt{backsub\_upper.m} and \texttt{backsub\_lower.m}, respectively). The intermediate result $z$ is given by
+\[
+z = \begin{pmatrix}
+ 0.1361\\
+0.1088\\
+0.1683\\
+-0.0034
+\end{pmatrix}
+\]
+For verification purpose, we calculate the residual $\epsilon = Ax-b$ and obtain
+\[
+\epsilon =   10^{-15} \times \begin{pmatrix}
+   -0.1110\\
+-0.3331\\
+0.2220\\
+0
+\end{pmatrix}.
+\]
+We can see that the residual $\epsilon\approx0$. The solution is given by
+\[x = \begin{pmatrix}
+	0.0189\\
+	0.0168\\
+	0.0234\\
+	-0.0004\\
+\end{pmatrix}\]
+Total time needed to solve this linear equation system using LU decomposition amounts to 0.000940 seconds.
+
+Conclusion: both methods lead to the same result, with the difference that Cholesky decomposition uses less computing time. This is to be expected because Cholesky decomposition is the most efficient way for solving a linear equation system for a square, conjugate symmetric matrix, which is the case for $A$ in this exercise. 
 
 \end{document}
 

@@ -1,11 +1,9 @@
 function[x]=backsub_lower(A,b)
-%This function solve an upper triangular system using backward substitution
+%This function solves a lower triangular system using backward substitution
 %method
 
 n = size(A,1);
-
 x=zeros(1,n);
-
 x(1,1)=b(1)/A(1,1);
 
 %bacward substitution
