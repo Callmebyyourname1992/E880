@@ -106,7 +106,7 @@ We can see that the residual $\epsilon\approx\vec{0}$. The solution of the linea
 Total time needed to solve this linear equation system using LU decomposition amounts to 0.001227 seconds.
 
 \subsection*{(2) Cholesky Decomposition}
-We proceed by decomposing $A$ such that $A=LL'$, where $L$ is a lower triangular matrix. This is easily done in Matlab using the command $Z= \texttt{chol(A)}$. Note that Matlab will return $Z$ an upper triangular matrix. Once we obtain both matrices, we solve the system by performing backward substitutions. The linear equation system itself can be written as 
+We proceed by decomposing $A$ such that $A=LL'$, where $L$ is a lower triangular matrix. This is easily done in Matlab using the command $Z= \texttt{chol(A)}$. Note that Matlab will return $Z$ an upper triangular matrix, such that $L=Z'$. Once we obtain both matrices, we solve the system by performing backward substitutions. The linear equation system itself can be written as 
 \[Ax=b \Leftrightarrow LL'x =b.\]
 Thus we perform the following steps
 \begin{enumerate}
