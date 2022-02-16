@@ -1,4 +1,5 @@
-function m = newton(f,df,x0,tol,N)
+function [m n] = newton(f,df,x0,tol,N)
+%disp('Newton Method'); 
 
 x(1) = x0; % Set initial guess
 n = 2; 
