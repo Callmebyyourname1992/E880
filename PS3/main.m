@@ -6,7 +6,7 @@ A = [54 14 -11 2; 14 50 -4 29; -11 -4 55 22; 2 29 22 95]
 b = [1 1 1 1]'
 
 %true solution; for verification
-z = inv(A)*b
+%z = inv(A)*b
 
 %Question 1a - Gauss-Jacobi method
 N = 10^5; %max no of iteration
@@ -14,6 +14,7 @@ tol = 10^(-13);
 x = [0 0 0 0]'; %initial value
 XO = x;
 
+tic
 k=1;
 while (k<=N)
     for i=1:length(x)
@@ -23,10 +24,9 @@ while (k<=N)
             break
         end
     k = k+1;
-    for i=1:length(x)
-        XO(i)=x(i);
-    end
+    XO=x;
 end
+gaussjacobitime = toc
 
 %last iteration
 k
@@ -41,7 +41,8 @@ N = 10^5; %max no of iteration
 tol = 10^(-13);
 x = [0 0 0 0]'; %initial value
 XO = x;        
-       
+
+tic
 k=1;
 while (k<=N)
     for i=1:length(x)
@@ -51,10 +52,9 @@ while (k<=N)
             break
         end
     k = k+1;
-    for i=1:length(x)
-        XO(i)=x(i);
-    end
+    XO=x;
 end
+gaussseideltime =toc
 
 %last iteration
 k
@@ -98,16 +98,16 @@ dfct2 = @(x) 2*pi*cos(2*pi*x) - 1;
 fct3 = @(x) sin(2*pi*x) - 0.5*x;
 dfct3 = @(x)2*pi*cos(2*pi*x) - 0.5;
 
-low = -1;
-high = 1.5;
+low = -2;
+high = 1;
 tolx = 1E-16;
 toly = 1E-16;
 N = 10^5; %max iteration
 
 %bisection
-[x_bisect1 bisectit1]= bisection(fct1, low, high, tolx, toly);
-[x_bisect2 bisectit2]= bisection(fct2, low, high, tolx, toly);
-[x_bisect3 bisectit3]= bisection(fct3, low, high, tolx, toly);
+[x_bisect1 bisectit1]= bisection(fct1, low, high, tolx, toly)
+[x_bisect2 bisectit2]= bisection(fct2, low, high, tolx, toly)
+[x_bisect3 bisectit3]= bisection(fct3, low, high, tolx, toly)
 
 rowNames={'f_{1}(x)','f_{2}(x)','f_{3}(x)'};
 colNames = {'x', 'no. of iterations'};
@@ -118,8 +118,8 @@ format long
 res1
 
 %newton
-x0 = 1; %first guess
-[x_newton1 newtonit1] = newton(fct1,dfct1,x0,tolx,toly,N);
+x0 = -1.198; %first guess
+[x_newton1 newtonit1] = newton(fct1,dfct1,x0,tolx,toly,N)
 [x_newton2 newtonit2] = newton(fct2,dfct1,x0,tolx,toly,N);
 [x_newton3 newtonit3] = newton(fct3,dfct1,x0,tolx,toly,N);
 
