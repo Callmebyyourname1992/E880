@@ -1,4 +1,4 @@
-function [x2 i] = fixedpt(f,x1,tol,n)
+function [x2 i] = fixedpt(f,x1,tolx,toly,n)
 %disp('Fixed Point Iteration Method'); 
 
 %# Start out iteration loop
@@ -10,7 +10,7 @@ i = 0;% # iteration counter
 %hold on 
 %ezplot('x',[[-1,1]])
 
-while (abs(x2-x1) > tol && i<n)
+while (abs(x2-x1)/(1+abs(x1)) > tolx && abs(x2) > toly && i<n)
     %plot([x1 x1], [x1 x2], 'k-')
     %plot([x1 x2], [x2 x2], 'k--') 
     i = i + 1;

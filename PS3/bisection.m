@@ -1,4 +1,4 @@
-function  [m i] = bisection(f, low, high, tol)
+function  [m i] = bisection(f, low, high, tolx, toly)
 %disp('Bisection Method'); 
 
 y1 = f(low);
@@ -6,12 +6,12 @@ y2 = f(high);
 i = 0; 
 
 if y1 * y2 > 0
-   disp('Have not found a change in sign. Will not continue...');
+   disp('No change in sign. Stop here.');
    m = 'Error'
    return
 end 
 
-while (abs(high - low)/(1+abs(low)+abs(high)) >= tol ) 
+while (abs(high - low)/(1+abs(low)+abs(high)) >= tolx) && abs(f(high))>=toly
     i = i + 1;
     m = (high + low)/2;
     y3 = feval(f, m);

@@ -98,15 +98,16 @@ dfct2 = @(x) 2*pi*cos(2*pi*x) - 1;
 fct3 = @(x) sin(2*pi*x) - 0.5*x;
 dfct3 = @(x)2*pi*cos(2*pi*x) - 0.5;
 
-low = -2;
-high = 2;
-tol = 1E-16;
+low = -1;
+high = 1.5;
+tolx = 1E-16;
+toly = 1E-16;
 N = 10^5; %max iteration
 
 %bisection
-[x_bisect1 bisectit1]= bisection(fct1, low, high, tol);
-[x_bisect2 bisectit2]= bisection(fct2, low, high, tol);
-[x_bisect3 bisectit3]= bisection(fct3, low, high, tol);
+[x_bisect1 bisectit1]= bisection(fct1, low, high, tolx, toly);
+[x_bisect2 bisectit2]= bisection(fct2, low, high, tolx, toly);
+[x_bisect3 bisectit3]= bisection(fct3, low, high, tolx, toly);
 
 rowNames={'f_{1}(x)','f_{2}(x)','f_{3}(x)'};
 colNames = {'x', 'no. of iterations'};
@@ -118,9 +119,9 @@ res1
 
 %newton
 x0 = 1; %first guess
-[x_newton1 newtonit1] = newton(fct1,dfct1,x0,tol,N);
-[x_newton2 newtonit2] = newton(fct2,dfct1,x0,tol,N);
-[x_newton3 newtonit3] = newton(fct3,dfct1,x0,tol,N);
+[x_newton1 newtonit1] = newton(fct1,dfct1,x0,tolx,toly,N);
+[x_newton2 newtonit2] = newton(fct2,dfct1,x0,tolx,toly,N);
+[x_newton3 newtonit3] = newton(fct3,dfct1,x0,tolx,toly,N);
 
 res2 = [x_newton1 newtonit1; x_newton1 newtonit2; x_newton1 newtonit3] ;
 res2 = array2table(res2,'RowNames',rowNames,'VariableNames',colNames);
@@ -131,9 +132,9 @@ res2
 m0 = -2; %first approximation
 m1 = 2; %2nd approximation
 
-[x_sec1 secit1] = secant(fct1,m0,m1,tol,N);
-[x_sec2 secit2] = secant(fct2,m0,m1,tol,N);
-[x_sec3 secit3] = secant(fct3,m0,m1,tol,N);
+[x_sec1 secit1] = secant(fct1,m0,m1,tolx,toly,N);
+[x_sec2 secit2] = secant(fct2,m0,m1,tolx,toly,N);
+[x_sec3 secit3] = secant(fct3,m0,m1,tolx,toly,N);
 
 res3 = [x_sec1 secit1; x_sec1 secit2; x_sec3 secit3] ;
 res3 = array2table(res3,'RowNames',rowNames,'VariableNames',colNames);
@@ -143,9 +144,9 @@ res3
 %fixed point iteration
 x1 = -2;
 N = 10^3; %max iteration
-[x_fixedpt1 fixedit1] = fixedpt(fct1,x1,tol,N);
-[x_fixedpt2 fixedit2] = fixedpt(fct2,x1,tol,N);
-[x_fixedpt3 fixedit3] = fixedpt(fct3,x1,tol,N);
+[x_fixedpt1 fixedit1] = fixedpt(fct1,x1,tolx,toly,N);
+[x_fixedpt2 fixedit2] = fixedpt(fct2,x1,tolx,toly,N);
+[x_fixedpt3 fixedit3] = fixedpt(fct3,x1,tolx,toly,N);
 
 res4 = [x_fixedpt1 fixedit1; x_fixedpt2 fixedit2; x_fixedpt3 fixedit3]; 
 res4 = array2table(res4,'RowNames',rowNames,'VariableNames',colNames);
