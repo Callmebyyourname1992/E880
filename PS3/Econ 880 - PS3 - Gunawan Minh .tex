@@ -123,26 +123,38 @@ If $f(x_k) < 0$\\
 
 \item Case 1: $ x_k < x^* $\\
 since $f'(x_k) \neq 0 $
+\begin{itemize}
 \item Case 1.1: $f'(x_k) > 0 $
 Hence, by the newton method recursive equation, we have:
 $$x_{k+1} = x_k -\frac{f(x_k)}{f'(x_k)}$$
 Since $f(x_k) <0$ and $f'(x_k) > 0 \implies \frac{f(x_k)}{f'(x_k)} < 0 \implies -\frac{f(x_k)}{f'(x_k)}>0$
 Let $-\frac{f(x_k)}{f'(x_k)} = \epsilon$\\
 The newton equation can be written as:
-$x_{k+1} = x_k + \epsilon$ for some $\epsilon >0$, so $x_{k+1}>x_k$ and $f'(x_k) > 0$ the function is strictly increasing, implies $f(x_{k_1}) > f(x_k)$, which is somehow lead us to closer to the root of $f(x)$.
+$x_{k+1} = x_k + \epsilon$ for some $\epsilon >0$, so $x_{k+1}>x_k$ and $f'(x_k) > 0$ the function is strictly increasing, implies $f(x_{k+1}) > f(x_k)$, which is somehow lead us to closer to the root of $f(x)$.
+\item Case 1.2 $f'(x_k) > 0$
+Using symmetric argument, now the Newton method will lead us to go to the left of $x_k$, now the Newton method may not give us useful information about the root of the function. 
+If f does not have local maximum around $x_k$, then Newton method still can guide us to another root of f, the root in the left of $x_k$
 
-Symestric argument for other cases:
 
-\subsection{Notice}
-In the argument above, we rely on the fact that the function f is piecewise monotonic, but in some case, f may behave so that Newton method cannot guide us the the true answer.
+\end{itemize}
+\item Case 2: $x_k > x^*$
 
-ADD PICTURE HERE:
+\begin{itemize}
+\item Case 2.1: $f'(x_k) > 0 $\\
+In this case, f has local minimum around $x_k$, we obtain $\frac{f(x_k)}{f'(x_k)} < 0$ hence $x_{k+1} > x_k$, we go to the right of $x_k$, if the function does not have local maximum around $x_k$, Newton method can still guide us to the root on the right of $x_k$
+
+\item Case 2,2:  $f'(x_k) < 0 $\\
+We obtain $\frac{f(x_k)}{f'(x_k)} > 0 \implies x_{k+1} = x_k -\frac{f(x_k)}{f'(x_k)} < x_k$, The Newton Method wil guide us to the root of f.
+
+\end{itemize}
 
 
 
 
 \end{enumerate}
 
+\subsection{Conclusion}
+If the function f does not have many Stationary points, the Newton Method will guide us to the root of the function.
 
 
 
