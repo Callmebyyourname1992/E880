@@ -1,0 +1,151 @@
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{caption} %For captioning objects
+\usepackage{subcaption} %sub-captioning pictures
+\usepackage{graphicx} %to include graphics
+\usepackage{hyperref} %for clickable references
+\usepackage{listings} %to write code listings
+\lstset{language=R, breaklines=true}  
+\usepackage[mathcal]{euscript} %for curly S
+\usepackage{mathtools}
+\usepackage{float} %so figures can be placed "here"
+
+%Defining commands for math symbols
+\usepackage{amsmath} %to enable split equations
+\usepackage{statmath} %for plim. Be careful, it has already \E and \V.
+\usepackage{amssymb} %to enable mathbb
+\newcommand{\R}{\mathtt{R}} %Software R
+\renewcommand{\E}{\mathbb{E}} %expectation
+\usepackage{bbm}
+\newcommand{\1}{\mathbbm{1}}
+\renewcommand{\V}{\mathbb{V}} %variance
+\newcommand{\N}{\mathcal{N}} %normal distribution
+\newcommand{\U}{\mathcal{U}} %normal distribution
+\renewcommand{\P}{\mathbb{P}} %proba, renewcom since \P already exists
+%Regression variables in vector form
+\newcommand{\y}{\boldsymbol{y}} 
+\newcommand{\x}{\boldsymbol{x}} 
+\newcommand{\z}{\boldsymbol{z}} 
+\newcommand{\yhat}{\boldsymbol{\hat{y}}} 
+\renewcommand{\u}{\boldsymbol{u}} 
+\newcommand{\uhat}{\boldsymbol{\hat{u}}}  
+\newcommand{\Px}{\boldsymbol{P}}  
+\newcommand{\Mx}{\boldsymbol{M}}  
+\newcommand{\A}{\boldsymbol{A}}  
+\newcommand{\X}{\boldsymbol{X}}  
+\newcommand{\Z}{\boldsymbol{Z}}  
+\newcommand{\e}{\boldsymbol{e}}  
+\renewcommand{\r}{\tilde{r}}  
+%\renewcommand{\r}{\boldsymbol{r}} 
+\renewcommand{\i}{\boldsymbol{\imath}} 
+\newcommand{\alphab}{\boldsymbol{\alpha}}  
+\newcommand{\betab}{\boldsymbol{\beta}}  
+%opening
+
+\newcounter{daggerfootnote}
+\newcommand*{\daggerfootnote}[1]{%
+	\setcounter{daggerfootnote}{\value{footnote}}%
+	\renewcommand*{\thefootnote}{\fnsymbol{footnote}}%
+	\footnote[2]{#1}%
+	\setcounter{footnote}{\value{daggerfootnote}}%
+	\renewcommand*{\thefootnote}{\arabic{footnote}}%
+}
+
+
+\title{Problem Set 2 - ECON 880\\
+	\small Spring 2022 - University of Kansas}
+\author{Gunawan, Minh Cao}
+
+
+\begin{document}
+
+\maketitle	
+
+In this exercise, we are interested in solving $Ax=b$, where
+
+\[A = \begin{pmatrix}
+		54 &14& -11& 2 \\ 14 &50& -4& 29 \\ -11 &-4 &55& 22 \\ 2& 29& 22& 95
+\end{pmatrix}, \quad b = \begin{pmatrix}
+1\\1\\1\\1
+\end{pmatrix} \]
+using Gauss-Jacobi and Gauss-Siedel
+\section{Gauss-Jacobi}
+\begin{enumerate}
+	\item Consider the first equation from the first row of $Ax=b$:\\
+	 $$a_{11}x_1+a_{12}x_2+ \cdots + a_{1n}x_n = b_1 $$
+	 \item We can solve for $x_1$ in terms of $(x_2, \cdots ,x_n)$ yielding $x_1 = a_{11}^{-1}(b_1-a_{12}x_2- \cdots - a_{1n}x_n)$
+	 \item In general, if $a_{ii} \neq 0$, we can use the row of A to solve for $x_i$, finding:\\
+	 
+		  $$\frac{1}{a_{ii}} \left(b_i - \sum_{i \neq j} a_{ij} x_{j}^k \right)$$
+	\item And son on.
+	
+\end{enumerate}
+
+\section{Question 4}
+\begin{enumerate}
+\item The linear convergence rate is defined by:
+$$\lim_{n \to\infty} \frac{\vert x_{k+1}-x^{*} \vert}{\vert x_{k}-x^{*} \vert} \leq \beta < 1$$\, for some $\beta$.\\
+We can rewrite the equation above:
+
+$$
+\vert x_{k+1}-x^{*}\vert  \leq \beta \vert x_{k}-x^{*} \vert
+$$
+Also, We can write the above equation for $x_k$ instead of $x_{k+1}$:
+$$\vert x_{k}-x^{*} \vert \leq \beta \vert x_{k-1}-x^{*} \vert
+$$
+Write recursively:
+$$\vert x_{k+1}-x^{*}\vert  \leq \beta \vert x_{k}-x^{*} \vert \cdots \leq \beta^{n+1} \vert x_{0}-x^{*}\vert$$
+Hence, the above in equality is the necessary condition for the bisection method to be linearly convergence. In fact, we only can prove the necessary condition but sufficient condition.
+\item The bisection method create the nested sequence as follow:
+$$[a_n,b_n]\in [a_{n-1},b_{n-1}] \cdots [a_0,b_0]$$
+By the construction, we have:
+$$a=a_0\leq a_1 \leq a_2 \leq  \cdots \leq a_n \cdots  \leq  b_n \leq \cdots \leq b_2 \leq b_1$$
+\item $x_n = \frac{a_n+b_n}{2}$, also $a_n \leq x^* \leq b_n$ for all n.
+Implies:
+$$\vert x_n -x^* \vert \leq \frac{a_n+b_n}{2} - a_n  = \frac{b_n-a_n}{2}$$
+By induction: \\
+
+$$\vert x_n -x^* \vert  \leq \frac{b_n - a_n}{2} =  \frac{b_{n-1} - a_{n-1} }{2^2} =  \frac{b_{n-2} - a_{n-2} }{2^3} =  \frac{b_0 - a_0 }{2^{n+1}}$$
+let $\beta = \frac{1}{2}, $$\vert x_0 -x^* \vert  = \frac{b_0-a_0}{2}$, we can prove the necessary condition for the linearly convergence of the bisection method.
+
+
+
+
+\end{enumerate}
+
+
+\section{Question 5}
+The Newton method is given by:
+$$x_{k+1} = x_k -\frac{f(x_k)}{f'(x_k)}$$
+If $f(x_k) < 0$\\
+\begin{enumerate}
+
+\item Case 1: $ x_k < x^* $\\
+since $f'(x_k) \neq 0 $
+\item Case 1.1: $f'(x_k) > 0 $
+Hence, by the newton method recursive equation, we have:
+$$x_{k+1} = x_k -\frac{f(x_k)}{f'(x_k)}$$
+Since $f(x_k) <0$ and $f'(x_k) > 0 \implies \frac{f(x_k)}{f'(x_k)} < 0 \implies -\frac{f(x_k)}{f'(x_k)}>0$
+Let $-\frac{f(x_k)}{f'(x_k)} = \epsilon$\\
+The newton equation can be written as:
+$x_{k+1} = x_k + \epsilon$ for some $\epsilon >0$, so $x_{k+1}>x_k$ and $f'(x_k) > 0$ the function is strictly increasing, implies $f(x_{k_1}) > f(x_k)$, which is somehow lead us to closer to the root of $f(x)$.
+
+Symestric argument for other cases:
+
+\subsection{Notice}
+In the argument above, we rely on the fact that the function f is piecewise monotonic, but in some case, f may behave so that Newton method cannot guide us the the true answer.
+
+ADD PICTURE HERE:
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+\end{document}
+
