@@ -9,23 +9,33 @@ b = [1 1 1 1]'
 %z = inv(A)*b
 
 %Question 1a - Gauss-Jacobi method
-N = 10^5; %max no of iteration
 tol = 10^(-13);
 x = [0 0 0 0]'; %initial value
 XO = x;
+stopcrit = 1;
 
 tic
-k=1;
-while (k<=N)
+k=0;
+
+while (stopcrit > tol)
     for i=1:length(x)
         x(i) = (1/A(i,i))*(b(i) -A(i,:)*XO + A(i,i)*XO(i));
     end
-        if norm(x-XO)<tol
-            break
-        end
     k = k+1;
+    stopcrit = norm(x-XO);
     XO=x;
 end
+
+%while (k<=N)
+%    for i=1:length(x)
+%        x(i) = (1/A(i,i))*(b(i) -A(i,:)*XO + A(i,i)*XO(i));
+%    end
+%        if norm(x-XO)<tol
+%            break
+%        end
+%    k = k+1;
+%    XO=x;
+%end
 gaussjacobitime = toc
 
 %last iteration
@@ -37,13 +47,22 @@ x
 A*x-b
 
 %Question 1b - Gauss-Seidel method
-N = 10^5; %max no of iteration
 tol = 10^(-13);
 x = [0 0 0 0]'; %initial value
 XO = x;        
+stopcrit = 1;
 
 tic
-k=1;
+k=0;
+while (stopcrit>tol)
+    for i=1:length(x)
+        x(i) = (1/A(i,i))*(b(i) -A(i,1:(i-1))*x(1:(i-1))-A(i,(i+1):end)*XO((i+1):end));
+    end
+    k = k+1;
+    stopcrit = norm(x-XO);
+    XO=x;
+end
+
 while (k<=N)
     for i=1:length(x)
         x(i) = (1/A(i,i))*(b(i) -A(i,1:(i-1))*x(1:(i-1))-A(i,(i+1):end)*XO((i+1):end));
@@ -54,6 +73,7 @@ while (k<=N)
     k = k+1;
     XO=x;
 end
+
 gaussseideltime =toc
 
 %last iteration
@@ -70,15 +90,15 @@ r = [5 7 4]';
 G = eye(size(B,1))-B;
 q = [ 0 0 0 ]';
 QO = q;
-w = 1.05;
-    
-k=1;
-while (k<=N)
+w = 0.5;
+tol = 10^(-13);
+stopcrit = 1;
+
+k=0;
+while (stopcrit > tol)
     q = w.*G*q + w.*r +(1-w).*q;    
-    if norm(q-QO)<tol
-        break
-    end
     k = k+1;
+    stopcrit = abs(q-QO);
     QO=q;
 end
 

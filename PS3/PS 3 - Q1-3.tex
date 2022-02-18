@@ -76,21 +76,21 @@ using Gauss-Jacobi and Gauss-Seidel method. Both methods yield the same result
 	0.0234\\
 	-0.0004
 \end{pmatrix}.\]
-Gauss-Jacobi method required 0.0129388 seconds with 45 iterations until convergence. The residual is given by
+Gauss-Jacobi method required 0.0207 seconds with 45 iterations until convergence. The residual is given by
 \[
 10^{-11} \times \begin{pmatrix}
-	0.036104452760810\\
-	-0.121147536447097\\
-	-0.092215124425365\\
-	0.235056418773638
+	0.0361\\
+	-0.1211\\
+	-0.0922\\
+	0.2351
 \end{pmatrix}
 \]
-Gauss-Seidel method required 0.0176893 seconds with 23 iterations until convergence. The residual is given by
+Gauss-Seidel method required 0.0193 seconds with 23 iterations until convergence. The residual is given by
 \[10^{-12}\times \begin{pmatrix}
-	0.319078097277270\\
-	-0.579647441156794\\
-	-0.376587649952853\\
-	0
+	0.1013\\
+	-0.1849\\
+	-0.1201\\
+	-0.0002
 \end{pmatrix}\]
    
 \section*{Problem 2}
@@ -103,12 +103,12 @@ In this exercise, we are interested in solving $Bq=r$ using extrapolation, where
 \end{pmatrix}. \]
 Following Ken Judd's definition\daggerfootnote{Kenneth L. Judd, 1998. "Numerical Methods in Economics," MIT Press Books, The MIT Press, p.78-79}, we first define $G=I-B$, and run the following iteration
 \[q^{k+1}=\omega G q^k +\omega r + (1-\omega)q^k,\] 
-where we pick $\omega=1.05$, tolerance level $10^{-13}$, and initial value $q_0=(0,0,0)'$. The extrapolation converged after $k=148$ iterations, with the residual 
+where we pick $\omega=1.05$, tolerance level $10^{-13}$, and initial value $q_0=(0,0,0)'$. The extrapolation converged after $k=97$ iterations, with the residual 
 \[Bq-r =  10^{-12} \times
 \begin{pmatrix}
-0.319078097277270\\
--0.579647441156794\\
--0.376587649952853
+0.1670\\
+-0.2371\\
+0.1279
 \end{pmatrix}.\] 
 The solution to the linear equation system is
 \[
