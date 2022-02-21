@@ -87,10 +87,10 @@ Gauss-Jacobi method required 0.0207 seconds with 45 iterations until convergence
 \]
 Gauss-Seidel method required 0.0193 seconds with 23 iterations until convergence. The residual is given by
 \[10^{-12}\times \begin{pmatrix}
-	0.1013\\
-	-0.1849\\
-	-0.1201\\
-	-0.0002
+	0.3191\\
+	-0.5796\\
+	-0.3766\\
+	0
 \end{pmatrix}\]
    
 \section*{Problem 2}
@@ -154,36 +154,127 @@ using 1) Bisection, 2) Newton method, 3) Secant method, and 4) fixed-point itera
 In order for Bisection to work, we need to pick two values $x_{low}$ and $x_{high}$ so that $f(x_{low})\cdot f(x_{high})<0$. The range of admissible values for $x$ for the three functions above is summarized in Table \ref{tab:3:1}
 	\begin{table}[h]
 	\centering
-	\begin{tabular}{l c c c }
+	\begin{tabular}{c c c c c }
 		\hline
 		\hline
-		Function & Root &\multicolumn{2}{ c }{Admissible Range} \\
-		&&$x_{low}$& $x_{high}$\\
-		\hline
-		$\sin(2\pi x)-2x=0$	& $x_1=-0.368$&$[-2,-0.368) $&$(-0.368,0)$\\
-							& $x_2=0$&$(-0.368,0) $&$(0,0.368)$\\
-							& $x_3=0.368$&$(0,0.368) $&$(0.368,2]$\\
-		\hline
-		$\sin(2\pi x)-x=0$	& $x_1=-0.429$&$[-2,-0.429) $&$(-0.429,0)$\\
-							& $x_2=0$&$(-0.429,0) $&$(0,0.429)$\\
-							& $x_3=0.429$&$(0,0.429) $&$(0.429,2]$\\
-		\hline
-		$\sin(2\pi x)-0.5x=0$	& $x_1=-1.379$&$[-2,-1.379) $&$(-1.379,-1.092)$\\
-								& $x_2=-1.092$&$(-1.379,-1.092)$&$(-1.092,-0.463)$\\
-								& $x_3=-0.463$&$(-1.092,-0.463)$&$(-0.463,0)$\\	
-								& $x_4=0$&$(-0.463,0)$&$(0,0.463)$\\	
-								& $x_5=0.463$&$(0,0.463) $&$(0.463,1.092)$\\	
-								& $x_6=1.092$&$(0.463,1.092) $&$(1.092,1.379)$\\	
-								& $x_7=1.379$&$(1.092,1.379)$&$(1.379,2]$\\		
+		   $x_{low}$   &  $x_{high}$  &  $f_{1}(x)$ &   $f_{2}(x)$  &  $f_{3}(x)$\\
+		\hline                                                        
+		&            &           &             &          \\
+		-2  &   -1.7895  &       NaN &        NaN  &       NaN\\
+		-2  &   -1.5789  &       NaN &        NaN  &       NaN\\
+		-2  &   -1.3684  &       NaN &        NaN  &   -1.3789\\
+		-2  &   -1.1579  &       NaN &        NaN  &   -1.3789\\
+		-2  &  -0.94737  &       NaN &        NaN  &       NaN\\
+		-2  &  -0.73684  &       NaN &        NaN  &       NaN\\
+		-2  &  -0.52632  &       NaN &        NaN  &       NaN\\
+		-2  &  -0.31579  &  -0.36824 &   -0.42937  &   -1.3789\\
+		-2  &  -0.10526  &  -0.36824 &   -0.42937  &  -0.46283\\
+		-2  &   0.10526  &       NaN &        NaN  &       NaN\\
+		-2  &   0.31579  &       NaN &        NaN  &       NaN\\
+		-2  &   0.52632  &  -0.36824 &   -0.42937  &  -0.46283\\
+		-2  &   0.73684  &   0.36824 &    0.42937  &   0.46283\\
+		-2  &   0.94737  &   0.36824 &    0.42937  &   0.46283\\
+		-2  &    1.1579  &  -0.36824 &   -0.42937  &       NaN\\
+		-2  &    1.3684  &  -0.36824 &   -0.42937  &       NaN\\
+		-2  &    1.5789  &  -0.36824 &   -0.42937  &   -1.3789\\
+		-2  &    1.7895  &  -0.36824 &   -0.42937  &  -0.46283\\
+		-2  &         2  &         0 &          0  &         0\\
+		1.7895  &         2  &       NaN &        NaN  &       NaN\\
+		1.5789  &         2  &       NaN &        NaN  &       NaN\\
+		1.3684  &         2  &       NaN &        NaN  &    1.3789\\
+		1.1579  &         2  &       NaN &        NaN  &    1.3789\\
+		0.94737  &         2  &       NaN &        NaN  &       NaN\\
+		0.73684  &         2  &       NaN &        NaN  &       NaN\\
+		0.52632  &         2  &       NaN &        NaN  &       NaN\\
+		0.31579  &         2  &   0.36824 &    0.42937  &    1.3789\\
+		0.10526  &         2  &   0.36824 &    0.42937  &   0.46283\\
+		-0.10526  &         2  &       NaN &        NaN  &       NaN\\
+		-0.31579  &         2  &       NaN &        NaN  &       NaN\\
+		-0.52632  &         2  &   0.36824 &    0.42937  &   0.46283\\
+		-0.73684  &         2  &  -0.36824 &   -0.42937  &  -0.46283\\
+		-0.94737  &         2  &  -0.36824 &   -0.42937  &  -0.46283\\
+		-1.1579  &         2  &   0.36824 &    0.42937  &       NaN\\
+		-1.3684  &         2  &   0.36824 &    0.42937  &       NaN\\
+		-1.5789  &         2  &   0.36824 &    0.42937  &    1.3789\\
+		-1.7895  &         2  &   0.36824 &    0.42937  &   0.46283\\
+		-2  &         2  &         0 &          0  &         0\\
 		\hline
 		\hline
 	\end{tabular} 
-	\caption{Polynomial evaluation costs}
+	\caption{Bisection}
 	\label{tab:3:1}
 \end{table}
 
 \subsection*{3(b) Newton Method}
 
+	\begin{table}[h]
+	\centering
+	\begin{tabular}{c c c c  }
+		\hline
+		\hline
+	     $x_{0}$   &   $f_{1}(x)$ &   $f_{2}(x)$ &   $f_{3}(x)$\\
+	\hline
+	-2  &   0.36824  &         0  &       NaN\\
+	-1.7895  &  -0.36824  &   0.42937  &       NaN\\
+	-1.5789  &   0.36824  &  -0.42937  &       NaN\\
+	-1.3684  &  -0.36824  &   0.42937  &       NaN\\
+	-1.1579  &  -0.36824  &   0.42937  &   -1.0919\\
+	-0.94737  &   0.36824  &  -0.42937  &   -1.0919\\
+	-0.73684  &   0.36824  &   0.42937  &   0.46283\\
+	-0.52632  &  -0.36824  &  -0.42937  &  -0.46283\\
+	-0.31579  &  -0.36824  &  -0.42937  &  -0.46283\\
+	-0.10526  &         0  &         0  &         0\\
+	0.10526  &         0  &         0  &         0\\
+	0.31579  &   0.36824  &   0.42937  &   0.46283\\
+	0.52632  &   0.36824  &   0.42937  &   0.46283\\
+	0.73684  &  -0.36824  &  -0.42937  &  -0.46283\\
+	0.94737  &  -0.36824  &   0.42937  &    1.0919\\
+	1.1579  &   0.36824  &  -0.42937  &    1.0919\\
+	1.3684  &   0.36824  &  -0.42937  &       NaN\\
+	1.5789  &  -0.36824  &   0.42937  &       NaN\\
+	1.7895  &   0.36824  &  -0.42937  &       NaN\\
+	2  &  -0.36824  &         0  &       NaN\\
+		\hline
+		\hline
+	\end{tabular} 
+	\caption{Newton Method}
+	\label{tab:3:2}
+\end{table}
+
+\subsection*{3(c) Secant Method}
+
+	\begin{table}[h]
+	\centering
+	\begin{tabular}{c c c c c }
+		\hline
+		\hline
+		     $x_{k-h}$ &    $x_{k+h}$   &   $f_{1}(x)$   &    $f_{2}(x)$   &   $f_{3}(x)$\\
+		\hline
+		-2 &    -1.7895   &     0.36824  &      0.42937  &    1.0919 \\
+		-1.7895 &    -1.5789   &     0.36824  &     -0.42937  &   -1.0919 \\
+		-1.5789 &    -1.3684   &    -0.36824  &  -4.5918e-41  &       NaN \\
+		-1.3684 &    -1.1579   &     0.36824  &      0.42937  &       NaN \\
+		-1.1579 &   -0.94737   &           0  &            0  &   -1.0919 \\
+		-0.94737 &   -0.73684   &           0  &     -0.42937  &   -1.0919 \\
+		-0.73684 &   -0.52632   &    -0.36824  &     -0.42937  &  -0.46283 \\
+		-0.52632 &   -0.31579   &    -0.36824  &     -0.42937  &  -0.46283 \\
+		-0.31579 &   -0.10526   &    -0.36824  &      0.42937  &   0.46283 \\
+		-0.10526 &    0.10526   &           0  &            0  &         0 \\
+		0.10526 &    0.31579   &     0.36824  &     -0.42937  &  -0.46283 \\
+		0.31579 &    0.52632   &     0.36824  &      0.42937  &   0.46283 \\
+		0.52632 &    0.73684   &     0.36824  &      0.42937  &   0.46283 \\
+		0.73684 &    0.94737   &           0  &      0.42937  &    1.0919 \\
+		0.94737 &     1.1579   & -3.7616e-37  &  -9.6296e-35  &    1.0919 \\
+		1.1579 &     1.3684   &  -6.163e-33  &      0.42937  &       NaN \\
+		1.3684 &     1.5789   &  1.8808e-37  &      0.42937  &       NaN \\
+		1.5789 &     1.7895   &     0.36824  &      0.42937  &    1.0919 \\
+		1.7895 &          2   &     0.36824  &  -3.7616e-37  &   -1.0919 \\
+		\hline
+		\hline
+	\end{tabular} 
+	\caption{Secant method}
+	\label{tab:3:3}
+\end{table}
 
 
 
@@ -191,11 +282,7 @@ In order for Bisection to work, we need to pick two values $x_{low}$ and $x_{hig
 
 
 
-
-
-
-
-\section{Question 4}
+\section*{Problem 4}
 \begin{enumerate}
 \item The linear convergence rate is defined by:
 $$\lim_{n \to\infty} \frac{\vert x_{k+1}-x^{*} \vert}{\vert x_{k}-x^{*} \vert} \leq \beta < 1$$\, for some $\beta$.\\
@@ -221,14 +308,10 @@ By induction: \\
 
 $$\vert x_n -x^* \vert  \leq \frac{b_n - a_n}{2} =  \frac{b_{n-1} - a_{n-1} }{2^2} =  \frac{b_{n-2} - a_{n-2} }{2^3} =  \frac{b_0 - a_0 }{2^{n+1}}$$
 let $\beta = \frac{1}{2}, $$\vert x_0 -x^* \vert  = \frac{b_0-a_0}{2}$, we can prove the necessary condition for the linearly convergence of the bisection method.
-
-
-
-
 \end{enumerate}
 
 
-\section{Question 5}
+\section*{Problem 5}
 The Newton method is given by:
 $$x_{k+1} = x_k -\frac{f(x_k)}{f'(x_k)}$$
 If $f(x_k) < 0$\\
@@ -244,10 +327,10 @@ Let $-\frac{f(x_k)}{f'(x_k)} = \epsilon$\\
 The newton equation can be written as:
 $x_{k+1} = x_k + \epsilon$ for some $\epsilon >0$, so $x_{k+1}>x_k$ and $f'(x_k) > 0$ the function is strictly increasing, implies $f(x_{k_1}) > f(x_k)$, which is somehow lead us to closer to the root of $f(x)$.
 
-Symestric argument for other cases:
+Symmetric argument for other cases:
 
 \subsection{Notice}
-In the argument above, we rely on the fact that the function f is piecewise monotonic, but in some case, f may behave so that Newton method cannot guide us the the true answer.
+In the argument above, we rely on the fact that the function $f$ is piecewise monotonic, but in some case, f may behave so that Newton method cannot guide us the the true answer.
 
 ADD PICTURE HERE:
 

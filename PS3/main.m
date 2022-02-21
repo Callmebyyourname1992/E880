@@ -26,16 +26,6 @@ while (stopcrit > tol)
     XO=x;
 end
 
-%while (k<=N)
-%    for i=1:length(x)
-%        x(i) = (1/A(i,i))*(b(i) -A(i,:)*XO + A(i,i)*XO(i));
-%    end
-%        if norm(x-XO)<tol
-%            break
-%        end
-%    k = k+1;
-%    XO=x;
-%end
 gaussjacobitime = toc
 
 %last iteration
@@ -60,17 +50,6 @@ while (stopcrit>tol)
     end
     k = k+1;
     stopcrit = norm(x-XO);
-    XO=x;
-end
-
-while (k<=N)
-    for i=1:length(x)
-        x(i) = (1/A(i,i))*(b(i) -A(i,1:(i-1))*x(1:(i-1))-A(i,(i+1):end)*XO((i+1):end));
-    end
-        if norm(x-XO)<tol
-            break
-        end
-    k = k+1;
     XO=x;
 end
 
@@ -111,6 +90,7 @@ B*q-r
 
 %Question 3
 
+%functions
 fct1 = @(x) sin(2*pi*x) - 2*x;
 dfct1 = @(x) 2*pi*cos(2*pi*x) - 2;
 fct2 = @(x) sin(2*pi*x) - x;
@@ -118,61 +98,91 @@ dfct2 = @(x) 2*pi*cos(2*pi*x) - 1;
 fct3 = @(x) sin(2*pi*x) - 0.5*x;
 dfct3 = @(x)2*pi*cos(2*pi*x) - 0.5;
 
-low = -2;
-high = 1;
 tolx = 1E-16;
 toly = 1E-16;
 N = 10^5; %max iteration
+x0 = linspace(-2,2,20);
 
-%bisection
-[x_bisect1 bisectit1]= bisection(fct1, low, high, tolx, toly)
-[x_bisect2 bisectit2]= bisection(fct2, low, high, tolx, toly)
-[x_bisect3 bisectit3]= bisection(fct3, low, high, tolx, toly)
+%Bisection
+res_bisect = zeros(2*(length(x0)-1),5);
 
-rowNames={'f_{1}(x)','f_{2}(x)','f_{3}(x)'};
-colNames = {'x', 'no. of iterations'};
+for i=2:length(x0)
+    low = x0(1);
+    high = x0(i);
+    res_bisect(i-1,1) = low;
+    res_bisect(i-1,2) = high;
+    res_bisect(i-1,3) = bisection(fct1, low, high, tolx, toly);
+    res_bisect(i-1,4) = bisection(fct2, low, high, tolx, toly);
+    res_bisect(i-1,5) = bisection(fct3, low, high, tolx, toly);
+end
 
-res1 = [x_bisect1 bisectit1; x_bisect2 bisectit2; x_bisect3 bisectit3]; 
-res1 = array2table(res1,'RowNames',rowNames,'VariableNames',colNames);
-format long
-res1
+for i=1:(length(x0)-1)
+    low = x0(end-i);
+    high = x0(end);
+    res_bisect((length(x0)-1)+i,1) = low;
+    res_bisect((length(x0)-1)+i,2) = high;
+    res_bisect((length(x0)-1)+i,3) = bisection(fct1, low, high, tolx, toly);
+    res_bisect((length(x0)-1)+i,4) = bisection(fct2, low, high, tolx, toly);
+    res_bisect((length(x0)-1)+i,5) = bisection(fct3, low, high, tolx, toly);
+end
 
-%newton
-x0 = -1.198; %first guess
-[x_newton1 newtonit1] = newton(fct1,dfct1,x0,tolx,toly,N)
-[x_newton2 newtonit2] = newton(fct2,dfct1,x0,tolx,toly,N);
-[x_newton3 newtonit3] = newton(fct3,dfct1,x0,tolx,toly,N);
+colNames={'x_{low}','x_{high}','f_{1}(x)','f_{2}(x)','f_{3}(x)'};
+res_bisect = array2table(res_bisect,'VariableNames',colNames);
 
-res2 = [x_newton1 newtonit1; x_newton1 newtonit2; x_newton1 newtonit3] ;
-res2 = array2table(res2,'RowNames',rowNames,'VariableNames',colNames);
-format long
-res2
+format short
+res_bisect
+
+%Newton
+res_newton = zeros(length(x0),4);
+res_newton(:,1) = x0;
+
+for i=1:length(x0)
+    res_newton(i,2) = newton(fct1,dfct1,x0(i),tolx,toly,N);
+    res_newton(i,3) = newton(fct2,dfct2,x0(i),tolx,toly,N);
+    res_newton(i,4) = newton(fct3,dfct3,x0(i),tolx,toly,N);
+end
+
+colNames={'x_{0}','f_{1}(x)','f_{2}(x)','f_{3}(x)'};
+res_newton = array2table(res_newton,'VariableNames',colNames);
+
+format short
+res_newton
 
 %secant
-m0 = -2; %first approximation
-m1 = 2; %2nd approximation
+res_secant = zeros(length(x0)-1,5);
 
-[x_sec1 secit1] = secant(fct1,m0,m1,tolx,toly,N);
-[x_sec2 secit2] = secant(fct2,m0,m1,tolx,toly,N);
-[x_sec3 secit3] = secant(fct3,m0,m1,tolx,toly,N);
+for i=1:(length(x0)-1)
+    m0 = x0(i);
+    m1 = x0(i+1);
+    res_secant(i,1) = m0;
+    res_secant(i,2) = m1;
+    res_secant(i,3) = secant(fct1, m0, m1, tolx, toly, N);
+    res_secant(i,4) = secant(fct2, m0, m1, tolx, toly, N);
+    res_secant(i,5) = secant(fct3, m0, m1, tolx, toly, N);
+end
 
-res3 = [x_sec1 secit1; x_sec1 secit2; x_sec3 secit3] ;
-res3 = array2table(res3,'RowNames',rowNames,'VariableNames',colNames);
-format long
-res3
+colNames={'x_{k-h}','x_{k+h}','f_{1}(x)','f_{2}(x)','f_{3}(x)'};
+res_secant = array2table(res_secant,'VariableNames',colNames);
+
+format short
+res_secant
 
 %fixed point iteration
-x1 = -2;
-N = 10^3; %max iteration
-[x_fixedpt1 fixedit1] = fixedpt(fct1,x1,tolx,toly,N);
-[x_fixedpt2 fixedit2] = fixedpt(fct2,x1,tolx,toly,N);
-[x_fixedpt3 fixedit3] = fixedpt(fct3,x1,tolx,toly,N);
+N = 10^5; %max iteration
 
-res4 = [x_fixedpt1 fixedit1; x_fixedpt2 fixedit2; x_fixedpt3 fixedit3]; 
-res4 = array2table(res4,'RowNames',rowNames,'VariableNames',colNames);
+res_fixed = zeros(length(x0),4);
+res_fixed(:,1) = x0;
 
-format long
-res4
+for i=1:length(x0)
+    x1 = x0(i);
+    res_fixed(i,2) =  fixedpt(fct1,x1,tolx,toly,N);
+    res_fixed(i,3) =  fixedpt(fct2,x1,tolx,toly,N);
+    res_fixed(i,4) =  fixedpt(fct3,x1,tolx,toly,N);
+end
 
+colNames={'x_{0}','f_{1}(x)','f_{2}(x)','f_{3}(x)'};
+res_fixed = array2table(res_fixed,'VariableNames',colNames);
 
+format short
+res_fixed
     

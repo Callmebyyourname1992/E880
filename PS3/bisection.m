@@ -7,7 +7,7 @@ i = 0;
 
 if y1 * y2 > 0
    disp('No change in sign. Stop here.');
-   m = 'Error'
+   m = NaN;
    return
 end 
 

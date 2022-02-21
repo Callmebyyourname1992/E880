@@ -16,7 +16,12 @@ while (n <= N + 1)
   n = n + 1;
 end
 
-m = x(n);
+if(n>=N)
+    m=NaN;
+else 
+    m = x(n);
+end
+
 
 %plot(0:nfinal - 1,x(1:nfinal),'o-')
 %title('Solution:')
