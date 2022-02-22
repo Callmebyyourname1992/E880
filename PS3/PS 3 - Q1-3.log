@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.24)  20 FEB 2022 20:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.24)  21 FEB 2022 19:17
 entering extended mode
 **"./PS 3 - Q1-3.tex"
 ("PS 3 - Q1-3.tex"
@@ -512,50 +512,44 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <f1.png, id=25, 666.61546pt x 537.13171pt>
 File: f1.png Graphic file (type png)
 <use f1.png>
-Package pdftex.def Info: f1.png  used on input line 133.
+Package pdftex.def Info: f1.png  used on input line 150.
 (pdftex.def)             Requested size: 225.4804pt x 181.67982pt.
 <f2.png, id=27, 677.90765pt x 539.39015pt>
 File: f2.png Graphic file (type png)
 <use f2.png>
-Package pdftex.def Info: f2.png  used on input line 139.
+Package pdftex.def Info: f2.png  used on input line 156.
 (pdftex.def)             Requested size: 225.4804pt x 179.4067pt.
 <f3.png, id=28, 673.76718pt x 535.2497pt>
 File: f3.png Graphic file (type png)
 <use f3.png>
-Package pdftex.def Info: f3.png  used on input line 145.
+Package pdftex.def Info: f3.png  used on input line 162.
 (pdftex.def)             Requested size: 225.4804pt x 179.12395pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+ [2] [3 <./f1.png> <./f2.png> <./f3.png>] [4]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[2] [3 <./f1.png> <./f2.png> <./f3.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 306--308
+[5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 371--373
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 316--318
+Underfull \hbox (badness 10000) in paragraph at lines 381--383
 
  []
 
-[4] [5] [6] [7] ("PS 3 - Q1-3.aux")
+[7] [8] ("PS 3 - Q1-3.aux")
 Package rerunfilecheck Info: File `"PS 3 - Q1-3".out' has not changed.
 (rerunfilecheck)             Checksum: 3DCE86862F5D3AF909C82F1D0BAA87EC;46.
  ) 
 Here is how much of TeX's memory you used:
- 10351 strings out of 479618
- 160860 string characters out of 2865026
- 646590 words of memory out of 3000000
- 27299 multiletter control sequences out of 15000+200000
+ 10361 strings out of 479618
+ 160953 string characters out of 2865026
+ 640590 words of memory out of 3000000
+ 27301 multiletter control sequences out of 15000+200000
  421816 words of font info for 94 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,10n,88p,426b,537s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 81i,9n,88p,605b,537s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\gesch\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 0600.pk> <C:\Users\gesch\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm0800.pk><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/
@@ -563,20 +557,23 @@ amsfonts/cm/cmbx12.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/amsfonts/cm/cmex10.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/gesch/AppData/Local/Programs
 /MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/gesch/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/gesch/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/gesc
-h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Us
-ers/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pf
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/gesch/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/gesc
+h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Us
+ers/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pf
 b><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmr6.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
-nts/cm/cmr8.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmr9.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/gesch/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on "PS 3 - Q1-3.pdf" (7 pages, 651368 bytes).
+cmr17.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmr6.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmr7.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmr8.pfb><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/gesch/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/gesch/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/gesch/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/gesch/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on "PS 3 - Q1-3.pdf" (8 pages, 684826 bytes).
 PDF statistics:
- 144 PDF objects out of 1000 (max. 8388607)
- 30 named destinations out of 1000 (max. 500000)
+ 174 PDF objects out of 1000 (max. 8388607)
+ 38 named destinations out of 1000 (max. 500000)
  24 words of extra memory for PDF output out of 10000 (max. 10000000)
 

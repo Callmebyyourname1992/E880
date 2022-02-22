@@ -94,13 +94,30 @@ Gauss-Seidel method required 0.0193 seconds with 23 iterations until convergence
 \end{pmatrix}\]
    
 \section*{Problem 2}
-In this exercise, we are interested in solving $Bq=r$ using extrapolation, where
-
+In this exercise, we are interested in solving $Bq=r$ using fixed-point iteration and extrapolation, where
 \[B = \begin{pmatrix}
- 1&0.5&0.3\\0.6&1&0.1\\0.2&0.4&1
+	1&0.5&0.3\\0.6&1&0.1\\0.2&0.4&1
 \end{pmatrix}, \quad r = \begin{pmatrix}
 	5\\7\\4
 \end{pmatrix}. \]
+\subsection*{2(a)}
+We use Gauss-Jacobi fixed-point iteration method analogue to Problem 1, and obtain
+the solution
+\[
+q=\begin{pmatrix}
+	1.6716\\
+	5.8651\\
+	1.3196
+\end{pmatrix}
+\]
+after 98 iterations, with the residual 
+\[Bq-r =  10^{-13} \times
+\begin{pmatrix}
+   -0.4174\\
+-0.3908\\
+-0.3375
+\end{pmatrix}.\] 
+\subsection*{2(b)}
 Following Ken Judd's definition\daggerfootnote{Kenneth L. Judd, 1998. "Numerical Methods in Economics," MIT Press Books, The MIT Press, p.78-79}, we first define $G=I-B$, and run the following iteration
 \[q^{k+1}=\omega G q^k +\omega r + (1-\omega)q^k,\] 
 where we pick $\omega=1.05$, tolerance level $10^{-13}$, and initial value $q_0=(0,0,0)'$. The extrapolation converged after $k=97$ iterations, with the residual 
@@ -125,7 +142,7 @@ We want to solve the following functions
 	\item $\sin(2\pi x)-x=0$
 	\item $\sin(2\pi x)-0.5x=0$
 \end{enumerate}
-using 1) Bisection, 2) Newton method, 3) Secant method, and 4) fixed-point iteration. We want to evaluate for what value of initial guess $x_0\in[-2,2]$ these methods converge. We proceed by first plotting all the three functions on Figure \ref{fig:3}. From these graphs, we see that within the interval $[-2,2]$, function 1 and 2 have both two roots, while function 3 has seven roots.
+using 1) Bisection, 2) Newton method, 3) Secant method, and 4) fixed-point iteration. We want to evaluate for what value of initial guess $x_0\in[-2,2]$ these methods converge. We proceed by creating a grid of 20 points within the range $x_0\in[-2,2]$, and use them as initial values for the algorithms. For evaluation purposes, we plot all the three functions on Figure \ref{fig:3} to see how many and where the roots are located. From these graphs, we see that within the interval $[-2,2]$, function 1 and 2 have both two roots, while function 3 has seven roots.
 
 \begin{figure}[htbp]
 	\centering
@@ -151,13 +168,16 @@ using 1) Bisection, 2) Newton method, 3) Secant method, and 4) fixed-point itera
 \end{figure}
 
 \subsection*{3(a) Bisection}
-In order for Bisection to work, we need to pick two values $x_{low}$ and $x_{high}$ so that $f(x_{low})\cdot f(x_{high})<0$. The range of admissible values for $x$ for the three functions above is summarized in Table \ref{tab:3:1}
-	\begin{table}[h]
+The result for Bisection algorithm is summarized in Table \ref{tab:3:1}. In order for this algorithm to work, we need to pick two values $x_{low}$ and $x_{high}$ so that $f(x_{low})\cdot f(x_{high})<0$. The NaN values are produced because this condition is not satisfied.
+
+	\begin{table}[H]
+		\small
 	\centering
-	\begin{tabular}{c c c c c }
+	\begin{tabular}{c c |c c c }
 		\hline
 		\hline
-		   $x_{low}$   &  $x_{high}$  &  $f_{1}(x)$ &   $f_{2}(x)$  &  $f_{3}(x)$\\
+		&&\multicolumn{3}{c}{Roots for }\\
+		   $x_{low}$   &  $x_{high}$  & $f_{1}(x)$ &   $f_{2}(x)$  &  $f_{3}(x)$\\
 		\hline                                                        
 		&            &           &             &          \\
 		-2  &   -1.7895  &       NaN &        NaN  &       NaN\\
@@ -201,17 +221,19 @@ In order for Bisection to work, we need to pick two values $x_{low}$ and $x_{hig
 		\hline
 		\hline
 	\end{tabular} 
-	\caption{Bisection}
+	\caption{Results for Bisection}
 	\label{tab:3:1}
 \end{table}
 
 \subsection*{3(b) Newton Method}
+The result for Newton method is summarized in Table \ref{tab:3:2}. In Newton method, we feed an initial value $x_0$ to the algorithm, let the it run, and obtain a root estimate at the end.
 
-	\begin{table}[h]
+	\begin{table}[H]
 	\centering
-	\begin{tabular}{c c c c  }
+	\begin{tabular}{c |c c c  }
 		\hline
 		\hline
+			&\multicolumn{3}{c}{Roots for }\\
 	     $x_{0}$   &   $f_{1}(x)$ &   $f_{2}(x)$ &   $f_{3}(x)$\\
 	\hline
 	-2  &   0.36824  &         0  &       NaN\\
@@ -237,17 +259,20 @@ In order for Bisection to work, we need to pick two values $x_{low}$ and $x_{hig
 		\hline
 		\hline
 	\end{tabular} 
-	\caption{Newton Method}
+	\caption{Results for Newton method}
 	\label{tab:3:2}
 \end{table}
 
 \subsection*{3(c) Secant Method}
+The result for Secant method is summarized in Table \ref{tab:3:3}. For this method, we pick $x_{k-h}$ and $x_{k+h}$ to estimate $f'(x)\approx  \frac{f(x_{k+h})-f(x_{k-h})}{x_{k+h}-x_{k-h}}$. This method is analogous to Newton method, except we use the approximated $f'(x)$, instead of using the analytical one.
 
 	\begin{table}[h]
+		\small
 	\centering
-	\begin{tabular}{c c c c c }
+	\begin{tabular}{c c |c c c }
 		\hline
 		\hline
+			&&\multicolumn{3}{c}{Roots for }\\
 		     $x_{k-h}$ &    $x_{k+h}$   &   $f_{1}(x)$   &    $f_{2}(x)$   &   $f_{3}(x)$\\
 		\hline
 		-2 &    -1.7895   &     0.36824  &      0.42937  &    1.0919 \\
@@ -272,15 +297,55 @@ In order for Bisection to work, we need to pick two values $x_{low}$ and $x_{hig
 		\hline
 		\hline
 	\end{tabular} 
-	\caption{Secant method}
+	\caption{Results for Secant method}
 	\label{tab:3:3}
 \end{table}
 
+\subsection*{3(d) Fixed Point Iteration Method}
+The result for fixed point iteration method is summarized in Table \ref{tab:3:4}. For this method, we rewrite the functions to obtain the iteration function for $x$:
+\begin{enumerate}
+	\item $x^{k+1}= 0.5 \sin(2 \pi x^k)$
+	\item $x^{k+1}= \sin(2\pi x^k)$
+	\item $x^{k+1}= 2 \sin(2\pi x^k)$
+\end{enumerate}
+Comment: We limit the iteration number to $10^6$ for this method, and we observe that the calculated roots are mostly incorrect. We may need to define $x$ differently to obtain better results.
 
-
-
-
-
+	\begin{table}[H]
+	\small
+	\centering
+	\begin{tabular}{c| c c c  }
+		\hline
+		\hline
+				&\multicolumn{3}{c}{Roots for }\\
+$x_{0}$      & $f_{1}(x)$      &$f_{2}(x)$      &$f_{3}(x)$      \\
+\hline
+&               &              &              \\
+-2&      0.074224 &    -0.050641 &       -1.995 \\
+-1.7895&       0.38421 &     -0.17081 &       1.8144 \\
+-1.5789&     0.0017095 &     -0.64403 &        1.868 \\
+-1.3684&      -0.11799 &      0.82832 &      -1.3745 \\
+-1.1579&      -0.45458 &     -0.27138 &      0.80653 \\
+-0.94737&       0.37138 &   -0.0022826 &     -0.85803 \\
+-0.73684&       0.46711 &      0.52722 &      0.68693 \\
+-0.52632&       0.26376 &      0.24965 &      -1.0318 \\
+-0.31579&     -0.012863 &     0.013494 &    -0.086307 \\
+-0.10526&       -0.2114 &     -0.94452 &   -0.0064801 \\
+0.10526&        0.2114 &      0.94452 &    0.0064801 \\
+0.31579&      0.012863 &    -0.013494 &     0.086307 \\
+0.52632&      -0.26376 &     -0.24965 &       1.0318 \\
+0.73684&      -0.46711 &     -0.52722 &     -0.68693 \\
+0.94737&      -0.37138 &    0.0022826 &      0.85803 \\
+1.1579&       0.45458 &      0.27138 &     -0.80653 \\
+1.3684&       0.11799 &     -0.82832 &       1.3745 \\
+1.5789&    -0.0017095 &      0.64403 &       -1.868 \\
+1.7895&      -0.38421 &      0.17081 &      -1.8144 \\
+2&     -0.074224 &     0.050641 &        1.995 \\
+		\hline
+		\hline
+	\end{tabular} 
+	\caption{Results for fixed point iteration method}
+	\label{tab:3:4}
+\end{table}
 
 \section*{Problem 4}
 \begin{enumerate}
