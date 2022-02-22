@@ -349,62 +349,59 @@ $x_{0}$      & $f_{1}(x)$      &$f_{2}(x)$      &$f_{3}(x)$      \\
 
 \section*{Problem 4}
 \begin{enumerate}
-\item The linear convergence rate is defined by:
-$$\lim_{n \to\infty} \frac{\vert x_{k+1}-x^{*} \vert}{\vert x_{k}-x^{*} \vert} \leq \beta < 1$$\, for some $\beta$.\\
-We can rewrite the equation above:
-
-$$
-\vert x_{k+1}-x^{*}\vert  \leq \beta \vert x_{k}-x^{*} \vert
-$$
-Also, We can write the above equation for $x_k$ instead of $x_{k+1}$:
-$$\vert x_{k}-x^{*} \vert \leq \beta \vert x_{k-1}-x^{*} \vert
-$$
-Write recursively:
-$$\vert x_{k+1}-x^{*}\vert  \leq \beta \vert x_{k}-x^{*} \vert \cdots \leq \beta^{n+1} \vert x_{0}-x^{*}\vert$$
-Hence, the above in equality is the necessary condition for the bisection method to be linearly convergence. In fact, we only can prove the necessary condition but sufficient condition.
-\item The bisection method create the nested sequence as follow:
-$$[a_n,b_n]\in [a_{n-1},b_{n-1}] \cdots [a_0,b_0]$$
-By the construction, we have:
-$$a=a_0\leq a_1 \leq a_2 \leq  \cdots \leq a_n \cdots  \leq  b_n \leq \cdots \leq b_2 \leq b_1$$
-\item $x_n = \frac{a_n+b_n}{2}$, also $a_n \leq x^* \leq b_n$ for all n.
-Implies:
-$$\vert x_n -x^* \vert \leq \frac{a_n+b_n}{2} - a_n  = \frac{b_n-a_n}{2}$$
-By induction: \\
-
-$$\vert x_n -x^* \vert  \leq \frac{b_n - a_n}{2} =  \frac{b_{n-1} - a_{n-1} }{2^2} =  \frac{b_{n-2} - a_{n-2} }{2^3} =  \frac{b_0 - a_0 }{2^{n+1}}$$
-let $\beta = \frac{1}{2}, $$\vert x_0 -x^* \vert  = \frac{b_0-a_0}{2}$, we can prove the necessary condition for the linearly convergence of the bisection method.
+	\item The linear convergence rate is defined by:
+	$$\lim_{n \to\infty} \frac{\vert x_{k+1}-x^{*} \vert}{\vert x_{k}-x^{*} \vert} \leq \beta < 1$$ for some $\beta$.\\
+	We can rewrite the equation above:
+	$$
+	\vert x_{k+1}-x^{*}\vert  \leq \beta \vert x_{k}-x^{*} \vert
+	$$
+	Also, We can write the above equation for $x_k$ instead of $x_{k+1}$:
+	$$\vert x_{k}-x^{*} \vert \leq \beta \vert x_{k-1}-x^{*} \vert
+	$$
+	Write recursively:
+	$$\vert x_{k+1}-x^{*}\vert  \leq \beta \vert x_{k}-x^{*} \vert \cdots \leq \beta^{n+1} \vert x_{0}-x^{*}\vert$$
+	Hence, the above in equality is the necessary condition for the bisection method to be linearly convergence. In fact, we only can prove the necessary condition, but not the sufficient condition.
+	\item The bisection method create the nested sequence as follow:
+	$$[a_n,b_n]\in [a_{n-1},b_{n-1}] \cdots [a_0,b_0]$$
+	By the construction, we have:
+	$$a=a_0\leq a_1 \leq a_2 \leq  \cdots \leq a_n \cdots  \leq  b_n \leq \cdots \leq b_2 \leq b_1$$
+	\item $x_n = \frac{a_n+b_n}{2}$, also $a_n \leq x^* \leq b_n$ for all $n$.
+	It implies:
+	$$\vert x_n -x^* \vert \leq \frac{a_n+b_n}{2} - a_n  = \frac{b_n-a_n}{2}$$
+	By induction: \\
+	
+	$$\vert x_n -x^* \vert  \leq \frac{b_n - a_n}{2} =  \frac{b_{n-1} - a_{n-1} }{2^2} =  \frac{b_{n-2} - a_{n-2} }{2^3} =  \frac{b_0 - a_0 }{2^{n+1}}$$
+	let $\beta = \frac{1}{2}, $$\vert x_0 -x^* \vert  = \frac{b_0-a_0}{2}$, we can prove the necessary condition for the linearly convergence of the bisection method.\\
+	\item We can also create a subsequence from the sequence $e_n$ (the error of the bisection method) so that $e_{n+1} < \beta e_n$ for all n, for some $\beta \in (0,1)$. Then the bisection method is linearly convergence.
 \end{enumerate}
 
 
 \section*{Problem 5}
 The Newton method is given by:
 $$x_{k+1} = x_k -\frac{f(x_k)}{f'(x_k)}$$
-If $f(x_k) < 0$\\
+If $f(x_k) < 0$,
 \begin{enumerate}
-
-\item Case 1: $ x_k < x^* $\\
-since $f'(x_k) \neq 0 $
-\item Case 1.1: $f'(x_k) > 0 $
-Hence, by the newton method recursive equation, we have:
-$$x_{k+1} = x_k -\frac{f(x_k)}{f'(x_k)}$$
-Since $f(x_k) <0$ and $f'(x_k) > 0 \implies \frac{f(x_k)}{f'(x_k)} < 0 \implies -\frac{f(x_k)}{f'(x_k)}>0$
-Let $-\frac{f(x_k)}{f'(x_k)} = \epsilon$\\
-The newton equation can be written as:
-$x_{k+1} = x_k + \epsilon$ for some $\epsilon >0$, so $x_{k+1}>x_k$ and $f'(x_k) > 0$ the function is strictly increasing, implies $f(x_{k_1}) > f(x_k)$, which is somehow lead us to closer to the root of $f(x)$.
-
-Symmetric argument for other cases:
-
-\subsection{Notice}
-In the argument above, we rely on the fact that the function $f$ is piecewise monotonic, but in some case, f may behave so that Newton method cannot guide us the the true answer.
-
-ADD PICTURE HERE:
-
-
-
-
+	\item Case 1: $ x_k < x^* $\\
+	Assume $f'(x_k) \neq 0 $
+	\item Case 1.1: $f'(x_k) > 0 $
+	Hence, by the Newton method recursive equation, we have:
+	$$x_{k+1} = x_k -\frac{f(x_k)}{f'(x_k)}$$
+	Since $f(x_k) <0$ and $f'(x_k) > 0 \implies \frac{f(x_k)}{f'(x_k)} < 0 \implies -\frac{f(x_k)}{f'(x_k)}>0$\\
+	Let $-\frac{f(x_k)}{f'(x_k)} = \epsilon$\\
+	The Newton equation can be written as:
+	$x_{k+1} = x_k + \epsilon$ for some $\epsilon >0$, so $x_{k+1}>x_k$ and $f'(x_k) > 0$ the function is strictly increasing, implies $f(x_{k+1}) > f(x_k)$, which is somehow lead us to closer to the root of $f(x)$.
+	
+	\item Case 1.2 $f'(x_k)<0$\\
+	Since $f(x_k) <0$ and $f'(x_k) < 0 \implies \frac{f(x_k)}{f'(x_k)} > 0 \implies -\frac{f(x_k)}{f'(x_k)}<0$\\
+	Let $-\frac{f(x_k)}{f'(x_k)} = \epsilon$\\
+	The Newton equation can be written as:
+	$x_{k+1} = x_k + \epsilon$ for some $\epsilon <0$, so $x_{k+1}<x_k$ and $f'(x_k) < 0$ the function is strictly decreasing, implies $f(x_{k+1}) > f(x_k)$, which is somehow lead us to closer to the root of $f(x)$. if the function does not have the local maximum around $x_k$.\\
+	Symmetric argument for the case $x_k > x^*$\\
 \end{enumerate}
 
-
+	\subsection*{Discussion}
+	In the argument above, we rely on the fact that the function $f$ is piecewise monotonic, but in some case, $f$ may behave so that Newton method cannot lead us to the true answer. However, after each iteration, the Newton method at least in the worst case can guide us to the local maximum (in this question) of the function (i.e near some $x'$ such that $f(x')$ near zero).
+	
 
 
 \end{document}

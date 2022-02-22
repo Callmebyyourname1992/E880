@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.24)  21 FEB 2022 19:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.24)  22 FEB 2022 09:06
 entering extended mode
 **"./Econ 880 - PS3 - Gunawan Minh.tex"
 ("Econ 880 - PS3 - Gunawan Minh.tex"
@@ -510,17 +510,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {C:/Users/gesch/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-<f1.png, id=25, 666.61546pt x 537.13171pt>
+<f1.png, id=21, 666.61546pt x 537.13171pt>
 File: f1.png Graphic file (type png)
 <use f1.png>
 Package pdftex.def Info: f1.png  used on input line 150.
 (pdftex.def)             Requested size: 225.4804pt x 181.67982pt.
-<f2.png, id=27, 677.90765pt x 539.39015pt>
+<f2.png, id=23, 677.90765pt x 539.39015pt>
 File: f2.png Graphic file (type png)
 <use f2.png>
 Package pdftex.def Info: f2.png  used on input line 156.
 (pdftex.def)             Requested size: 225.4804pt x 179.4067pt.
-<f3.png, id=28, 673.76718pt x 535.2497pt>
+<f3.png, id=24, 673.76718pt x 535.2497pt>
 File: f3.png Graphic file (type png)
 <use f3.png>
 Package pdftex.def Info: f3.png  used on input line 162.
@@ -530,25 +530,30 @@ Package pdftex.def Info: f3.png  used on input line 162.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 371--373
+Underfull \hbox (badness 10000) in paragraph at lines 370--372
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 381--383
+Underfull \hbox (badness 10000) in paragraph at lines 373--375
 
  []
 
-[7] [8] ("Econ 880 - PS3 - Gunawan Minh.aux")
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 394--400
+
+ []
+
+[8] ("Econ 880 - PS3 - Gunawan Minh.aux")
 Package rerunfilecheck Info: File `"Econ 880 - PS3 - Gunawan Minh".out' has not
  changed.
-(rerunfilecheck)             Checksum: 3DCE86862F5D3AF909C82F1D0BAA87EC;46.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
  10361 strings out of 479618
- 161241 string characters out of 2865026
+ 161234 string characters out of 2865026
  640626 words of memory out of 3000000
- 27301 multiletter control sequences out of 15000+200000
+ 27299 multiletter control sequences out of 15000+200000
  421816 words of font info for 94 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,9n,88p,623b,537s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -573,9 +578,9 @@ KTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/gesch/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/gesch/AppData/
 Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/gesch/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on "Econ 880 - PS3 - Gunawan Minh.pdf" (8 pages, 684826 bytes).
+Output written on "Econ 880 - PS3 - Gunawan Minh.pdf" (8 pages, 685015 bytes).
 PDF statistics:
- 174 PDF objects out of 1000 (max. 8388607)
- 38 named destinations out of 1000 (max. 500000)
- 24 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 172 PDF objects out of 1000 (max. 8388607)
+ 40 named destinations out of 1000 (max. 500000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
