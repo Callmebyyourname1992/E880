@@ -307,7 +307,8 @@ $$\vert x_n -x^* \vert \leq \frac{a_n+b_n}{2} - a_n  = \frac{b_n-a_n}{2}$$
 By induction: \\
 
 $$\vert x_n -x^* \vert  \leq \frac{b_n - a_n}{2} =  \frac{b_{n-1} - a_{n-1} }{2^2} =  \frac{b_{n-2} - a_{n-2} }{2^3} =  \frac{b_0 - a_0 }{2^{n+1}}$$
-let $\beta = \frac{1}{2}, $$\vert x_0 -x^* \vert  = \frac{b_0-a_0}{2}$, we can prove the necessary condition for the linearly convergence of the bisection method.
+let $\beta = \frac{1}{2}, $$\vert x_0 -x^* \vert  = \frac{b_0-a_0}{2}$, we can prove the necessary condition for the linearly convergence of the bisection method.\\
+\item We can also create a subsequence from the sequence $e_n$ (the error of the bisection method) so that $e_{n+1} < \beta e_n$ for all n, for some $\beta \in (0,1)$. Then the bisection method is linearly convergence.
 \end{enumerate}
 
 
@@ -318,21 +319,26 @@ If $f(x_k) < 0$\\
 \begin{enumerate}
 
 \item Case 1: $ x_k < x^* $\\
-since $f'(x_k) \neq 0 $
+Assume $f'(x_k) \neq 0 $
 \item Case 1.1: $f'(x_k) > 0 $
 Hence, by the newton method recursive equation, we have:
 $$x_{k+1} = x_k -\frac{f(x_k)}{f'(x_k)}$$
-Since $f(x_k) <0$ and $f'(x_k) > 0 \implies \frac{f(x_k)}{f'(x_k)} < 0 \implies -\frac{f(x_k)}{f'(x_k)}>0$
+Since $f(x_k) <0$ and $f'(x_k) > 0 \implies \frac{f(x_k)}{f'(x_k)} < 0 \implies -\frac{f(x_k)}{f'(x_k)}>0$\\
 Let $-\frac{f(x_k)}{f'(x_k)} = \epsilon$\\
 The newton equation can be written as:
-$x_{k+1} = x_k + \epsilon$ for some $\epsilon >0$, so $x_{k+1}>x_k$ and $f'(x_k) > 0$ the function is strictly increasing, implies $f(x_{k_1}) > f(x_k)$, which is somehow lead us to closer to the root of $f(x)$.
+$x_{k+1} = x_k + \epsilon$ for some $\epsilon >0$, so $x_{k+1}>x_k$ and $f'(x_k) > 0$ the function is strictly increasing, implies $f(x_{k+1}) > f(x_k)$, which is somehow lead us to closer to the root of $f(x)$.
 
-Symmetric argument for other cases:
+\item Case 1.2 $f'(x_k)<0$\\
+Since $f(x_k) <0$ and $f'(x_k) < 0 \implies \frac{f(x_k)}{f'(x_k)} > 0 \implies -\frac{f(x_k)}{f'(x_k)}<0$\\
+Let $-\frac{f(x_k)}{f'(x_k)} = \epsilon$\\
+The newton equation can be written as:
+$x_{k+1} = x_k + \epsilon$ for some $\epsilon <0$, so $x_{k+1}<x_k$ and $f'(x_k) < 0$ the function is strictly decreasing, implies $f(x_{k+1}) > f(x_k)$, which is somehow lead us to closer to the root of $f(x)$. if the function does not have the local maximum around $x_k$.\\
+Symmetric argument for the case $x_k > x^*$\\
 
-\subsection{Notice}
-In the argument above, we rely on the fact that the function $f$ is piecewise monotonic, but in some case, f may behave so that Newton method cannot guide us the the true answer.
+\subsection{Discuss}
+In the argument above, we rely on the fact that the function $f$ is piecewise monotonic, but in some case, f may behave so that Newton method cannot guide us the the true answer. However, After each iteration, The newton method at least in the worst case can guide us to the local maximum (in this question) of the function (i.e near some $x'$ such that $f(x')$ near zero).
 
-ADD PICTURE HERE:
+
 
 
 
