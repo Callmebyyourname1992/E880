@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.24)  21 FEB 2022 19:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.24)  21 FEB 2022 19:19
 entering extended mode
-**"./PS 3 - Q1-3.tex"
-("PS 3 - Q1-3.tex"
+**"./Econ 880 - PS3 - Gunawan Minh.tex"
+("Econ 880 - PS3 - Gunawan Minh.tex"
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-01-09> xparse <2020-03-03>
 (C:\Users\gesch\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -391,8 +391,8 @@ tex.def
 File: l3backend-pdftex.def 2021-01-09 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count294
 \l__pdf_internal_box=\box54
-) ("PS 3 - Q1-3.aux")
-\openout1 = `"PS 3 - Q1-3.aux"'.
+) ("Econ 880 - PS3 - Gunawan Minh.aux")
+\openout1 = `"Econ 880 - PS3 - Gunawan Minh.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
 LaTeX Font Info:    ... okay on input line 61.
@@ -489,9 +489,10 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 61.
 LaTeX Info: Redefining \pageref on input line 61.
 LaTeX Info: Redefining \nameref on input line 61.
- ("PS 3 - Q1-3.out") ("PS 3 - Q1-3.out")
+ ("Econ 880 - PS3 - Gunawan Minh.out")
+("Econ 880 - PS3 - Gunawan Minh.out")
 \@outlinefile=\write3
-\openout3 = `"PS 3 - Q1-3.out"'.
+\openout3 = `"Econ 880 - PS3 - Gunawan Minh.out"'.
 
 \c@lstlisting=\count302
 LaTeX Font Info:    Trying to load font information for U+msa on input line 64.
@@ -538,18 +539,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 381--383
 
  []
 
-[7] [8] ("PS 3 - Q1-3.aux")
-Package rerunfilecheck Info: File `"PS 3 - Q1-3".out' has not changed.
+[7] [8] ("Econ 880 - PS3 - Gunawan Minh.aux")
+Package rerunfilecheck Info: File `"Econ 880 - PS3 - Gunawan Minh".out' has not
+ changed.
 (rerunfilecheck)             Checksum: 3DCE86862F5D3AF909C82F1D0BAA87EC;46.
  ) 
 Here is how much of TeX's memory you used:
  10361 strings out of 479618
- 160953 string characters out of 2865026
- 640590 words of memory out of 3000000
+ 161241 string characters out of 2865026
+ 640626 words of memory out of 3000000
  27301 multiletter control sequences out of 15000+200000
  421816 words of font info for 94 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,9n,88p,605b,537s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 81i,9n,88p,623b,537s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\gesch\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 0600.pk> <C:\Users\gesch\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm0800.pk><C:/Users/gesch/AppData/Local/Programs/MiKTeX/fonts/type1/public/
@@ -571,7 +573,7 @@ KTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/gesch/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/gesch/AppData/
 Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/gesch/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on "PS 3 - Q1-3.pdf" (8 pages, 684826 bytes).
+Output written on "Econ 880 - PS3 - Gunawan Minh.pdf" (8 pages, 684826 bytes).
 PDF statistics:
  174 PDF objects out of 1000 (max. 8388607)
  38 named destinations out of 1000 (max. 500000)
