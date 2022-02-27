@@ -66,6 +66,31 @@ A*x-b
 B = [1,0.5,0.3;0.6,1,0.1;0.2,0.4,1];
 r = [5 7 4]';
 
+%Gauss-Jacobi Fixed-Point Iteration Method
+tol = 10^(-13);
+q = [0 0 0 ]'; %initial value
+QO = q;
+stopcrit = 1;
+
+k=0;
+
+while (stopcrit > tol)
+    for i=1:length(q)
+        q(i) = (1/B(i,i))*(r(i) -B(i,:)*QO + B(i,i)*QO(i));
+    end
+    k = k+1;
+    stopcrit = norm(q-QO);
+    QO=q;
+end
+
+%last iteration
+k
+%Result
+q
+%Residual
+B*q-r
+
+%Extrapolation Method
 G = eye(size(B,1))-B;
 q = [ 0 0 0 ]';
 QO = q;
@@ -168,16 +193,16 @@ format short
 res_secant
 
 %fixed point iteration
-N = 10^5; %max iteration
+N = 10^6; %max iteration
 
 res_fixed = zeros(length(x0),4);
 res_fixed(:,1) = x0;
 
 for i=1:length(x0)
     x1 = x0(i);
-    res_fixed(i,2) =  fixedpt(fct1,x1,tolx,toly,N);
-    res_fixed(i,3) =  fixedpt(fct2,x1,tolx,toly,N);
-    res_fixed(i,4) =  fixedpt(fct3,x1,tolx,toly,N);
+    res_fixed(i,2) =  fixedpt1(x1,tolx,toly,N);
+    res_fixed(i,3) =  fixedpt2(x1,tolx,toly,N);
+    res_fixed(i,4) =  fixedpt3(x1,tolx,toly,N);
 end
 
 colNames={'x_{0}','f_{1}(x)','f_{2}(x)','f_{3}(x)'};

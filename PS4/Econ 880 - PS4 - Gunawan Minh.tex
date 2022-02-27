@@ -1,0 +1,146 @@
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{caption} %For captioning objects
+\usepackage{subcaption} %sub-captioning pictures
+\usepackage{graphicx} %to include graphics
+\usepackage{hyperref} %for clickable references
+\usepackage{listings} %to write code listings
+\lstset{language=R, breaklines=true}  
+\usepackage[mathcal]{euscript} %for curly S
+\usepackage{mathtools}
+\usepackage{float} %so figures can be placed "here"
+
+%Defining commands for math symbols
+\usepackage{amsmath} %to enable split equations
+\usepackage{statmath} %for plim. Be careful, it has already \E and \V.
+\usepackage{amssymb} %to enable mathbb
+\newcommand{\R}{\mathtt{R}} %Software R
+\renewcommand{\E}{\mathbb{E}} %expectation
+\usepackage{bbm}
+\newcommand{\1}{\mathbbm{1}}
+\renewcommand{\V}{\mathbb{V}} %variance
+\newcommand{\N}{\mathcal{N}} %normal distribution
+\newcommand{\U}{\mathcal{U}} %normal distribution
+\renewcommand{\P}{\mathbb{P}} %proba, renewcom since \P already exists
+%Regression variables in vector form
+\newcommand{\y}{\boldsymbol{y}} 
+\newcommand{\x}{\boldsymbol{x}} 
+\newcommand{\z}{\boldsymbol{z}} 
+\newcommand{\yhat}{\boldsymbol{\hat{y}}} 
+\renewcommand{\u}{\boldsymbol{u}} 
+\newcommand{\uhat}{\boldsymbol{\hat{u}}}  
+\newcommand{\Px}{\boldsymbol{P}}  
+\newcommand{\Mx}{\boldsymbol{M}}  
+\newcommand{\A}{\boldsymbol{A}}  
+\newcommand{\X}{\boldsymbol{X}}  
+\newcommand{\Z}{\boldsymbol{Z}}  
+\newcommand{\e}{\boldsymbol{e}}  
+\renewcommand{\r}{\tilde{r}}  
+%\renewcommand{\r}{\boldsymbol{r}} 
+\renewcommand{\i}{\boldsymbol{\imath}} 
+\newcommand{\alphab}{\boldsymbol{\alpha}}  
+\newcommand{\betab}{\boldsymbol{\beta}}  
+%opening
+
+\newcounter{daggerfootnote}
+\newcommand*{\daggerfootnote}[1]{%
+	\setcounter{daggerfootnote}{\value{footnote}}%
+	\renewcommand*{\thefootnote}{\fnsymbol{footnote}}%
+	\footnote[2]{#1}%
+	\setcounter{footnote}{\value{daggerfootnote}}%
+	\renewcommand*{\thefootnote}{\arabic{footnote}}%
+}
+
+
+\title{Problem Set 4 - ECON 880\\
+	\small Spring 2022 - University of Kansas}
+\author{Gunawan, Minh Cao}
+
+
+\begin{document}
+
+\maketitle	
+
+\noindent In this exercise, we are interested in solving the following minimization problem
+\[\min_{x,y} f(x,y)=100(y-x^2)^2+(1-x)^2\]
+using both steepest descent and conjugate gradient method. We try different starting values $\tilde{x}^0=(x^0,y^0)$ starting from $(0,0)$, $(-1,-1)$
+and $(-1,2)$, and report $\tilde{x}^k=(x^k,y^k)$ for the first 5 iterations. Note that $(x,y)=(1,1)$ is a unique solution.
+
+\section{Steepest Descent}
+We use the following steps for the steepest descent method
+\begin{enumerate}
+	\item[Step 0.] Choose $\tilde{x}^0$ (see above), $\delta = 10^{-5}$, $\epsilon = 10^{-10}$  
+	\item[Step 1.] Compute $s^k=-\nabla f(\tilde{x}^k)$
+	\item[Step 2.] Solve $\lambda_k=\arg \min_{\lambda} f(\tilde{x}^k+\lambda s^k)$
+	\item[Step 3.] Set $\tilde{x}^{k+1}=\tilde{x}^k+\lambda_k s^k$
+	\item[Step 4.] If $||\tilde{x}^{k}-\tilde{x}^{k+1}||<\epsilon (1+||\tilde{x}^{k}||)$, go to Step 5. Otherwise, go to Step 1.
+	\item[Step 5.] If $||\nabla f(\tilde{x}^k)||<\delta(1+f(x^k))$, stop and report success. Else, stop and report convergence to a nonoptimal point.
+\end{enumerate}
+Table \ref{tab:1} shows the values of $\tilde{x}^k=(x^k,y^k)$ for $k=1,2,\ldots,5$ for three different starting values. Steepest descent method leads to the correct solution using our specified tolerance levels at different numbers iteration.  
+\begin{table}[H]
+	\small
+	\centering
+	\begin{tabular}{|c| c c| c c|c c| }
+		\hline
+		\hline                                                
+	 $\tilde{x}^k=(x^k,y^k)$  & $x^{k}$    & $y^k$      	 &	$x^{k}$    & $y^k$     		&  $x^{k}$     &$y^k$      \\ 
+	         \hline
+	$k=0$	&	0		&	0		 &	-1		&		-1		& -1		 &	2      \\
+	$k=1$  &  0.16133 &          0 &   0.25748 &     -0.37439 &     -1.348 &   1.8242\\
+	$k=2$  &  0.16132 &   0.025915 &    0.0708 &    0.0003852 &     -1.337 &   1.8076\\
+	$k=3$  &   0.2135 &   0.026592 &   0.48295 &      0.22121 &     -1.341 &   1.8049\\
+	$k=4$  &  0.21326 &   0.045502 &   0.47934 &      0.22794 &    -1.3402 &    1.804\\
+	$k=5$  &   0.2462 &   0.045405 &   0.49917 &      0.23846 &    -1.3398 &   1.8028\\
+		\hline
+		Convergence at &	\multicolumn{2}{c}{$k= 177,644$ (success)}& \multicolumn{2}{|c|}{$k=1,409,717$ (success)}&\multicolumn{2}{|c|}{$k=112,965$ (success)}\\
+		\hline
+		$\tilde{x}^{final}$&	1&1&1 & 1 &  1 & 1\\
+		\hline
+		\hline
+		\end{tabular} 
+	\caption{Results for steepest descent method}
+	\label{tab:1}
+\end{table}
+
+\section{Conjugate Gradient}
+We use the following steps for the conjugate gradient method
+\begin{enumerate}
+	\item[Step 0.] Choose $\tilde{x}^0$ (see above), $\delta = 10^{-5}$, $\epsilon = 10^{-10}$, and $s^0 = -\nabla f(\tilde{x}^0)$  
+	\item[Step 1.] Solve $\lambda_k=\arg \min_{\lambda} f(\tilde{x}^k+\lambda s^k)$
+	\item[Step 2.] Set $\tilde{x}^{k+1}=\tilde{x}^k+\lambda_k s^k$
+	\item[Step 3.] Compute the search direction
+	$s^{k+1} = -\nabla f(\tilde{x}^{k+1})+\frac{||\nabla f(\tilde{x}^{k+1})||^2}{||\nabla f(\tilde{x}^{k})||^2}s^k$
+	\item [Step 4.]	If $||\tilde{x}^{k}-\tilde{x}^{k+1}||>\epsilon (1+||\tilde{x}^{k}||)$, go to Step 1. Otherwise, go to Step 5.
+	\item[Step 5.] If $||\nabla f(\tilde{x}^k)||<\delta(1+|f(x^k)|)$, stop and report success. Else, stop and report convergence to a nonoptimal point.
+\end{enumerate}
+Table \ref{tab:2} shows the values of $\tilde{x}^k=(x^k,y^k)$ for $k=1,2,\ldots,5$ for three different starting values. Conjugate gradient method does not lead to the correct solution $(1,1)$ at our specified tolerance levels. Although for starting values $(0,0)$ and $(-1,-1)$, the final values are close to the true solution, these are nonoptimal according to the specified $\delta$.
+
+\begin{table}[H]
+	\small
+	\centering
+	\begin{tabular}{|c| c c| c c|c c| }
+		\hline
+		\hline                                                
+		$\tilde{x}^k=(x^k,y^k)$  & $x^{k}$    & $y^k$      	 &	$x^{k}$    & $y^k$     		&  $x^{k}$     &$y^k$      \\ 
+		\hline
+	$k=0$	&	0		&	0		 &	-1		&		-1		& -1		 &	2      \\
+$k=1$ &   0.16133  &         0  &  0.25748   &  -0.37439  &    -1.348   &  1.8242 \\
+$k=2$ &   0.29279  &  0.050517  &  0.11558   &   0.01084  &   -1.3367   &  1.8069 \\
+$k=3$ &   0.42553  &    0.1432  &  0.31233   &  0.074648  &   -1.0855   &  1.1367 \\
+$k=4$ &    0.5803  &   0.30357  &  0.48326   &   0.20686  &  -0.94572   & 0.82968 \\
+$k=5$ &    0.84321 &    0.70196 &   0.71518  &    0.49616 &   -0.84507  &  0.63618\\
+		\hline
+		Convergence at &	\multicolumn{2}{c}{$k=147$ (nonoptimal)}& \multicolumn{2}{|c|}{$k=36$ (nonoptimal)}&\multicolumn{2}{|c|}{$k=113$ (nonoptimal)}\\
+		\hline
+		$\tilde{x}^{final}$&	1.00021&1.00037&1.00627 & 1.01202 &  1.43299 & 2.01758\\
+		\hline
+		\hline
+		\end{tabular} 
+	\caption{Results for conjugate gradient method}
+	\label{tab:2}
+\end{table}
+
+
+\end{document}
+
