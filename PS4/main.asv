@@ -73,6 +73,7 @@ for j=1:length(x0)
     crit1 = 1;
     while (crit1>eps)
         i = i+1;
+        %XO=x;
         objf = @(lambda) f(XO+lambda*s);
         lambdastar = fminsearch(objf,lambdastar);
         x = XO + lambdastar*s;
