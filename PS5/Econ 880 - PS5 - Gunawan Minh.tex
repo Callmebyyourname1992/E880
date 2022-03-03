@@ -107,7 +107,7 @@ to it:
 Then evaluate the approximations over 101 equally spaced points in $[0,2]$ and plot them along with the true function. 
 
 \subsection*{2(a) Chebyshev Interpolation}
-We use the following algorithm\daggerfootnote{Kenneth L. Judd, 1998. "Numerical Methods in Economics," MIT Press Books, The MIT Press, p.223} to construct the Chebyshev interpolation of order 4. The result is shown on Figure \ref{2a:1}.
+We use the following algorithm\daggerfootnote{Kenneth L. Judd, 1998. "Numerical Methods in Economics," MIT Press Books, The MIT Press, p.223} to construct the Chebyshev interpolation of order 4. The code is saved as \texttt{chebyshev.m}. The result is shown on Figure \ref{2a:1}.
 \begin{enumerate}
 	\item [Step 1.] Compute five Chebyshev interpolation nodes on $[0,2]$ using the following formula
 	\[z_k = -\cos\left(\frac{2k-1}{2m}\pi\right), \quad k=1,\ldots,m\]
@@ -126,14 +126,55 @@ We use the following algorithm\daggerfootnote{Kenneth L. Judd, 1998. "Numerical 
 \subsection*{2(a) Cubic Spline Interpolation}
 We use the following algorithm to construct the cubic spline interpolation. The result is shown on Figure \ref{2a:1}.
 \begin{enumerate}
-	\item [Step 1.] xxx
-	\item[Step 2.] xxx
-	\item[Step 3.] xxx
-	\item[Step 4.] xxx
-	\item[Step 5.] xxx
+	\item [Step 1.] Suppose we have the dataset $\{(x_i,y_i)|i=1,\ldots,n\}$. First, do some precalculations:
+	\begin{itemize}
+		\item $h_i=x_{i+1}-x_i$, for $i=1,\ldots,n-1$
+		\item $v_i=2(h_{i-1}+h_i)$, for $i=1,\ldots,n-1$
+		\item $f_i=6\left(\frac{y_{i+1}-y_i}{h_{i-1}}-\frac{y_{i}-y_{i-1}}{h_{i-1}}\right)$, for $i=1,\ldots,n-1$
+		\item $f_1=f_n=0$
+	\end{itemize}
+	\item[Step 2.] Solve the triagonal system 
+	\[
+	 \begin{bmatrix}
+	 	1&0 &0  &  & \cdots & \cdots  &\cdots&0\\
+		0&v_1 & h_1 &  &  &   &&\vdots \\
+		0&h_1& v_2 & h_2 &  &  &&\vdots \\
+		\vdots&& h_2 & v_3 & h_3 &   && \vdots \\
+		\vdots&&         &  \ddots       & \ddots & \ddots&& \vdots\\
+		\vdots&&         &         & \ddots & \ddots& h_{n-1}&0\\
+		\vdots&&         &         &        &  h_{n-1} &v_{n-1}&0\\
+		0&0 &0  &  & \cdots & \cdots  &0&1\\
+	\end{bmatrix} \begin{pmatrix}
+	s_1\\
+	s_2\\
+	s_3\\
+	\vdots\\
+	\vdots\\
+	s_{n-1}\\
+	s_n
+\end{pmatrix} = \begin{pmatrix}
+0\\
+f_2\\
+f_3\\
+\vdots\\
+\vdots\\
+f_{n-1}\\
+0
+\end{pmatrix} \]
+	\item[Step 3.] For $i=1,\ldots, n-1$, compute
+	\begin{eqnarray*}
+	    a_i&=&(s_{i+1}-s_i)/6h_i\\
+		b_i&=&s_i/2\\
+		c_i&=&(y_{i+1}-y_i)/h_i-(2h_is_i+h_is_{i+1})/6\\
+		d_i&=&y_i
+	\end{eqnarray*}
+ 	Step 1-3 is performed by calling \texttt{splinecoefs.m}.
+	\item[Step 4.] Calculate the cubic spline approximation function
+	\[s_i(x) = a_i(x-x_i)^3 +b_i(x-x_i)^2+c_i(x-x_i)+d_i, \]
+	for $i=1,\ldots,n-1$. This step is performed by calling \texttt{evspline.m}.
 \end{enumerate}
 
-Comment: which method works better? Are higher order Chebyshev coefficients indeed smaller? Do approximations match the slope and curvature of the original function?
+Comment: Cubic spline works better because the approximated curve is relatively much closer to the true function. Higher order Chebyshev coefficients seem to be smaller because the curve looks more like a third order polynomial curve. Both approximation methods have a matching slope and curvature with the true function only for the interval $x>1$. For $x<1$, cubic spline has more accurate curvature approximation to the true function.
 
 \begin{figure}[h]
 	\centering
