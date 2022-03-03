@@ -94,30 +94,13 @@ Gauss-Seidel method required 0.0193 seconds with 23 iterations until convergence
 \end{pmatrix}\]
    
 \section*{Problem 2}
-In this exercise, we are interested in solving $Bq=r$ using fixed-point iteration and extrapolation, where
+In this exercise, we are interested in solving $Bq=r$ using extrapolation, where
+
 \[B = \begin{pmatrix}
-	1&0.5&0.3\\0.6&1&0.1\\0.2&0.4&1
+ 1&0.5&0.3\\0.6&1&0.1\\0.2&0.4&1
 \end{pmatrix}, \quad r = \begin{pmatrix}
 	5\\7\\4
 \end{pmatrix}. \]
-\subsection*{2(a)}
-We use Gauss-Jacobi fixed-point iteration method analogue to Problem 1, and obtain
-the solution
-\[
-q=\begin{pmatrix}
-	1.6716\\
-	5.8651\\
-	1.3196
-\end{pmatrix}
-\]
-after 98 iterations, with the residual 
-\[Bq-r =  10^{-13} \times
-\begin{pmatrix}
-   -0.4174\\
--0.3908\\
--0.3375
-\end{pmatrix}.\] 
-\subsection*{2(b)}
 Following Ken Judd's definition\daggerfootnote{Kenneth L. Judd, 1998. "Numerical Methods in Economics," MIT Press Books, The MIT Press, p.78-79}, we first define $G=I-B$, and run the following iteration
 \[q^{k+1}=\omega G q^k +\omega r + (1-\omega)q^k,\] 
 where we pick $\omega=1.05$, tolerance level $10^{-13}$, and initial value $q_0=(0,0,0)'$. The extrapolation converged after $k=97$ iterations, with the residual 
@@ -142,7 +125,7 @@ We want to solve the following functions
 	\item $\sin(2\pi x)-x=0$
 	\item $\sin(2\pi x)-0.5x=0$
 \end{enumerate}
-using 1) Bisection, 2) Newton method, 3) Secant method, and 4) fixed-point iteration. We want to evaluate for what value of initial guess $x_0\in[-2,2]$ these methods converge. We proceed by creating a grid of 20 points within the range $x_0\in[-2,2]$, and use them as initial values for the algorithms. For evaluation purposes, we plot all the three functions on Figure \ref{fig:3} to see how many and where the roots are located. From these graphs, we see that within the interval $[-2,2]$, function 1 and 2 have both two roots, while function 3 has seven roots.
+using 1) Bisection, 2) Newton method, 3) Secant method, and 4) fixed-point iteration. We want to evaluate for what value of initial guess $x_0\in[-2,2]$ these methods converge. We proceed by first plotting all the three functions on Figure \ref{fig:3}. From these graphs, we see that within the interval $[-2,2]$, function 1 and 2 have both two roots, while function 3 has seven roots.
 
 \begin{figure}[htbp]
 	\centering
@@ -168,16 +151,13 @@ using 1) Bisection, 2) Newton method, 3) Secant method, and 4) fixed-point itera
 \end{figure}
 
 \subsection*{3(a) Bisection}
-The result for Bisection algorithm is summarized in Table \ref{tab:3:1}. In order for this algorithm to work, we need to pick two values $x_{low}$ and $x_{high}$ so that $f(x_{low})\cdot f(x_{high})<0$. The NaN values are produced because this condition is not satisfied.
-
-	\begin{table}[H]
-		\small
+In order for Bisection to work, we need to pick two values $x_{low}$ and $x_{high}$ so that $f(x_{low})\cdot f(x_{high})<0$. The range of admissible values for $x$ for the three functions above is summarized in Table \ref{tab:3:1}
+	\begin{table}[h]
 	\centering
-	\begin{tabular}{c c |c c c }
+	\begin{tabular}{c c c c c }
 		\hline
 		\hline
-		&&\multicolumn{3}{c}{Roots for }\\
-		   $x_{low}$   &  $x_{high}$  & $f_{1}(x)$ &   $f_{2}(x)$  &  $f_{3}(x)$\\
+		   $x_{low}$   &  $x_{high}$  &  $f_{1}(x)$ &   $f_{2}(x)$  &  $f_{3}(x)$\\
 		\hline                                                        
 		&            &           &             &          \\
 		-2  &   -1.7895  &       NaN &        NaN  &       NaN\\
@@ -221,19 +201,17 @@ The result for Bisection algorithm is summarized in Table \ref{tab:3:1}. In orde
 		\hline
 		\hline
 	\end{tabular} 
-	\caption{Results for Bisection}
+	\caption{Bisection}
 	\label{tab:3:1}
 \end{table}
 
 \subsection*{3(b) Newton Method}
-The result for Newton method is summarized in Table \ref{tab:3:2}. In Newton method, we feed an initial value $x_0$ to the algorithm, let the it run, and obtain a root estimate at the end.
 
-	\begin{table}[H]
+	\begin{table}[h]
 	\centering
-	\begin{tabular}{c |c c c  }
+	\begin{tabular}{c c c c  }
 		\hline
 		\hline
-			&\multicolumn{3}{c}{Roots for }\\
 	     $x_{0}$   &   $f_{1}(x)$ &   $f_{2}(x)$ &   $f_{3}(x)$\\
 	\hline
 	-2  &   0.36824  &         0  &       NaN\\
@@ -259,20 +237,17 @@ The result for Newton method is summarized in Table \ref{tab:3:2}. In Newton met
 		\hline
 		\hline
 	\end{tabular} 
-	\caption{Results for Newton method}
+	\caption{Newton Method}
 	\label{tab:3:2}
 \end{table}
 
 \subsection*{3(c) Secant Method}
-The result for Secant method is summarized in Table \ref{tab:3:3}. For this method, we pick $x_{k-h}$ and $x_{k+h}$ to estimate $f'(x)\approx  \frac{f(x_{k+h})-f(x_{k-h})}{x_{k+h}-x_{k-h}}$. This method is analogous to Newton method, except we use the approximated $f'(x)$, instead of using the analytical one.
 
 	\begin{table}[h]
-		\small
 	\centering
-	\begin{tabular}{c c |c c c }
+	\begin{tabular}{c c c c c }
 		\hline
 		\hline
-			&&\multicolumn{3}{c}{Roots for }\\
 		     $x_{k-h}$ &    $x_{k+h}$   &   $f_{1}(x)$   &    $f_{2}(x)$   &   $f_{3}(x)$\\
 		\hline
 		-2 &    -1.7895   &     0.36824  &      0.42937  &    1.0919 \\
@@ -297,111 +272,80 @@ The result for Secant method is summarized in Table \ref{tab:3:3}. For this meth
 		\hline
 		\hline
 	\end{tabular} 
-	\caption{Results for Secant method}
+	\caption{Secant method}
 	\label{tab:3:3}
 \end{table}
 
-\subsection*{3(d) Fixed Point Iteration Method}
-The result for fixed point iteration method is summarized in Table \ref{tab:3:4}. For this method, we rewrite the functions to obtain the iteration function for $x$:
-\begin{enumerate}
-	\item $x^{k+1}= 0.5 \sin(2 \pi x^k)$
-	\item $x^{k+1}= \sin(2\pi x^k)$
-	\item $x^{k+1}= 2 \sin(2\pi x^k)$
-\end{enumerate}
-Comment: We limit the iteration number to $10^6$ for this method, and we observe that the calculated roots are mostly incorrect. We may need to define $x$ differently to obtain better results.
 
-	\begin{table}[H]
-	\small
-	\centering
-	\begin{tabular}{c| c c c  }
-		\hline
-		\hline
-				&\multicolumn{3}{c}{Roots for }\\
-$x_{0}$      & $f_{1}(x)$      &$f_{2}(x)$      &$f_{3}(x)$      \\
-\hline
-&               &              &              \\
--2&      0.074224 &    -0.050641 &       -1.995 \\
--1.7895&       0.38421 &     -0.17081 &       1.8144 \\
--1.5789&     0.0017095 &     -0.64403 &        1.868 \\
--1.3684&      -0.11799 &      0.82832 &      -1.3745 \\
--1.1579&      -0.45458 &     -0.27138 &      0.80653 \\
--0.94737&       0.37138 &   -0.0022826 &     -0.85803 \\
--0.73684&       0.46711 &      0.52722 &      0.68693 \\
--0.52632&       0.26376 &      0.24965 &      -1.0318 \\
--0.31579&     -0.012863 &     0.013494 &    -0.086307 \\
--0.10526&       -0.2114 &     -0.94452 &   -0.0064801 \\
-0.10526&        0.2114 &      0.94452 &    0.0064801 \\
-0.31579&      0.012863 &    -0.013494 &     0.086307 \\
-0.52632&      -0.26376 &     -0.24965 &       1.0318 \\
-0.73684&      -0.46711 &     -0.52722 &     -0.68693 \\
-0.94737&      -0.37138 &    0.0022826 &      0.85803 \\
-1.1579&       0.45458 &      0.27138 &     -0.80653 \\
-1.3684&       0.11799 &     -0.82832 &       1.3745 \\
-1.5789&    -0.0017095 &      0.64403 &       -1.868 \\
-1.7895&      -0.38421 &      0.17081 &      -1.8144 \\
-2&     -0.074224 &     0.050641 &        1.995 \\
-		\hline
-		\hline
-	\end{tabular} 
-	\caption{Results for fixed point iteration method}
-	\label{tab:3:4}
-\end{table}
+
+
+
+
 
 \section*{Problem 4}
 \begin{enumerate}
-	\item The linear convergence rate is defined by:
-	$$\lim_{n \to\infty} \frac{\vert x_{k+1}-x^{*} \vert}{\vert x_{k}-x^{*} \vert} \leq \beta < 1$$ for some $\beta$.\\
-	We can rewrite the equation above:
-	$$
-	\vert x_{k+1}-x^{*}\vert  \leq \beta \vert x_{k}-x^{*} \vert
-	$$
-	Also, We can write the above equation for $x_k$ instead of $x_{k+1}$:
-	$$\vert x_{k}-x^{*} \vert \leq \beta \vert x_{k-1}-x^{*} \vert
-	$$
-	Write recursively:
-	$$\vert x_{k+1}-x^{*}\vert  \leq \beta \vert x_{k}-x^{*} \vert \cdots \leq \beta^{n+1} \vert x_{0}-x^{*}\vert$$
-	Hence, the above in equality is the necessary condition for the bisection method to be linearly convergence. In fact, we only can prove the necessary condition, but not the sufficient condition.
-	\item The bisection method create the nested sequence as follow:
-	$$[a_n,b_n]\in [a_{n-1},b_{n-1}] \cdots [a_0,b_0]$$
-	By the construction, we have:
-	$$a=a_0\leq a_1 \leq a_2 \leq  \cdots \leq a_n \cdots  \leq  b_n \leq \cdots \leq b_2 \leq b_1$$
-	\item $x_n = \frac{a_n+b_n}{2}$, also $a_n \leq x^* \leq b_n$ for all $n$.
-	It implies:
-	$$\vert x_n -x^* \vert \leq \frac{a_n+b_n}{2} - a_n  = \frac{b_n-a_n}{2}$$
-	By induction: \\
-	
-	$$\vert x_n -x^* \vert  \leq \frac{b_n - a_n}{2} =  \frac{b_{n-1} - a_{n-1} }{2^2} =  \frac{b_{n-2} - a_{n-2} }{2^3} =  \frac{b_0 - a_0 }{2^{n+1}}$$
-	let $\beta = \frac{1}{2}, $$\vert x_0 -x^* \vert  = \frac{b_0-a_0}{2}$, we can prove the necessary condition for the linearly convergence of the bisection method.\\
-	\item We can also create a subsequence from the sequence $e_n$ (the error of the bisection method) so that $e_{n+1} < \beta e_n$ for all n, for some $\beta \in (0,1)$. Then the bisection method is linearly convergence.
+\item The linear convergence rate is defined by:
+$$\lim_{n \to\infty} \frac{\vert x_{k+1}-x^{*} \vert}{\vert x_{k}-x^{*} \vert} \leq \beta < 1$$\, for some $\beta$.\\
+We can rewrite the equation above:
+
+$$
+\vert x_{k+1}-x^{*}\vert  \leq \beta \vert x_{k}-x^{*} \vert
+$$
+Also, We can write the above equation for $x_k$ instead of $x_{k+1}$:
+$$\vert x_{k}-x^{*} \vert \leq \beta \vert x_{k-1}-x^{*} \vert
+$$
+Write recursively:
+$$\vert x_{k+1}-x^{*}\vert  \leq \beta \vert x_{k}-x^{*} \vert \cdots \leq \beta^{n+1} \vert x_{0}-x^{*}\vert$$
+Hence, the above in equality is the necessary condition for the bisection method to be linearly convergence. In fact, we only can prove the necessary condition but sufficient condition.
+\item The bisection method create the nested sequence as follow:
+$$[a_n,b_n]\in [a_{n-1},b_{n-1}] \cdots [a_0,b_0]$$
+By the construction, we have:
+$$a=a_0\leq a_1 \leq a_2 \leq  \cdots \leq a_n \cdots  \leq  b_n \leq \cdots \leq b_2 \leq b_1$$
+\item $x_n = \frac{a_n+b_n}{2}$, also $a_n \leq x^* \leq b_n$ for all n.
+Implies:
+$$\vert x_n -x^* \vert \leq \frac{a_n+b_n}{2} - a_n  = \frac{b_n-a_n}{2}$$
+By induction: \\
+
+$$\vert x_n -x^* \vert  \leq \frac{b_n - a_n}{2} =  \frac{b_{n-1} - a_{n-1} }{2^2} =  \frac{b_{n-2} - a_{n-2} }{2^3} =  \frac{b_0 - a_0 }{2^{n+1}}$$
+let $\beta = \frac{1}{2}, $$\vert x_0 -x^* \vert  = \frac{b_0-a_0}{2}$, we can prove the necessary condition for the linearly convergence of the bisection method.\\
+\item We can also create a subsequence from the sequence $e_n$ (the error of the bisection method) so that $e_{n+1} < \beta e_n$ for all n, for some $\beta \in (0,1)$. Then the bisection method is linearly convergence.
 \end{enumerate}
 
 
 \section*{Problem 5}
 The Newton method is given by:
 $$x_{k+1} = x_k -\frac{f(x_k)}{f'(x_k)}$$
-If $f(x_k) < 0$,
+If $f(x_k) < 0$\\
 \begin{enumerate}
-	\item Case 1: $ x_k < x^* $\\
-	Assume $f'(x_k) \neq 0 $
-	\item Case 1.1: $f'(x_k) > 0 $
-	Hence, by the Newton method recursive equation, we have:
-	$$x_{k+1} = x_k -\frac{f(x_k)}{f'(x_k)}$$
-	Since $f(x_k) <0$ and $f'(x_k) > 0 \implies \frac{f(x_k)}{f'(x_k)} < 0 \implies -\frac{f(x_k)}{f'(x_k)}>0$\\
-	Let $-\frac{f(x_k)}{f'(x_k)} = \epsilon$\\
-	The Newton equation can be written as:
-	$x_{k+1} = x_k + \epsilon$ for some $\epsilon >0$, so $x_{k+1}>x_k$ and $f'(x_k) > 0$ the function is strictly increasing, implies $f(x_{k+1}) > f(x_k)$, which is somehow lead us to closer to the root of $f(x)$.
-	
-	\item Case 1.2 $f'(x_k)<0$\\
-	Since $f(x_k) <0$ and $f'(x_k) < 0 \implies \frac{f(x_k)}{f'(x_k)} > 0 \implies -\frac{f(x_k)}{f'(x_k)}<0$\\
-	Let $-\frac{f(x_k)}{f'(x_k)} = \epsilon$\\
-	The Newton equation can be written as:
-	$x_{k+1} = x_k + \epsilon$ for some $\epsilon <0$, so $x_{k+1}<x_k$ and $f'(x_k) < 0$ the function is strictly decreasing, implies $f(x_{k+1}) > f(x_k)$, which is somehow lead us to closer to the root of $f(x)$. if the function does not have the local maximum around $x_k$.\\
-	Symmetric argument for the case $x_k > x^*$\\
+
+\item Case 1: $ x_k < x^* $\\
+Assume $f'(x_k) \neq 0 $
+\item Case 1.1: $f'(x_k) > 0 $
+Hence, by the newton method recursive equation, we have:
+$$x_{k+1} = x_k -\frac{f(x_k)}{f'(x_k)}$$
+Since $f(x_k) <0$ and $f'(x_k) > 0 \implies \frac{f(x_k)}{f'(x_k)} < 0 \implies -\frac{f(x_k)}{f'(x_k)}>0$\\
+Let $-\frac{f(x_k)}{f'(x_k)} = \epsilon$\\
+The newton equation can be written as:
+$x_{k+1} = x_k + \epsilon$ for some $\epsilon >0$, so $x_{k+1}>x_k$ and $f'(x_k) > 0$ the function is strictly increasing, implies $f(x_{k+1}) > f(x_k)$, which is somehow lead us to closer to the root of $f(x)$.
+
+\item Case 1.2 $f'(x_k)<0$\\
+Since $f(x_k) <0$ and $f'(x_k) < 0 \implies \frac{f(x_k)}{f'(x_k)} > 0 \implies -\frac{f(x_k)}{f'(x_k)}<0$\\
+Let $-\frac{f(x_k)}{f'(x_k)} = \epsilon$\\
+The newton equation can be written as:
+$x_{k+1} = x_k + \epsilon$ for some $\epsilon <0$, so $x_{k+1}<x_k$ and $f'(x_k) < 0$ the function is strictly decreasing, implies $f(x_{k+1}) > f(x_k)$, which is somehow lead us to closer to the root of $f(x)$. if the function does not have the local maximum around $x_k$.\\
+Symmetric argument for the case $x_k > x^*$\\
+
+\subsection{Discuss}
+In the argument above, we rely on the fact that the function $f$ is piecewise monotonic, but in some case, f may behave so that Newton method cannot guide us the the true answer. However, After each iteration, The newton method at least in the worst case can guide us to the local maximum (in this question) of the function (i.e near some $x'$ such that $f(x')$ near zero).
+
+
+
+
+
+
 \end{enumerate}
 
-	\subsection*{Discussion}
-	In the argument above, we rely on the fact that the function $f$ is piecewise monotonic, but in some case, $f$ may behave so that Newton method cannot lead us to the true answer. However, after each iteration, the Newton method at least in the worst case can guide us to the local maximum (in this question) of the function (i.e near some $x'$ such that $f(x')$ near zero).
-	
+
 
 
 \end{document}
