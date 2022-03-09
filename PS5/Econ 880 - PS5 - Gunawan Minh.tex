@@ -117,7 +117,7 @@ We use the following algorithm\daggerfootnote{Kenneth L. Judd, 1998. "Numerical 
 	\[y_k=f(x_k), \quad k=1,\ldots,m\]
 	\item[Step 4.] Compute Chebyshev coefficients $\{a_i\}_{i=0}^n$
 	\[a_i=\frac{\sum_{k=1}^my_kT_i(z_k)}{\sum_{k=1}^mT_i(z_k)^2},\]
-	where $T_i(x)=2xT_{i-1}(x)-T_{i-2}(x)$, with $T_0(x)=1$ and $T_1(x)=x$, for $i=2,\ldots,n$
+	where $T_i(x)=2xT_{i-1}(x)-T_{i-2}(x)$, with $T_0(x)=1$ and $T_1(x)=x$, for $i=2,\ldots,n$. We coded this recursion relation for $T_i(x)$ separately in \texttt{Tn.m}.
 	\item[Step 5.] The approximation for $f(x)$, $x\in[0,2]$ is given by:
 	\[\hat{f}(x)=\sum_{i=0}^n a_iT_i\left(x-1\right).\]
 \end{enumerate}
