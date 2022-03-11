@@ -13,10 +13,10 @@ y = f(x);
 
 ai = [];
 
-for i=1:n
+for i=1:(n+1)
    Ti =[];
    for k =1:length(z)
-    Ti = [Ti; Tn(z(k),i)];
+    Ti = [Ti; Tn(z(k),(i-1))];
    end
    ai(i) = (y*Ti)/sum(Ti.^2);
 end
@@ -24,6 +24,6 @@ end
 approx = 0;
 
 for i=1:length(ai)
-    approx = approx + ai(i)*Tn((2*(w-a)/(b-a))-1,i);
+    approx = approx + ai(i)*Tn((2*(w-a)/(b-a))-1,(i-1));
 end
 

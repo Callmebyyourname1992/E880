@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.24)  9 MAR 2022 10:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.24)  10 MAR 2022 12:57
 entering extended mode
 **"./Econ 880 - PS5 - Gunawan Minh.tex"
 ("Econ 880 - PS5 - Gunawan Minh.tex"
@@ -509,47 +509,44 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 [1
 
-{C:/Users/gesch/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2]
+{C:/Users/gesch/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2] [3]
 Package epstopdf Info: Source file: <fig1.eps>
-(epstopdf)                    date: 2022-03-09 10:59:49
-(epstopdf)                    size: 22419 bytes
+(epstopdf)                    date: 2022-03-10 12:57:15
+(epstopdf)                    size: 22052 bytes
 (epstopdf)             Output file: <fig1-eps-converted-to.pdf>
-(epstopdf)                    date: 2022-03-03 15:18:08
-(epstopdf)                    size: 11195 bytes
+(epstopdf)                    date: 2022-03-09 10:59:54
+(epstopdf)                    size: 11155 bytes
 (epstopdf)             Command: <epstopdf --outfile=fig1-eps-converted-to.pdf f
 ig1.eps>
-(epstopdf)             \includegraphics on input line 181.
+(epstopdf)             \includegraphics on input line 184.
 runsystem(epstopdf --outfile=fig1-eps-converted-to.pdf fig1.eps)...executed (al
 lowed).
 
 Package epstopdf Info: Result file: <fig1-eps-converted-to.pdf>
-(epstopdf)                    date: 2022-03-09 10:59:54
-(epstopdf)                    size: 11155 bytes.
+(epstopdf)                    date: 2022-03-10 12:57:19
+(epstopdf)                    size: 11150 bytes.
 
 
 pdfTeX warning: pdflatex.exe (file ./fig1-eps-converted-to.pdf): PDF inclusion:
  found PDF version <1.7>, but at most version <1.5> allowed
-<fig1-eps-converted-to.pdf, id=39, 421.575pt x 316.18124pt>
+<fig1-eps-converted-to.pdf, id=50, 421.575pt x 316.18124pt>
 File: fig1-eps-converted-to.pdf Graphic file (type pdf)
 <use fig1-eps-converted-to.pdf>
-Package pdftex.def Info: fig1-eps-converted-to.pdf  used on input line 181.
+Package pdftex.def Info: fig1-eps-converted-to.pdf  used on input line 184.
 (pdftex.def)             Requested size: 469.75502pt x 352.32101pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3] [4 <./fig1-eps-converted-to.pdf>] ("Econ 880 - PS5 - Gunawan Minh.aux")
+[4 <./fig1-eps-converted-to.pdf>] ("Econ 880 - PS5 - Gunawan Minh.aux")
 Package rerunfilecheck Info: File `"Econ 880 - PS5 - Gunawan Minh".out' has not
  changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 10299 strings out of 479618
- 160680 string characters out of 2865026
- 635626 words of memory out of 3000000
+ 10300 strings out of 479618
+ 160691 string characters out of 2865026
+ 636626 words of memory out of 3000000
  27266 multiletter control sequences out of 15000+200000
  419430 words of font info for 85 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,11n,88p,478b,404s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 81i,11n,88p,479b,404s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\gesch\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1095.pk> <C:\Users\gesch\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm0600.pk> <C:\Users\gesch\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -570,9 +567,9 @@ s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/gesch/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/gesch/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/gesch/AppData/L
 ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on "Econ 880 - PS5 - Gunawan Minh.pdf" (4 pages, 191414 bytes).
+Output written on "Econ 880 - PS5 - Gunawan Minh.pdf" (4 pages, 196041 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
- 14 named destinations out of 1000 (max. 500000)
+ 126 PDF objects out of 1000 (max. 8388607)
+ 15 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

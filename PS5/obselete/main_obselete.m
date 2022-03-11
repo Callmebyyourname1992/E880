@@ -28,15 +28,20 @@ m = n+1;
 f = @(x) exp(4*x-2);
 
 splinedata = linspace(0,2,5);
-[b1 b2 b3 b4] = splinecoefs(splinedata,f(splinedata));
+x=splinedata
+y=f(x)
+[b1 b2 b3 b4] = splinecoefs(splinedata,f(splinedata))
+[c1 c2 c3 c4] = cubicspline(splinedata,f(splinedata))
 
  x = linspace(a,b,101);
+ 
  fx = f(x);
  g = [];
  h = [];
  for j=1:length(x)
     g = [g, chebyshev(a,b,n,m,f,x(j))];
-    h = [h, evspline(b1,b2,b3,b4,x(j),splinedata)];
+    h = [h, evspline2(c1,c2,c3,c4,x(j),splinedata)];
+    %h = [h, evspline(b1,b2,b3,b4,x(j),splinedata)];
  end
  
 plot(x,fx,x,g,x,h,'LineWidth',2)
