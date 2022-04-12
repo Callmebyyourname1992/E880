@@ -62,37 +62,29 @@
 
 \maketitle	
 \section*{Question 1}
-
+We want to approximate $\int_0^1x^{\frac{1}{3}}dx$ using (A) Trapezoid rule, (B) Gauss-Chebyshev quadrature, and (C) Gauss-Legendre quadrature. We use $n\in\{3,5,11\}$ nodes with each approach. The true value of the integral is 0.75. The formula for each method is given below:
 \begin{itemize}
-\item The trapezoid is given by:
-$$\int_{a}^{b} f(x) d x=\frac{h}{2}\left[f_{0}+2 f_{1}+\cdots+2 f_{n-1}+f_{n}\right]-\frac{h^{2}(b-a)}{12} f^{\prime \prime}(\xi)$$
-\item The Gauss-Chebyshev is given by:
+\item The Trapezoid rule: Let $h=(b-a)/n$, $x_i=a+ih$, and $f_j\equiv f(x_j)$, then
+$$\int_{a}^{b} f(x) d x\doteq\frac{h}{2}\left[f_{0}+2 f_{1}+\cdots+2 f_{n-1}+f_{n}\right]$$
+\item The Gauss-Chebyshev quadrature:
 $$
 \int_{a}^{b} f(y) d y \doteq \frac{\pi(b-a)}{2 n} \sum_{i=1}^{n} f\left(\frac{\left(x_{i}+1\right)(b-a)}{2}+a\right)\left(1-x_{i}^{2}\right)^{1 / 2}
 $$
-where the $x_i$ are the Gauss-Chebyshev quadrature nodes over $[-1,1]$. Where the quadrature nodes are
+where $x_i$'s are the Gauss-Chebyshev quadrature nodes over $[-1,1]$:
 $$
 x_{i}=\cos \left(\frac{2 i-1}{2 n} \pi\right), \quad i=1, \ldots, n .
 $$
-\item The Gauss-Legendre is given by:
-A linear change of variables is necessary to apply Gauss-Legendre quadrature to general integrals. In general.
+\item The Gauss-Legendre quadrature:
 $$
 \int_{a}^{b} f(x) d x \doteq \frac{b-a}{2} \sum_{i=1}^{n} \omega_{i} f\left(\frac{\left(x_{i}+1\right)(b-a)}{2}+a\right),
 $$
-where the $w \quad i$ and xiq are the Gauss-Legendre quadrature weights and nodes over $[-1,1]$
-
-
-
-\item True value of the integral = 0.7500
-
+where the $\omega_i$ and $x_i$ are the Gauss-Legendre quadrature weights and nodes over $[-1,1]$\daggerfootnote{See Kenneth L. Judd, 1998. "Numerical Methods in Economics," MIT Press Books, The MIT Press, p.260, Table 7.2}.
 \end{itemize}
+The relative error of the integral approximations is defined here as $|\hat{I}-I|/I$, where $\hat{I}$ and $I$ is the true approximated and the value of the integral, respectively. See Table \ref{tab:1} for results.
 
-
-
-
-\begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
- \hline
- \multicolumn{4}{|c|}{The errors for three methods} \\
+\begin{table}[H]
+	\centering
+\begin{tabular}{ |l||c|c|c|  }
  \hline
                & $n=3$ &$n=5$&$n=11$\\
  \hline
@@ -101,27 +93,30 @@ where the $w \quad i$ and xiq are the Gauss-Legendre quadrature weights and node
  Gauss-Legendre   &0.0051406   & 0.0015098 & 0.00020904\\
   \hline
 \end{tabular}
-
+	\caption{Relative errors of the integral approximations}
+\label{tab:1}
+\end{table}
+Comment: We see that for the three approaches, the more we add the number of nodes, the lower the relative errors become. Out of the three methods, Gauss-Legendre quadrature performs best with the lowest relative errors, followed by Gauss-Chebyshev, and finally the Trapezoid rule.
 
 \section*{Question 2}
-\begin{itemize}
-\item True value of the integral = 34.920804 
-\item It is clear that the  pseudo-random error does not converge to zero, however it is bounded by 0.08. The ) uniformly spaced grid method converges to zero, however if the number of nodes are less than 3000, the   pseudo-random method does better the uniformly spaced grid since the lower bound of the uniformly spaced grid method is 0.1.
-\item The  pseudo-random is easier to implement than the uniformly spaced grid method
-\end{itemize}
+We want to approximate $\int_{[0,1]^3}e^{x+2y +3z} dx dy dz$ using (A) pseudo-random numbers from Matlab’s rand(), (B) uniformly
+spaced grid. For (A), we use the number of draws of the form $100n$ with $n = 1, 2,\ldots, 30$. For (B), we use $n$ equally spaced nodes along each dimension with $n^{1/3}=5,6,7,\ldots,14$. The true value of the integral is 34.920804.
 
+The relative error of the integral approximations is defined here as $|\hat{I}-I|/I$, where $\hat{I}$ and $I$ is the true approximated and the value of the integral, respectively. See Figure \ref{fig:1} and \ref{fig:2} for relative errors resulting from method A and B, respectively.
+
+Comment: On Figure \ref{fig:1}, we see that Method (A) exhibits no clear pattern of diminishing relative error towards zero, however it is bounded by roughly 0.075. On Figure \ref{fig:2}, it is clear that uniformly spaced grid method yields relative error that consistently decreases towards zero as $n$ increases. However, with the number of nodes less than 3000, the pseudo-random method performs better than the uniformly spaced grid since the relative error's lower bound of the uniformly spaced grid method is roughly 0.8, achieved at $n=14^3=2,744$ nodes. On the contrary, a relative error of 0.75 has been achieved using method (A) by choosing only $n=1,100$ nodes. From implementation point of view, it is easier to use Matlab's pseudo-random number generator, since we do not need, as in contrast to the other method, to divide all the three intervals into small grids and evaluate the function value at all of the grid points.  
 
 \begin{figure}[h]
 	\centering
-		\includegraphics[width=\textwidth]{fig2.eps}
-	\caption{ Pseudo-random error}
-	\label{2a:1}
+		\includegraphics[width=5in]{fig2.eps}
+	\caption{Relative Error for Method (A)}
+	\label{fig:1}
 \end{figure}
 \begin{figure}[h]
 	\centering
-		\includegraphics[width=\textwidth]{fig1.eps}
-	\caption{Uniformly spaced grid error}
-	\label{2a:1}
+		\includegraphics[width=5in]{fig1.eps}
+	\caption{Relative Error for Method (B)}
+	\label{fig:2}
 \end{figure}
 
 \end{document}
