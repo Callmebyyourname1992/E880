@@ -64,7 +64,44 @@
 \section*{Question 1}
 
 
+
+
+
+
+\begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
+ \hline
+ \multicolumn{4}{|c|}{Question 1} \\
+ \hline
+               & $n=3$ &$n=5$&$n=11$\\
+ \hline
+    Trapezoid      & 0.081359     &0.041771 &   0.01481\\
+     Gauss-Chebyshev   &     0.036964    & 0.012382     &0.0024208\\
+ Gauss-Legendre   &0.0051406   & 0.0015098 & 0.00020904\\
+  \hline
+\end{tabular}
+\begin{itemize}
+\item True value of the integral = 34.920804 
+\end{itemize}
+
 \section*{Question 2}
+\begin{itemize}
+\item True value of the integral = 34.920804 
+\item It is clear that the  pseudo-random error does not converge to zero, however it is bounded by 0.08. The ) uniformly spaced grid method converges to zero, however if the number of nodes are less than 3000, the   pseudo-random method does better the uniformly spaced grid since the lower bound of the uniformly spaced grid method is 0.1.
+\end{itemize}
+
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=\textwidth]{fig2.eps}
+	\caption{ Pseudo-random error}
+	\label{2a:1}
+\end{figure}
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=\textwidth]{fig1.eps}
+	\caption{Uniformly spaced grid error}
+	\label{2a:1}
+\end{figure}
 
 \end{document}
 
