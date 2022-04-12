@@ -63,14 +63,36 @@
 \maketitle	
 \section*{Question 1}
 
+\begin{itemize}
+\item The trapezoid is given by:
+$$\int_{a}^{b} f(x) d x=\frac{h}{2}\left[f_{0}+2 f_{1}+\cdots+2 f_{n-1}+f_{n}\right]-\frac{h^{2}(b-a)}{12} f^{\prime \prime}(\xi)$$
+\item The Gauss-Chebyshev is given by:
+$$
+\int_{a}^{b} f(y) d y \doteq \frac{\pi(b-a)}{2 n} \sum_{i=1}^{n} f\left(\frac{\left(x_{i}+1\right)(b-a)}{2}+a\right)\left(1-x_{i}^{2}\right)^{1 / 2}
+$$
+where the $x_i$ are the Gauss-Chebyshev quadrature nodes over $[-1,1]$. Where the quadrature nodes are
+$$
+x_{i}=\cos \left(\frac{2 i-1}{2 n} \pi\right), \quad i=1, \ldots, n .
+$$
+\item The Gauss-Legendre is given by:
+A linear change of variables is necessary to apply Gauss-Legendre quadrature to general integrals. In general.
+$$
+\int_{a}^{b} f(x) d x \doteq \frac{b-a}{2} \sum_{i=1}^{n} \omega_{i} f\left(\frac{\left(x_{i}+1\right)(b-a)}{2}+a\right),
+$$
+where the $w \quad i$ and xiq are the Gauss-Legendre quadrature weights and nodes over $[-1,1]$
 
+
+
+\item True value of the integral = 0.7500
+
+\end{itemize}
 
 
 
 
 \begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
  \hline
- \multicolumn{4}{|c|}{Question 1} \\
+ \multicolumn{4}{|c|}{The errors for three methods} \\
  \hline
                & $n=3$ &$n=5$&$n=11$\\
  \hline
@@ -79,14 +101,13 @@
  Gauss-Legendre   &0.0051406   & 0.0015098 & 0.00020904\\
   \hline
 \end{tabular}
-\begin{itemize}
-\item True value of the integral = 34.920804 
-\end{itemize}
+
 
 \section*{Question 2}
 \begin{itemize}
 \item True value of the integral = 34.920804 
 \item It is clear that the  pseudo-random error does not converge to zero, however it is bounded by 0.08. The ) uniformly spaced grid method converges to zero, however if the number of nodes are less than 3000, the   pseudo-random method does better the uniformly spaced grid since the lower bound of the uniformly spaced grid method is 0.1.
+\item The  pseudo-random is easier to implement than the uniformly spaced grid method
 \end{itemize}
 
 

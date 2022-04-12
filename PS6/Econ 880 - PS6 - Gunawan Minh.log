@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.9)  12 APR 2022 05:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.9)  12 APR 2022 06:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -527,17 +527,16 @@ Package epstopdf Info: Source file: <fig2.eps>
 (epstopdf)                    size: 6153 bytes
 (epstopdf)             Command: <repstopdf --outfile=fig2-eps-converted-to.pdf 
 fig2.eps>
-(epstopdf)             \includegraphics on input line 95.
+(epstopdf)             \includegraphics on input line 116.
 Package epstopdf Info: Output file is already uptodate.
 <fig2-eps-converted-to.pdf, id=4, 562.1pt x 421.575pt>
 File: fig2-eps-converted-to.pdf Graphic file (type pdf)
 <use fig2-eps-converted-to.pdf>
-Package pdftex.def Info: fig2-eps-converted-to.pdf  used on input line 95.
+Package pdftex.def Info: fig2-eps-converted-to.pdf  used on input line 116.
 (pdftex.def)             Requested size: 469.75502pt x 352.31299pt.
+ [1
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Package epstopdf Info: Source file: <fig1.eps>
 (epstopdf)                    date: 2022-04-12 05:34:43
 (epstopdf)                    size: 15453 bytes
@@ -546,19 +545,17 @@ Package epstopdf Info: Source file: <fig1.eps>
 (epstopdf)                    size: 6251 bytes
 (epstopdf)             Command: <repstopdf --outfile=fig1-eps-converted-to.pdf 
 fig1.eps>
-(epstopdf)             \includegraphics on input line 101.
+(epstopdf)             \includegraphics on input line 122.
 Package epstopdf Info: Output file is already uptodate.
-<fig1-eps-converted-to.pdf, id=5, 562.1pt x 421.575pt>
+<fig1-eps-converted-to.pdf, id=23, 562.1pt x 421.575pt>
 File: fig1-eps-converted-to.pdf Graphic file (type pdf)
 <use fig1-eps-converted-to.pdf>
-Package pdftex.def Info: fig1-eps-converted-to.pdf  used on input line 101.
+Package pdftex.def Info: fig1-eps-converted-to.pdf  used on input line 122.
 (pdftex.def)             Requested size: 469.75502pt x 352.31299pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[1
-
-{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2 <./fig2-eps-converted-to.pdf>] [3 <./fig1-eps-converted-to.pdf>]
 (./Econ 880 - PS6 - Gunawan Minh.aux)
 
@@ -571,22 +568,27 @@ Package rerunfilecheck Info: File `"Econ 880 - PS6 - Gunawan Minh".out' has not
 Here is how much of TeX's memory you used:
  12842 strings out of 478994
  192976 string characters out of 5858185
- 654014 words of memory out of 5000000
+ 659014 words of memory out of 5000000
  30136 multiletter control sequences out of 15000+600000
  414558 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,9n,88p,397b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 81i,9n,88p,397b,352s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
-/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
-ocal/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on "Econ 880 - PS6 - Gunawan Minh.pdf" (3 pages, 72480 bytes).
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
+r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
+local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
+cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
+l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
+exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on "Econ 880 - PS6 - Gunawan Minh.pdf" (3 pages, 116749 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
+ 82 PDF objects out of 1000 (max. 8388607)
+ 61 compressed objects within 1 object stream
  8 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
