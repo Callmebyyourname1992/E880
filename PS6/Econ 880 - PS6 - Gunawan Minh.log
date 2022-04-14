@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.24)  14 APR 2022 14:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.24)  14 APR 2022 15:11
 entering extended mode
 **"./Econ 880 - PS6 - Gunawan Minh.tex"
 ("Econ 880 - PS6 - Gunawan Minh.tex"
@@ -516,44 +516,51 @@ LaTeX Font Info:    Trying to load font information for U+eus on input line 105
 (C:\Users\gesch\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueus.fd
 File: ueus.fd 2013/01/14 v3.01 Euler Script
 )
-Package epstopdf Info: Source file: <fig2.eps>
-(epstopdf)                    date: 2022-04-12 14:10:24
-(epstopdf)                    size: 16160 bytes
-(epstopdf)             Output file: <fig2-eps-converted-to.pdf>
-(epstopdf)                    date: 2022-04-12 14:10:24
-(epstopdf)                    size: 6153 bytes
-(epstopdf)             Command: <epstopdf --outfile=fig2-eps-converted-to.pdf f
-ig2.eps>
-(epstopdf)             \includegraphics on input line 123.
-Package epstopdf Info: Output file is already uptodate.
-<fig2-eps-converted-to.pdf, id=33, 562.1pt x 421.575pt>
-File: fig2-eps-converted-to.pdf Graphic file (type pdf)
-<use fig2-eps-converted-to.pdf>
-Package pdftex.def Info: fig2-eps-converted-to.pdf  used on input line 123.
-(pdftex.def)             Requested size: 361.34999pt x 271.00998pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 Package epstopdf Info: Source file: <fig1.eps>
-(epstopdf)                    date: 2022-04-12 14:10:24
-(epstopdf)                    size: 16507 bytes
+(epstopdf)                    date: 2022-04-14 15:07:56
+(epstopdf)                    size: 17508 bytes
 (epstopdf)             Output file: <fig1-eps-converted-to.pdf>
-(epstopdf)                    date: 2022-04-12 14:10:24
-(epstopdf)                    size: 6251 bytes
+(epstopdf)                    date: 2022-04-14 15:08:03
+(epstopdf)                    size: 6313 bytes
 (epstopdf)             Command: <epstopdf --outfile=fig1-eps-converted-to.pdf f
 ig1.eps>
-(epstopdf)             \includegraphics on input line 129.
+(epstopdf)             \includegraphics on input line 123.
 Package epstopdf Info: Output file is already uptodate.
-<fig1-eps-converted-to.pdf, id=34, 562.1pt x 421.575pt>
+
+
+pdfTeX warning: pdflatex.exe (file ./fig1-eps-converted-to.pdf): PDF inclusion:
+ found PDF version <1.7>, but at most version <1.5> allowed
+<fig1-eps-converted-to.pdf, id=33, 421.575pt x 316.18124pt>
 File: fig1-eps-converted-to.pdf Graphic file (type pdf)
 <use fig1-eps-converted-to.pdf>
-Package pdftex.def Info: fig1-eps-converted-to.pdf  used on input line 129.
-(pdftex.def)             Requested size: 361.34999pt x 271.00998pt.
+Package pdftex.def Info: fig1-eps-converted-to.pdf  used on input line 123.
+(pdftex.def)             Requested size: 361.34999pt x 271.01802pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[2] [3 <./fig2-eps-converted-to.pdf> <./fig1-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <fig2.eps>
+(epstopdf)                    date: 2022-04-14 15:06:54
+(epstopdf)                    size: 17920 bytes
+(epstopdf)             Output file: <fig2-eps-converted-to.pdf>
+(epstopdf)                    date: 2022-04-14 15:07:33
+(epstopdf)                    size: 6368 bytes
+(epstopdf)             Command: <epstopdf --outfile=fig2-eps-converted-to.pdf f
+ig2.eps>
+(epstopdf)             \includegraphics on input line 129.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./fig2-eps-converted-to.pdf): PDF inclusion:
+ found PDF version <1.7>, but at most version <1.5> allowed
+<fig2-eps-converted-to.pdf, id=34, 421.575pt x 316.18124pt>
+File: fig2-eps-converted-to.pdf Graphic file (type pdf)
+<use fig2-eps-converted-to.pdf>
+Package pdftex.def Info: fig2-eps-converted-to.pdf  used on input line 129.
+(pdftex.def)             Requested size: 361.34999pt x 271.01802pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2] [3 <./fig1-eps-converted-to.pdf> <./fig2-eps-converted-to.pdf>]
 ("Econ 880 - PS6 - Gunawan Minh.aux")
 Package rerunfilecheck Info: File `"Econ 880 - PS6 - Gunawan Minh".out' has not
  changed.
@@ -566,7 +573,7 @@ Here is how much of TeX's memory you used:
  27283 multiletter control sequences out of 15000+200000
  420597 words of font info for 91 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,8n,88p,1126b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 81i,8n,88p,1065b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\gesch\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 0600.pk> <C:\Users\gesch\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm0800.pk> <C:\Users\gesch\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -589,9 +596,9 @@ ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/Users/gesch/AppData/
 Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eusm10.pfb><C:/Users/ge
 sch/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pf
 b>
-Output written on "Econ 880 - PS6 - Gunawan Minh.pdf" (3 pages, 181857 bytes).
+Output written on "Econ 880 - PS6 - Gunawan Minh.pdf" (3 pages, 182093 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
+ 126 PDF objects out of 1000 (max. 8388607)
  11 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -145,7 +145,7 @@ hold on
 yline(0);
 hold off
 xticklabels(5:14)
-xlabel('n^{1/3}')
+xlabel('n')
 ylabel('relative error')
 legend('Relative Error (B)')
 
