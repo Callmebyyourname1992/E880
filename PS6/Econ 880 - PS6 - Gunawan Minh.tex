@@ -62,13 +62,13 @@
 
 \maketitle	
 \section*{Question 1}
-We want to approximate $\int_0^1x^{\frac{1}{3}}dx$ using (A) Trapezoid rule, (B) Gauss-Chebyshev quadrature, and (C) Gauss-Legendre quadrature. We use $n\in\{3,5,11\}$ nodes with each approach. The true value of the integral is 0.75. The formula for each method is given below:
+We want to approximate $\int_0^1x^{\frac{1}{3}}\,dx$ using (A) Trapezoid rule, (B) Gauss-Chebyshev quadrature, and (C) Gauss-Legendre quadrature. We use $n\in\{3,5,11\}$ nodes with each approach. The true value of the integral is 0.75. The formula for each method is given below:
 \begin{itemize}
 \item The Trapezoid rule: Let $h=(b-a)/n$, $x_i=a+ih$, and $f_j\equiv f(x_j)$, then
-$$\int_{a}^{b} f(x) d x\doteq\frac{h}{2}\left[f_{0}+2 f_{1}+\cdots+2 f_{n-1}+f_{n}\right]$$
+$$\int_{a}^{b} f(x) \,d x\doteq\frac{h}{2}\left[f_{0}+2 f_{1}+\cdots+2 f_{n-1}+f_{n}\right]$$
 \item The Gauss-Chebyshev quadrature:
 $$
-\int_{a}^{b} f(y) d y \doteq \frac{\pi(b-a)}{2 n} \sum_{i=1}^{n} f\left(\frac{\left(x_{i}+1\right)(b-a)}{2}+a\right)\left(1-x_{i}^{2}\right)^{1 / 2}
+\int_{a}^{b} f(y) \,dy \doteq \frac{\pi(b-a)}{2 n} \sum_{i=1}^{n} f\left(\frac{\left(x_{i}+1\right)(b-a)}{2}+a\right)\left(1-x_{i}^{2}\right)^{1 / 2}
 $$
 where $x_i$'s are the Gauss-Chebyshev quadrature nodes over $[-1,1]$:
 $$
@@ -76,7 +76,7 @@ x_{i}=\cos \left(\frac{2 i-1}{2 n} \pi\right), \quad i=1, \ldots, n .
 $$
 \item The Gauss-Legendre quadrature:
 $$
-\int_{a}^{b} f(x) d x \doteq \frac{b-a}{2} \sum_{i=1}^{n} \omega_{i} f\left(\frac{\left(x_{i}+1\right)(b-a)}{2}+a\right),
+\int_{a}^{b} f(x) \,d x \doteq \frac{b-a}{2} \sum_{i=1}^{n} \omega_{i} f\left(\frac{\left(x_{i}+1\right)(b-a)}{2}+a\right),
 $$
 where the $\omega_i$ and $x_i$ are the Gauss-Legendre quadrature weights and nodes over $[-1,1]$\daggerfootnote{See Kenneth L. Judd, 1998. "Numerical Methods in Economics," MIT Press Books, The MIT Press, p.260, Table 7.2}.
 \end{itemize}
@@ -99,12 +99,24 @@ The relative error of the integral approximations is defined here as $|\hat{I}-I
 Comment: We see that for the three approaches, the more we add the number of nodes, the lower the relative errors become. Out of the three methods, Gauss-Legendre quadrature performs best with the lowest relative errors, followed by Gauss-Chebyshev, and finally the Trapezoid rule.
 
 \section*{Question 2}
-We want to approximate $\int_{[0,1]^3}e^{x+2y +3z} dx dy dz$ using (A) pseudo-random numbers from Matlab’s rand(), (B) uniformly
-spaced grid. For (A), we use the number of draws of the form $100n$ with $n = 1, 2,\ldots, 30$. For (B), we use $n$ equally spaced nodes along each dimension with $n^{1/3}=5,6,7,\ldots,14$. The true value of the integral is 34.920804.
+We want to approximate $\int_{[0,1]^3}e^{x+2y +3z} \,dx \,dy \,dz$ using (A) pseudo-random numbers from Matlab’s \texttt{rand()}, (B) uniformly
+spaced grid. 
 
-The relative error of the integral approximations is defined here as $|\hat{I}-I|/I$, where $\hat{I}$ and $I$ is the true approximated and the value of the integral, respectively. See Figure \ref{fig:1} and \ref{fig:2} for relative errors resulting from method A and B, respectively.
+Method (A) relies on the fact that if $X,Y,Z\sim \U_{[0,1]}$, then 
+\[\E[f(X,Y,Z)]=\int_0^1\int_0^1\int_0^1f(x,y,z)\,dx\,dy\,dz.\] 
+The crude Monte Carlo method generates $n$ draws from $\U_{[0,1]}$, i.e. $\{x_i,y_i,z_i\}_{i=1}^n$, and takes
+\[\hat{I}=\frac{1}{n}\sum_{i=1}^nf(x_i,y_i,z_i)\]
+as an estimate for $I=\int_0^1\int_0^1\int_0^1f(x) \,dx \,dy\, dz$. The random draw from $\U_{[0,1]}$ is executed in Matlab using the command \texttt{rand()}\daggerfootnote{We set here a seed number \texttt{rng(888)} for reproducibility.}. The number of draws we choose for this method is of the form $100n$ with $n = 1, 2,\ldots, 30$. 
 
-Comment: On Figure \ref{fig:1}, we see that Method (A) exhibits no clear pattern of diminishing relative error towards zero, however it is bounded by roughly 0.075. On Figure \ref{fig:2}, it is clear that uniformly spaced grid method yields relative error that consistently decreases towards zero as $n$ increases. However, with the number of nodes less than 3000, the pseudo-random method performs better than the uniformly spaced grid since the relative error's lower bound of the uniformly spaced grid method is roughly 0.8, achieved at $n=14^3=2,744$ nodes. On the contrary, a relative error of 0.75 has been achieved using method (A) by choosing only $n=1,100$ nodes. From implementation point of view, it is easier to use Matlab's pseudo-random number generator, since we do not need, as in contrast to the other method, to divide all the three intervals into small grids and evaluate the function value at all of the grid points.  
+Method (B) relies on the following definition of triple integral
+\[\int_0^1 \int_0^1 \int_0^1 f(x,y,z) \,dx \,dy \,dz = \lim_{\Delta x,\Delta y,\Delta z \rightarrow 0} \sum_{i=1}^n f(x_i,y_i,z_i) \,\Delta x\,\Delta y\,\Delta z,\]
+where the number of intervals we divide $[0,1]$ into, $n$, is chosen such that $\Delta x=\Delta y=\Delta z =1/n$. In this exercise, we use $n$ equally spaced nodes along each dimension with $n^{1/3}=5,6,7,\ldots,14$. Thus, the estimated integral for method (B) is given by 
+
+\[\hat{I}=\frac{1}{n^3}\sum_{i=1}^n f(x_i,y_i,z_i).\]
+
+The true value of the integral is $I=34.920804$. The relative error of the integral approximations is defined here as $|\hat{I}-I|/I$, where $\hat{I}$ and $I$ is the true approximated and the value of the integral, respectively. See Figure \ref{fig:1} and \ref{fig:2} for relative errors resulting from method A and B, respectively.
+
+Comment: On Figure \ref{fig:1}, we see that Method (A) exhibits no clear pattern of diminishing relative error towards zero, however it is bounded by roughly 0.075. This result could potentially be due to the very large variance generated by crude Monte Carlo approximation despite its unbiasedness. On Figure \ref{fig:2}, it is clear that uniformly spaced grid method yields relative error that consistently decreases towards zero as $n$ increases. However, with the number of nodes less than 3,000 points, the pseudo-random method performs better than the uniformly spaced grid since the relative error's lower bound of the uniformly spaced grid method is roughly 0.8, achieved at $n=14^3=2,744$ nodes. On the contrary, a relative error of 0.75 has been achieved using method (A) by choosing only $n=1,100$ nodes. From implementation point of view, it is easier to use Matlab's pseudo-random number generator, since we only need to sample a smaller number of nodes to achieve the same level of error that the other method's generates at much higher number of nodes.  
 
 \begin{figure}[h]
 	\centering
