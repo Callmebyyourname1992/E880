@@ -117,7 +117,7 @@ ylabel('relative error')
 
 legend('Relative Error (A)')
 
-%% 2A. MC Integration using rand()
+%% 2B. Equally-split grid Integral
 n=5:14;
 MCb =[];
 for j=1:size(n,2)
